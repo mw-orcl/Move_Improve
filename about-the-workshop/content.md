@@ -17,7 +17,7 @@ In this lab you will create a Virtual Cloud Network (VCN) and related network re
 
 ## Agenda
 
-- **Lab 0 :** Setup the Lab Environment
+- **Lab 0 :** Set up the Lab Environment
 
 This lab introduces the student lab environment and contains the steps to connect to the Oracle Cloud.
 

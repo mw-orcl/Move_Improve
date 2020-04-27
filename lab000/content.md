@@ -1,4 +1,4 @@
-# Setup the Lab Environment #
+# Set Up the Lab Environment #
 
 In this lab you will connect to the Oracle Cloud and select your region and compartment to work in.
 
@@ -21,14 +21,17 @@ The following is intended to outline our general product direction. It is intend
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\Cloud Sign In.PNG)
 
-## Step 2 ##
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\Username signin.PNG)
 
-- Select your Region
-- Select your Compartment
 
-**Important Note**
 
-**Always ensure you are in your correct Region and Compartment.** 
+- You should see the Quick Actions dashboard
+
+- Note the region selection and the menu of services on the upper left side
+
+  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\Menu and Region Selection.PNG)
+
+
 
 ## Acknowledgements ##
 
