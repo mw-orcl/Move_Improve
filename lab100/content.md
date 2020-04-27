@@ -17,25 +17,61 @@ The following is intended to outline our general product direction. It is intend
 ## Step 1 ##
 
 - Select your Region on the upper right of the OCI console
-- Select the hamburger menu on the top left corner and select Networking
+- Select the cloud services menu on the top left corner and select Networking
+- Select Virtual Cloud Networks
 - Select your Compartment
-- Click on Networking Quickstart
+- Click Networking Quickstart
 
-
-
-### Substep 1.1 ###
-
-Description of substep 1.1
-
-### Substep 1.2 ###
-
-Description of substep 1.2
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Region and compartment selection.PNG)
 
 ## Step 2 ##
 
-etc
+- Select VCN and Internet Connectivity
+
+- Click Start Workflow
+
+  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Network Quickstart.PNG)
+
+- Enter a unique name for your VCN
+- Select your assigned compartment
+- Enter a VCN CIDR block of 10.0.0.0/16.  Note: The CIDR Block is the range of IP addresses that can be used.
+- Enter the public subnet CIDR block of 10.0.0.0/24
+- Enter the private subnet CIDR block of 10.0.1.0/24. Note: A private subnet is not visible to the internet and is accessible from inside the VCN
+
+- Select use DNS hostnames
+- Click Next
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\VCN configuration info.PNG)
+
+A summary is displayed. 
+
+You can view the default security and route rules that will be created.
+
+- Click Show Rules
+
+  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Security Rules.PNG)
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Route Rules.PNG)
+
+- Click Create. 
+
+The VCN is created instantaneously with all the default network resources. 
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\VCN summary info.PNG)
+
+- Click View Virtual Cloud Network to see the details and what has been created. 
+
+You will see a number of resources created including public, private subnets, default security list, default route table, and the gateways.
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\View VCN config.PNG)
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\VCN details.PNG)
+
+Below is a diagram of what has been created by the networking quickstart.
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Lab architecture created.PNG)
 
 ## Acknowledgements ##
 
-- **Author** - Robert Pastijn, Database Product Management, PTS EMEA - April 2020
+- **Author** - Milton Wan, Database Product Management, PTS - April 2020
 

@@ -27,7 +27,7 @@ The following is intended to outline our general product direction. It is intend
 
 - You should see the Quick Actions dashboard
 
-- Note the region selection and the menu of services on the upper left side
+- Note the region selection and the menu of services on the upper left corner
 
   ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\Menu and Region Selection.PNG)
 
