@@ -61,6 +61,18 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
   ![Compute config 5](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 5.PNG)
 
+Once you click Create Instance, your instance will be in provisioning state. This will take a couple of minutes to create.
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute provisioning status.png)
+
+You can see the more status by clicking on Work Request.
+
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Work request.PNG" style="zoom:67%;" />
+
+Your running compute instance will have both the Public and Private IP address created. Resources inside the VCN can access Private IP addresses.
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute detail.PNG)
+
 ### Substep 1.1 ###
 
 Description of substep 1.1
