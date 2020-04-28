@@ -67,7 +67,7 @@ You will see a number of resources created including public, private subnets, de
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\VCN details.PNG)
 
-Below is a diagram of what has been created by the networking quickstart.
+Below is a diagram of what has been created by the Networking Quickstart.
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Lab architecture created.PNG)
 
