@@ -12,7 +12,7 @@ The following is intended to outline our general product direction. It is intend
 - Account access to Oracle Cloud Infrastructure
   - Provided to you if instructor-led training, otherwise use your account
 
-## Step 1 ##
+## Step 1 - Log in to Oracle Cloud ##
 
 - From your browser go to Oracle Cloud. The URL is https://www.oracle.com/cloud/sign-in.html
 - Enter your cloud account name

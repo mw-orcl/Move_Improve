@@ -12,7 +12,7 @@ The following is intended to outline our general product direction. It is intend
 - WinSCP or equivalent
 - PuTTY or equivalent
 
-## Step 1 ##
+## Step 1: Create the Bastion Compute ##
 
 We will create our first compute as a Bastion host on the public subnet. A Bastion is a “jump” host that will allow us to jump to the private compute. Private computes on private subnets can not be accessed from the internet directly.
 
@@ -71,21 +71,40 @@ You can see the more status by clicking on Work Request.
 
 Your running compute instance will have both the Public and Private IP address created. Resources inside the VCN can access Private IP addresses.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute detail.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\InkedCompute detail_LI.jpg)
 
-### Substep 1.1 ###
 
-Description of substep 1.1
 
-### Substep 1.2 ###
+## Step 2: Connect to your Bastion Compute ##
 
-Description of substep 1.2
+Use PuTTy or SSH to connect to your bastion compute. Connect with the compute public IP address and your client side SSH private key provided by the instructor or use your own SSH key. You can use PuTTyGen or equivalent to create your own SSH public and private keys.  opc is the default admin user for the compute
 
-## Step 2 ##
+For Linux SSH:
 
-etc
+`ssh –i ~/../privatekey opc@<your compute public IP address>`
+
+For PuTTY:
+
+- Enter the public IP address of the compute
+
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\putty 1.PNG" style="zoom:75%;" />
+
+- Browse for your SSH private key
+
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Putty 2.PNG" style="zoom: 67%;" />
+
+- Save your settings and click Open
+- Click Yes when prompted
+
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Putty 3.PNG" style="zoom:67%;" />
+
+Oracle computes are provisioned with the default **opc** user with sudo privileges.
+
+- Login as **opc**
+
+  <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\putty session.png" style="zoom:75%;" />
 
 ## Acknowledgements ##
 
-- **Author** - Robert Pastijn, Database Product Management, PTS EMEA - April 2020
+- **Author** - Milton Wan, Database Product Management, PTS - April 2020
 

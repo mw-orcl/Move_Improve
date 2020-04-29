@@ -14,7 +14,7 @@ The following is intended to outline our general product direction. It is intend
 - Account access to Oracle Cloud Infrastructure
   - Provided to you if instructor-led training, otherwise use your account
 
-## Step 1 ##
+## Step 1 - Select your Cloud Region ##
 
 - Select your Region on the upper right of the OCI console
 - Select the cloud services menu on the top left corner and select Networking
@@ -24,7 +24,7 @@ The following is intended to outline our general product direction. It is intend
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Region and compartment selection.PNG)
 
-## Step 2 ##
+## Step 2 - Create the Network  ##
 
 - Select VCN and Internet Connectivity
 
