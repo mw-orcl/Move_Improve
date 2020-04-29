@@ -10,7 +10,7 @@ In this lab you will create a Virtual Cloud Network (VCN) and related network re
 
 - Laptop or desktop computer
 - Account access to Oracle Cloud Infrastructure
-  - Provided to you if instructor-led training, otherwise use your account
+  - You will need your own account.  An account is provided if this is an instructor-led workshop.
 
 - Knowledge of network concepts
 - Knowledge of database concepts

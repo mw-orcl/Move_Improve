@@ -14,52 +14,61 @@ The following is intended to outline our general product direction. It is intend
 
 ## Step 1: Create the Bastion Compute ##
 
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Bastion diagram.PNG" style="zoom: 150%;" />
+
 We will create our first compute as a Bastion host on the public subnet. A Bastion is a “jump” host that will allow us to jump to the private compute. Private computes on private subnets can not be accessed from the internet directly.
 
-- Log in to Oracle Cloud
-- Click on the navigation menu on the top left, select Compute Instances
-- Click Create Instance
+​	1. Log in to Oracle Cloud
+
+​	2. Click on the navigation menu on the top left, select Compute Instances
+
+​	3. Click Create Instance
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Menu compute.PNG)
 
-- Give your instance a unique name.
-- Change the Image and Select Oracle Cloud Developer Image from Oracle Images 
+​	4. Give your instance a unique name.
+
+​	5. Change the Image and Select Oracle Cloud Developer Image from Oracle Images 
 
 The Oracle Cloud Developer image has the Linux OS along with software client tools we will use. 
 
-- After selecting the image, you must scroll down the screen and click Select
+​	6. After selecting the image, you must scroll down the screen and click Select
 
-  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Create compute image.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Create compute image.PNG)
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Select Developer Image.PNG)
 
 <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Select Image.PNG" style="zoom: 80%;" />
 
-- Select Availability Domain 1 (AD1)
-- Select Virtual Machine 
-- Instance Shape should be 1 Core OCPU, 15 GB Memory. You can keep this default.
-- Select your Compartment and the VCN you created earlier
-- Select your subnet Compartment.  It will be the same as your VCN Compartment in this lab. In some cases you can create subnet in other compartments. 
+​	7. Select Availability Domain 1 (AD1)
 
-- Select the **Public** subnet to create your compute on
+​	8. Select Virtual Machine 
 
-- Then select **Assign public IP address**
+​	9. Instance Shape should be 1 Core OCPU, 15 GB Memory. You can keep this default.
 
-- Keep the Boot Volume settings as is, with boxes unchecked
+​	10. Select your Compartment and the VCN you created earlier
 
-- Choose the SSH public key provided by the instructor or create your own with PuttyGen or equivalent
+​	11. Select your subnet Compartment.  It will be the same as your VCN Compartment in this lab. In some cases you can create subnet in other compartments. 
 
-- Create your Instance
+​	12. Select the **Public** subnet to create your compute on
 
-  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 1.png)
+​	13. Then select **Assign public IP address**
 
-  ![Compute config 2](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 2.png)
+​	14. Keep the Boot Volume settings as is, with boxes unchecked
 
-  ![Compute config 3](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 3.png)
+​	15. Choose the SSH public key provided by the instructor or create your own with PuttyGen or equivalent
 
-  ![Compute config 4](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 4.png)
+​	16. Create your Instance
 
-  ![Compute config 5](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 5.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 1.png)
+
+![Compute config 2](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 2.png)
+
+![Compute config 3](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 3.png)
+
+![Compute config 4](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 4.png)
+
+![Compute config 5](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 5.PNG)
 
 Once you click Create Instance, your instance will be in provisioning state. This will take a couple of minutes to create.
 
@@ -85,24 +94,71 @@ For Linux SSH:
 
 For PuTTY:
 
-- Enter the public IP address of the compute
+​	1. Enter the public IP address of the compute
 
 <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\putty 1.PNG" style="zoom:75%;" />
 
-- Browse for your SSH private key
+​	2. Browse for your SSH private key
 
 <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Putty 2.PNG" style="zoom: 67%;" />
 
-- Save your settings and click Open
-- Click Yes when prompted
+​	3. Save your settings and click Open
+
+​	4. Click Yes when prompted
 
 <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Putty 3.PNG" style="zoom:67%;" />
 
 Oracle computes are provisioned with the default **opc** user with sudo privileges.
 
-- Login as **opc**
+​	5. Login as **opc**
 
-  <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\putty session.png" style="zoom:75%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\putty session.png" style="zoom:75%;" />
+
+
+
+## Step 3: Create your Application Server
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\App Server diagram.PNG)
+
+1. On the Private subnet create a compute for your application server. 
+2. Name your instance as your app server.
+3. If you have more than one availability domain, you can just select AD1.
+4. Use the latest default Oracle Linux image.
+5. Please use the standard virtual machine with 1 core as pictured.
+6. Ensure you select your compartment. Your subnet compartment can actually be configured on another compartment from your VCN. But in this case it will be the same as your VCN.
+7. Select the Private subnet where the App Server will be installed.
+8. Use the same SSH key as your Bastion compute.  However the best practice is to use a different key.
+9. Click Create.
+
+  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Create App Server 1.png)             
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Create App Server 2.png)
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Create App Server 3.PNG)
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Compute config 4.png)
+
+You can see the work request and status of the compute being provisioned in the compute details and Work Requests page.
+
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Create App Server 5.png"  />
+
+Once your compute App Server instance is running, view other details. Note the compute is provisioned on the private subnet, you only get a private IP address. From the private subnet we have a secure App Server that will connect to ATP.
+
+Now we need to turn off VNIC source/destination check to prepare its traffic access.
+
+## Step 4: Turn off VNIC source/destination check
+
+​	1. View the compute App Server instance details.
+
+​	2. Select Attached VNICs.
+
+​	3. Click on the 3 dots on the right of the VNIC.
+
+​	4. Select Edit VNIC.
+
+​	5. Check the box **Skip Source/Destination Check**.
+
+​	6. Click Update the VNIC.
 
 ## Acknowledgements ##
 
