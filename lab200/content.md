@@ -164,6 +164,16 @@ Now we need to turn off VNIC source/destination check to allow packets to be for
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\VNIC details.PNG)
 
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Update VNIC.PNG)
+
+
+
+## Step 5: Check Security List for Each Subnet
+
+Let's see how your security list are set up to ensure they allow the right traffic.
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Security List diagram.PNG)
+
 ## Acknowledgements ##
 
 - **Author** - Milton Wan, Database Product Management, PTS - April 2020
