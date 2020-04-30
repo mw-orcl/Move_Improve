@@ -142,23 +142,27 @@ You can see the work request and status of the compute being provisioned in the 
 
 <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Create App Server 5.png"  />
 
-Once your compute App Server instance is running, view other details. Note the compute is provisioned on the private subnet, you only get a private IP address. From the private subnet we have a secure App Server that will connect to ATP.
+Once your compute App Server instance is running, view other details. Note the compute is provisioned on the private subnet, you only get a private IP address.  There is no public IP address.  From the private subnet we have a secure App Server that will connect to ATP.
 
-Now we need to turn off VNIC source/destination check to prepare its traffic access.
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\App Server details.png)
+
+Now we need to turn off VNIC source/destination check to allow packets to be forwarded.  Otherwise if the packet is not for the VNIC it will be dropped.
 
 ## Step 4: Turn off VNIC source/destination check
 
-​	1. View the compute App Server instance details.
+​	1. View the compute App Server instance details
 
-​	2. Select Attached VNICs.
+​	2. Select Attached VNICs
 
-​	3. Click on the 3 dots on the right of the VNIC.
+​	3. Click on the 3 dots on the right of the VNIC
 
-​	4. Select Edit VNIC.
+​	4. Select Edit VNIC
 
-​	5. Check the box **Skip Source/Destination Check**.
+​	5. Check the box **Skip Source/Destination Check**
 
-​	6. Click Update the VNIC.
+​	6. Click Update the VNIC
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\VNIC details.PNG)
 
 ## Acknowledgements ##
 
