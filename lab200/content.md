@@ -180,9 +180,10 @@ Let's see how your security list are set up to ensure they allow the right traff
 
 ​	3. Check default security list used by the public subnet
 
-​		- Ie: allow SSH ingress, all egress to all destinations (port 22 is for SSH, 0.0.0.0/0 is all)
+		- Allow TCP ingress on port 22. (port 22 is for SSH)
+		- Allow all egress to all destinations, ie: 0.0.0.0/0
 
-​		- ICMP is defaulted and is TCP/IP layer protocol for control and error messages
+​	ICMP is defaulted and is TCP/IP layer protocol for control and error messages.
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\VCN details.png)
 
@@ -192,9 +193,11 @@ Let's see how your security list are set up to ensure they allow the right traff
 
 1. Check security list for private subnet. 
 
-​		- Ie: Ingress allows SSH from the VCN (this will also allow ingress for SCP copy of the ATP Wallet we will do shortly). 
+		- Ie: Ingress allows SSH from the VCN (this will also allow ingress for SCP copy of the ATP Wallet we will do shortly). 
 
-​		- Ie: Egress allows all protocol traffic to all destination.
+  - Ie: Egress allows all protocol traffic to all destination.
+
+    
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Security List Ingress Private Subnet.png)
 
