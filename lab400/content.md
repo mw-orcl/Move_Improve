@@ -1,4 +1,4 @@
-# Configure the App Server #
+# Copy the Wallet to the App Server #
 
 Now we need to copy the ATP Wallet to our application server so it can connect to ATP. We can’t access the compute App Server directly because it’s in the private subnet. So we’ll need to go through the Bastion, the "jump" server. 
 
