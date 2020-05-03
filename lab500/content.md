@@ -15,8 +15,8 @@ The following is intended to outline our general product direction. It is intend
 - SSH public and private keys
 - PuTTY or equivalent
 - SQL Developer 19.1 or higher
-- Soedump18C_1G.dmp file (provided by Instructor in instructor-led class)
-- OCI Auth Token password (provided by Instructor in instructor-led class)
+- Soedump18C_1G.dmp file (provided by Instructor if instructor-led class)
+- OCI Auth Token password (provided by Instructor if instructor-led class)
 
 ## Step 1: Install Swingbench on the App Server ##
 
@@ -231,7 +231,140 @@ While we are in SQL Developer check to see if you have the SOE schema in the Oth
 
 
 
+## Step 6: Import the Dump File to the Autonomous Database
 
+Once you have the database dump file in the Object Storage you can import it into ATP. To run the Data Pump Import you will log in to the compute with the Instant Client software and the wallet to your ATP. 
+
+Execute the impdb statement below from your compute with Instant Client software.
+
+1. Enter your admin password, and connect to your ATP with **high** service. 
+2. Enter the credential name.
+3. Your dumpfile will point to the object store uri with the soedump.dmp file. 
+4. Set parallel import to 2 since we can use 2 the OCPU cores in ATP.
+
+```
+$ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump.dmp logfile=import.log parallel=2
+```
+
+If successful, you will see this output:
+
+Import: Release 18.0.0.0.0 - Production on Tue Dec 24 19:21:02 2019
+
+Version 18.5.0.0.0
+
+ 
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates. All rights reserved.
+
+ 
+
+Connected to: Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+
+ 
+
+Master table "ADMIN"."SYS_IMPORT_SCHEMA_01" successfully loaded/unloaded
+
+Starting "ADMIN"."SYS_IMPORT_SCHEMA_01": admin/********@atp18c_high directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump.dmp logfile=import.log parallel=2 encryption_pwd_prompt=yes
+
+Processing object type SCHEMA_EXPORT/USER
+
+Processing object type SCHEMA_EXPORT/SYSTEM_GRANT
+
+Processing object type SCHEMA_EXPORT/ROLE_GRANT
+
+Processing object type SCHEMA_EXPORT/DEFAULT_ROLE
+
+Processing object type SCHEMA_EXPORT/TABLESPACE_QUOTA
+
+Processing object type SCHEMA_EXPORT/PASSWORD_HISTORY
+
+Processing object type SCHEMA_EXPORT/PRE_SCHEMA/PROCACT_SCHEMA
+
+Processing object type SCHEMA_EXPORT/SEQUENCE/SEQUENCE
+
+Processing object type SCHEMA_EXPORT/TABLE/TABLE
+
+Processing object type SCHEMA_EXPORT/TABLE/TABLE_DATA
+
+. . imported "SOE"."PRODUCT_INFORMATION"         187.1 KB  1000 rows
+
+. . imported "SOE"."LOGON"                57.91 MB 2686349 rows
+
+. . imported "SOE"."ADDRESSES"              116.5 MB 1585588 rows
+
+. . imported "SOE"."CARD_DETAILS"            67.87 MB 1585457 rows
+
+. . imported "SOE"."ORDERS"               149.4 MB 1657624 rows
+
+. . imported "SOE"."WAREHOUSES"             35.34 KB  1000 rows
+
+. . imported "SOE"."INVENTORIES"             15.18 MB 896376 rows
+
+. . imported "SOE"."PRODUCT_DESCRIPTIONS"        220.0 KB  1000 rows
+
+. . imported "SOE"."CUSTOMERS"              117.5 MB 1085457 rows
+
+. . imported "SOE"."ORDERENTRY_METADATA"         5.617 KB    4 rows
+
+. . imported "SOE"."ORDER_ITEMS"             258.0 MB 4991509 rows
+
+Processing object type SCHEMA_EXPORT/PACKAGE/PACKAGE_SPEC
+
+Processing object type SCHEMA_EXPORT/PACKAGE/COMPILE_PACKAGE/PACKAGE_SPEC/ALTER_PACKAGE_SPEC
+
+Processing object type SCHEMA_EXPORT/VIEW/VIEW
+
+Processing object type SCHEMA_EXPORT/PACKAGE/PACKAGE_BODY
+
+Processing object type SCHEMA_EXPORT/TABLE/INDEX/INDEX
+
+Processing object type SCHEMA_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+
+Processing object type SCHEMA_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+
+Processing object type SCHEMA_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+
+Processing object type SCHEMA_EXPORT/STATISTICS/MARKER
+
+Processing object type SCHEMA_EXPORT/POST_SCHEMA/PROCACT_SCHEMA
+
+ORA-39082: Object type PACKAGE BODY:"SOE"."ORDERENTRY" created with compilation warnings
+
+ 
+
+Job "ADMIN"."SYS_IMPORT_SCHEMA_01" completed with 1 error(s) at Tue Dec 24 19:25:42 2019 elapsed 0 00:04:36
+
+To view the import.log you must put it into the Object Store, then download it to your laptop and view with a text editor.
+
+```
+BEGIN
+
+DBMS_CLOUD.PUT_OBJECT(
+
+credential_name=>'STORAGE_CREDENTIAL',
+
+object_uri=>'https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/import.log', directory_name=>'DATA_PUMP_DIR',
+
+file_name=>'import.log');
+
+END;
+
+/
+```
+
+ 
+
+In SQL Developer check to see if you have the SOE schema in the Other Users folder now. You should see that it has been imported.
+
+Upon import, there was one compilation issue. The following SQLs grant the missing privilege and recompile the ORDERENTRY package.
+
+```
+SQL> GRANT EXECUTE ON DBMS_LOCK TO SOE;
+
+SQL> ALTER PACKAGE SOE.ORDERENTRY COMPILE;
+```
+
+Now that we have both the application installed on the App Server and the database imported to ATP we are ready to run the workload.
 
 ## Acknowledgements ##
 
