@@ -1,4 +1,4 @@
-# Run the Application Workload and Scale the ATP
+# Run the Application Workload 
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\Run Swingbench diagram.PNG)
 

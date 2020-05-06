@@ -2,7 +2,7 @@
 
 ## Workshop Overview ##
 
-In this lab you will create a Virtual Cloud Network (VCN) and related network resources. A VCN is similar to your own on premise enterprise network.  In the Oracle Cloud, the network is software defined and virtual. This makes for very fast creation, but still providing high performance, and complete security. The architecture of your lab design follows.
+In this workshop you will create a Virtual Cloud Network (VCN) and related network resources. A VCN is similar to your own on premise enterprise network.  In the Oracle Cloud, the network is software defined and virtual. This makes for very fast creation, but still providing high performance, and complete security. The architecture of your lab design follows.
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\about-the-workshop\images\lab-diagram-overview.png)
 
@@ -18,7 +18,7 @@ In this lab you will create a Virtual Cloud Network (VCN) and related network re
 
 ## Agenda
 
-- **Lab 0 :** Set up the Lab Environment
+- **Lab 0 :** Log in to Oracle Cloud
 
 This lab introduces the student lab environment and contains the steps to connect to the Oracle Cloud.
 
@@ -28,11 +28,11 @@ This section describes creating the virtual cloud network or VCN using the quick
 
 - **Lab 2 :** Create the Computes
 
-This section describes the creating two computes for your lab environment.  One compute will be used as a bastion node.  The second compute will be used as your application server.
+This section describes creating two computes for your lab environment.  One compute will be used as a bastion node.  The second compute will be used as your application server.
 
 - **Lab 3 :** Create Autonomous Database
 
-This section describes creating the Oracle Autonomous Database.  We will create or provision the Autonomous Transaction Processing or ATP.
+This section describes creating the Oracle Autonomous Database.  We will provision the Autonomous Transaction Processing or ATP.
 
 - **Lab 4 :** Copy SSH Key and Wallet
 
@@ -40,7 +40,7 @@ This section describes copying the ssh key and wallet for secure access to the p
 
 - **Lab 5 :** Install the Application and Migrate the Database
 
-This section describes installing the Oracle client software and the application to your compute.
+This section describes installing the Oracle client software and the application to your compute.  You will also migrate the database using Data Pump.
 
 - **Lab 6 :** Run the Application Workload
 

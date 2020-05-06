@@ -1,4 +1,4 @@
-# Set Up the Lab Environment #
+# Log in to Oracle Cloud #
 
 In this lab you will connect to the Oracle Cloud and select your region and compartment to work in.
 
@@ -10,7 +10,7 @@ The following is intended to outline our general product direction. It is intend
 - Laptop or desktop computer
 - Web browser
 - Account access to Oracle Cloud Infrastructure
-  - Provided to you if instructor-led training, otherwise use your account
+  - The account is provided to you if it is instructor-led training, otherwise use your account
 
 ## Step 1 - Log in to Oracle Cloud ##
 
@@ -27,7 +27,7 @@ The following is intended to outline our general product direction. It is intend
 
 - You should see the Quick Actions dashboard
 
-- Note the region selection and the menu of services on the upper left corner
+- Note the region selection and the menu of cloud services on the upper left corner
 
   ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\Menu and Region Selection.PNG)
 
