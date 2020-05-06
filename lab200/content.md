@@ -1,6 +1,6 @@
 # Create the Computes #
 
-Oracle Cloud computes come in many shapes.  They can be virtual machines or bare metal hardware.  In this lab we will create two virtual machines.  One will be a bastion server, sometimes called a "jump server", and it will be created in your public subnet and the second will be the application server and it will created in your private subnet.
+Oracle Cloud computes come in many shapes.  They can be virtual machines or bare metal hardware.  In this lab we will create two virtual machines.  One will be a bastion server, sometimes called a "jump server", and it will be created in your public subnet, and the second will be the application server and it will created in your private subnet.
 
 ## Disclaimer ##
 The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
@@ -9,6 +9,8 @@ The following is intended to outline our general product direction. It is intend
 
 - Web browser
 - SSH public and private keys
+  - For instructor-led class, your instructor may provide you with the SSH keys
+  - You may also create your own SSH keys with PuTTyGen or equivalent
 - WinSCP or equivalent
 - PuTTY or equivalent
 
@@ -56,7 +58,7 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
 ​	14. Keep the Boot Volume settings as is, with boxes unchecked
 
-​	15. Choose the SSH public key provided by the instructor or create your own with PuttyGen or equivalent
+​	15. Choose the SSH public key provided by the instructor or use your own 
 
 ​	16. Create your Instance
 
@@ -127,7 +129,7 @@ Oracle computes are provisioned with the default **opc** user with sudo privileg
 5. Please use the standard virtual machine with 1 core as pictured.
 6. Ensure you select your compartment. Your subnet compartment can actually be configured on another compartment from your VCN. But in this case it will be the same as your VCN.
 7. Select the Private subnet where the App Server will be installed.
-8. Use the same SSH key as your Bastion compute.  However the best practice is to use a different key.
+8. Use the same SSH key as your bastion compute.  However the best practice is to use a different key.
 9. Click Create.
 
   ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Create App Server 1.png)             

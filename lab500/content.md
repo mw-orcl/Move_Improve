@@ -151,7 +151,7 @@ $ sudo vi sqlnet.ora
 ```
 
 	3. Set the WALLET_LOCATION parameter to point to the wallet directory containing the cwallet.sso file as shown by the example below![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Vi sqlnet.png)
-
+	
 	4. Exit and save the file                               
  	5. View your tnsnames.ora and note your five services
  	6. Export the bin path
@@ -169,11 +169,13 @@ $ sqlplus admin/<password>@<service_tp>
 
 ### Move the On Premise Database to Oracle Cloud ###
 
-There are a number of ways to move or migrate your existing on premise Oracle database to the Oracle Cloud. In this lab the instructor has already used Data Pump to export the on premise database to a .dmp file. You can use this procedure also for your own database.  You will then upload the .dmp file to the Object Storage, and then import the .dmp file to Autonomous Database from the Object Storage. 
+There are a number of ways to move or migrate your existing on premise Oracle database to the Oracle Cloud. In this lab the instructor has already used Data Pump to export the on premise database to a .dmp file and uploaded the .dmp file to the Object Storage. It's now a matter of importing the .dmp file to Autonomous Database from the Object Storage. 
+
+Note: You can use the Data Pump procedure for your own database and migration projects.  
 
 ## Step 4: Upload the Database Dump File
 
-We have conveniently exported the Swingbench database into a Data Pump .dmp file. The file is called **soedump18C_1G.dmp**. You will upload this file to the Object Storage. **In some cases, your instructor may have uploaded it to the lab material bucket to save time.**
+We have conveniently exported the Swingbench database into a Data Pump .dmp file. The file is called **soedump18C_1G.dmp**. This file can be found in the Oracle Object Store at: 
 
 ​	1. From your OCI console, select Object Storage. 
 
