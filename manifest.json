@@ -8,43 +8,51 @@
         },
         {
             "title": "Lab 0: Login to Oracle Cloud",
-            "description":"Setup the Lab Environment",
+            "description":"Log in to Oracle Cloud",
             "publisheddate": "04/26/2020",
             "filename":"./lab000/content.md"
         },
+        {         
+            "title": "Lab 1: Generate SSH Keys",
+            "description": "Generate SSH Keys",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/10/2020",
+            "contentid": "12nnnn",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/generate-ssh-key/generate-ssh-keys.md"
+        },
         {
-            "title": "Lab 1: Create the Virtual Cloud Network",
-            "description":"Lab 1",
+            "title": "Lab 2: Create the Virtual Cloud Network",
+            "description":"Lab 2",
             "publisheddate": "04/26/2020",
             "filename":"./lab100/content.md"
         },
         {
-            "title": "Lab 2: Create the Computes",
-            "description":"Lab 2",
+            "title": "Lab 3: Create the Computes",
+            "description":"Lab 3",
             "publisheddate": "04/26/2020",
             "filename":"./lab200/content.md"
         },
         {
-            "title": "Lab 3: Create Autonomous Database",
-            "description":"Lab 3",
+            "title": "Lab 4: Create Autonomous Database",
+            "description":"Lab 4",
             "publisheddate": "04/26/2020",
             "filename":"./lab300/content.md"
         },
         {
-            "title": "Lab 4: Copy SSH Key and Wallet",
-            "description":"Lab 4",
+            "title": "Lab 5: Copy SSH Key and Wallet",
+            "description":"Lab 5",
             "publisheddate": "04/26/2020",
             "filename":"./lab400/content.md"
         },
         {
-            "title": "Lab 5: Install the Application and Migrate the Database",
-            "description":"Lab 5",
+            "title": "Lab 6: Install the Application and Migrate the Database",
+            "description":"Lab 6",
             "publisheddate": "04/26/2020",
             "filename":"./lab500/content.md"
         },
         {
-            "title": "Lab 6: Run the Application Workload",
-            "description":"Lab 6",
+            "title": "Lab 7: Run the Application Workload",
+            "description":"Lab 7",
             "publisheddate": "04/26/2020",
             "filename":"./lab600/content.md"
         },
