@@ -18,7 +18,7 @@ In this workshop you will create a Virtual Cloud Network (VCN) and related netwo
 
 ## Agenda
 
-- **Lab 0 :** Log in to Oracle Cloud
+- **Lab 0 :** Login to Oracle Cloud
 
 This lab introduces the student lab environment and contains the steps to connect to the Oracle Cloud.
 

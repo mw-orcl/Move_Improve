@@ -1,4 +1,4 @@
-# Log in to Oracle Cloud #
+# Login to Oracle Cloud #
 
 In this lab you will connect to the Oracle Cloud and select your region and compartment to work in.
 

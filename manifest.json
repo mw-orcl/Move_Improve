@@ -7,7 +7,7 @@
             "filename":"./about-the-workshop/content.md"
         },
         {
-            "title": "Lab 0: Setup the Lab Environment",
+            "title": "Lab 0: Login to Oracle Cloud",
             "description":"Setup the Lab Environment",
             "publisheddate": "04/26/2020",
             "filename":"./lab000/content.md"

@@ -241,11 +241,11 @@ Execute the impdb statement below from your compute with Instant Client software
 
 1. Enter your admin password, and connect to your ATP with **high** service. 
 2. Enter the credential name.
-3. Your dumpfile will point to the object store uri with the soedump.dmp file. 
+3. Your dumpfile will point to the object store uri with the soedump18C_1G.dmp file. 
 4. Set parallel import to 2 since we can use 2 the OCPU cores in ATP.
 
 ```
-$ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump.dmp logfile=import.log parallel=2
+$ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump18C_1G.dmp logfile=import.log parallel=2
 ```
 
 If successful, you will see this output:
@@ -266,7 +266,7 @@ Connected to: Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Produc
 
 Master table "ADMIN"."SYS_IMPORT_SCHEMA_01" successfully loaded/unloaded
 
-Starting "ADMIN"."SYS_IMPORT_SCHEMA_01": admin/********@atp18c_high directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump.dmp logfile=import.log parallel=2 encryption_pwd_prompt=yes
+Starting "ADMIN"."SYS_IMPORT_SCHEMA_01": admin/********@atp18c_high directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump18C_1G.dmp logfile=import.log parallel=2 encryption_pwd_prompt=yes
 
 Processing object type SCHEMA_EXPORT/USER
 
