@@ -1,315 +1,101 @@
-# Run the Application Workload 
+# Copy SSH Key and Wallet #
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\Run Swingbench diagram.PNG)
-
-The Swingbench workload on the App Server runs against ATP through the Service Gateway. Throughout the run, CPU is saturated at 100% utilization, so it’s a good test to scale the cores. First let’s open SQL Developer tool to check the core count. You should see 2 count for 1 core, and 4 count for 2 cores. We take into account Intel Hyper-threads when counting.
+Now we need to copy the ATP Wallet to our application server so it can connect to ATP. We can’t access the compute App Server directly because it’s in the private subnet. So we’ll need to go through the Bastion, the "jump" server. 
 
 ## Disclaimer ##
-
 The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
 
 ## Requirements ##
 
-- Web Browser
-- SSH public and private keys
-- PuTTY or equivalent
-- SQL Developer 19.1 or higher
+- Web browser
+- PuTTy or equivalent
+- WinSCP or equivalent
 
-## Step 1: Run Swingbench Workload ##
+## Step 1: Copy the ATP Wallet ##
 
-​	1. Open a SQL Developer connection to your ATP
+1. Locate the ATP Wallet on your laptop. You downloaded it when you created ATP.
+2. Connect WinSCP or equivalent to the Bastion. You will need the public IP address and the private key for the Bastion. The public IP is in your compute details. Navigate there to get it. The user is **opc,** no password**.**
+3. Use WinSCP or equivalent to copy the ATP wallet to the Bastion. You can just put it on the Bastion compute home directory. 
+4. Copy also the SSH private key for the App Server to the Bastion. Be sure to copy the key for Linux, not the .ppk, because your App Server is a Linux compute.
 
-​	2. From SQL Developer worksheet, check your core count by typing in the worksheet
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\compute details.PNG" style="zoom: 67%;" />
 
-```
-show parameter cpu
-```
+​	5. From WinSCP or equivalent, enter the public IP address of the Bastion in the Host name
 
-​	3. Select and highlight the script
+​	6. Enter opc for the user name
 
-​	4. Click the run button
+​	7. Click Advanced to select the private SSH key
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\SQL Developer show cpu count.PNG" style="zoom:80%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\winscp.PNG" style="zoom: 67%;" />
 
-Note we have 2 OCPUs (cores) provisioned but we have cpu_count of 4 because you have 4 Intel Hyper-threads.
+​	8. Select Authentication
 
-​	5. Switch back to your SSH terminal session to the app server.
+ 9. Browse for the private SSH key
 
-​	6. Run the script below.  
+    <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\winscp 2.PNG" style="zoom: 67%;" />
 
-There are 128 concurrent users making inserts and updates. We will measure transactions per minute (TPM) and transactions per second (TPS). It will run for 1 minute, 30 seconds, ie: -rt 1.30. 
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\winscp 3.PNG" style="zoom:67%;" />
 
-​	7. Replace with your own wallet and service names. Ensure the directory location of your wallet zip and service name is correct. 
+​	10. Click Yes 
 
-If you received the dump file from an instructor-led class note that the soe schema password is **Welcome#2018**. Do not change this.
+​	11. Copy both the ATP wallet and the private SSH key for the App Server to the Bastion. Be sure to copy the key for Linux, not the .ppk, because your app server is a Linux compute.
 
-```
-$ cd ~/swingbench/bin
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\winscp 4.PNG)
 
-$./charbench -c ../configs/SOE_Server_Side_V2.xml \
+## Step 2: Copy the ATP Wallet to the App Server ##
 
--cf ~/Wallet_ATPLABTEST/Wallet_ATPLABTEST.zip \
-
--cs atplabtest_tp \
-
--u soe \
-
--p Welcome#2018 \
-
--v users,tpm,tps \
-
--intermin 0 \
-
--intermax 0 \
-
--min 0 \
-
--max 0 \
-
--uc 128 \
-
--di SQ,WQ,WA \
-
--rt 0:1.30
-```
-
-Note your runtime TPM and TPS. We will compare them later.  Hitting CTRL-C will stop the workload.
-
-Sample run with 2 cores show below.
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\Swingbench run 1.PNG" style="zoom:67%;" />
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Copy wallet diagram.PNG)
 
 
 
-​	8. Now run the workload by changing –rt option to 30 minutes. Ie: -rt 0:30:00 
+We are now going to copy the ATP Wallet to the App Server. The App Server will be running a workload against the ATP database and will need the wallet to connect to it later. Only the Bastion can reach the private compute (your App Server). The Bastion can connect to the private IP address because they are in the same VCN.
+
+1. Get the **private** IP address of your App Server from the compute details
+2. SSh to the Bastion with PuTTy or your ssh client
+
+From Bastion session:
 
 ```
-$ ./charbench -c ../configs/SOE_Server_Side_V2.xml \
-
--cf ~/Wallet_ATPLABTEST/Wallet_ATPLABTEST.zip \
-
--cs atplabtest_tp \
-
--u soe \
-
--p Welcome#2018 \
-
--v users,tpm,tps \
-
--intermin 0 \
-
--intermax 0 \
-
--min 0 \
-
--max 0 \
-
--uc 128 \
-
--di SQ,WQ,WA \
-
--rt 0:30.00
+$ ls –al
 ```
 
-​	9. After about 3 minutes scale ATP up to 3 cores. Do not enable Auto Scaling yet. We will scale manually first. 
-
-**Note:** Please do not enter a CPU core count beyond **3** as the cloud account is shared by all students and you will run into resource limitations.
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\ATP details page.PNG" style="zoom: 67%;" />
-
-The ATP service will take a few seconds to scale. Notice the status of SCALING IN PROGRESS.
-
-​	10. From SQL Developer worksheet, check your core count
+​	3. Restrict the private permissions, ie: labkey is the private key
 
 ```
-Show parameter cpu
+$ chmod 0700 labkey
 ```
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\SQL Developer show cpu count 6.PNG" style="zoom: 67%;" />
+​	4. Copy your ATP wallet from the Bastion to the App Server
 
-
-
-Note your runtime TPM and TPS. You should see a lot more transactions!
-
-You have scaled your cores up dynamically without stopping the service, so no down time!
-
-Sample run with 3 cores show below.
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\Sample run with 3 cores.PNG" style="zoom:67%;" />
-
-## Step 2: Performance Monitoring
-
-​	1. Go to the ATP Service Console and examine your Performance Monitor data.
-
-From the Service Console Activity you can see both runs were at 100% CPU utilization. Which means we can still add cores to increase performance. Note the rapid dip in cpu utilization as it transitions to more cpu’s. It’s near instantaneous and the server is still running.
-
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\Performance monitoring.PNG)
-
-You can hit crtl-C to stop the workload run.
-
-### Auto Scaling
-
-Let’s look at the auto scaling feature. Auto scaling automatically scales your cores to a maximum of 3 times the initially core count when the CPU utilization is high.
-
-​	1. Scale your ATP back down to 1 core and click update. No auto scale yet.
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\ATP scaling UI.png" style="zoom: 50%;" />
-
-​	2. From SQL Developer worksheet, check your core count. With one core you should see 2 cpu threads.
+(Replace the below commands with your SSH private key, wallet name. and private IP address of your App Server)
 
 ```
-Show parameter cpu
+$ scp -C -i labkey -r Wallet_ATPLABTEST.zip opc@10.0.1.2:/home/opc
 ```
 
-​	3. Run the charbench again for 30 minutes if the workload has stopped.  You may see some java connection warnings. You can ignore this.
+ 5. Type **yes** if you see the message below:
+
+    ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\ssh to app server.PNG)
+
+    
+
+Connect to App Server with the private key. Replace the private key and private IP address with yours.
 
 ```
-./charbench -c ../configs/SOE_Server_Side_V2.xml \
+$ ssh –i labkey opc@10.0.1.2
 
--cf ~/Wallet_ATPLABTEST/Wallet_ATPLABTEST.zip \
-
--cs atplabtest_tp \
-
--u soe \
-
--p Welcome#2018 \
-
--v users,tpm,tps \
-
--intermin 0 \
-
--intermax 0 \
-
--min 0 \
-
--max 0 \
-
--uc 128 \
-
--di SQ,WQ,WA \
-
--rt 0:30.00
+$ ls
 ```
 
- 
+Let’s test you can reach the internet through the NAT gateway, ping something like the Google DNS. We will need to install software from the internet through the NAT later.
 
- 4. After about 3 minutes, enable auto scale.
-
-    <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\Auto Scale UI.PNG" style="zoom: 67%;" />
-
-After the scaling is completed you should see Auto Scaling enabled. Note your transactions continue to run as scaling begins.  There is no down time.
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\ATP details auto scale.PNG" style="zoom: 67%;" />
-
-​	5. From SQL Developer worksheet, check your core count
+From the App Server session
 
 ```
-Show parameter cpu
+$ ping 8.8.8.8
 ```
 
-Note that ATP has automatically scaled to 3 cores, the 3X maximum that it will scale to. Note the 3X increase in transactions per second and minutes. Check your performance monitor from the service console again.  We are still at 100% CPU utilized so this workload needs more CPUs!
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\Sample run with auto scale.png" style="zoom:67%;" />
-
-
-
-​	6. Stop the Swingbench run with ctrl-C
-
-In a few minutes ATP will scale back down automatically.  
-
-​	7. From SQL Developer worksheet, check your core count.
-
-```
-Show parameter cpu
-```
-
-Why is the cpu count still the same even with the scale down after the workload stops?
-
-### Show the Effects of Database Services
-
-We are going to set up two connections, one running the Swingbench workload and the other running a query on another schema.
-
-​	1. Scale the ATP back to 2 cores and disable the auto scale.
-
-​	2. Set up another connection from SQL Developer to your ATP with a database service of Medium. This will be good for running our database queries.
-
-  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\SQL Developer medium connection.PNG)                             
-
-​	3. From SQL Developer worksheet, check your core count is 4 (ie: 2 cores thus 4 Hyper-threads)
-
-```
-Show parameter cpu
-```
-
-​	4. From SQL Developer worksheet, run the following query 5 times and note the completion time with your MEDIUM service.
-
-```
-select /*+NO_RESULT_CACHE*/ c_city, c_region, count(*)
-
-from ssb.customer c_high
-
-group by c_city, c_region
-
-order by count(*);
-```
-
- <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\SQL Developer run query.png" style="zoom: 50%;" />
-
-You should have gotten similar completion times: 0.524, 0.406, 0.332, 0.357, 0.376 seconds
-
-​	5. Now run both the Swingbench workload and the query together.
-
-```
-./charbench -c ../configs/SOE_Server_Side_V2.xml \
-
--cf ~/Wallet_ATPLABTEST/Wallet_ATPLABTEST.zip \
-
--cs atplabtest_tp \
-
--u soe \
-
--p Welcome#2018 \
-
--v users,tpm,tps \
-
--intermin 0 \
-
--intermax 0 \
-
--min 0 \
-
--max 0 \
-
--uc 128 \
-
--di SQ,WQ,WA \
-
--rt 0:30.00
-```
-
-​	6. Wait until the workload goes full strength, about 3 minutes, then from SQL Developer run the query
-
-```
-select /*+NO_RESULT_CACHE*/ c_city, c_region, count(*)
-
-from ssb.customer c_high
-
-group by c_city, c_region
-
-order by count(*);
-```
-
-Note your completion times. They should be longer like this: 1.259, 1.007, 0.625, 0.665, 0.578 seconds
-
-​	7. Try connecting with the TPURGENT service. See the results.
-
-What do you think of the results? Why is the MEDIUM results better?
-
-By setting ATP database service, you can control the resources and the response times. Analyze your performance activity from the ATP console.
-
-
-
-END OF LAB 
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\ping.PNG)
 
 ## Acknowledgements ##
 

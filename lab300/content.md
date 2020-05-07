@@ -1,176 +1,76 @@
-# Create Autonomous Database #
+# Create the Virtual Cloud Network #
 
-Oracle Autonomous Transaction Processing (ATP) is a fully managed Oracle database service with “self-driving” features on the Oracle Cloud Infrastructure (OCI). An application can securely connect to ATP with the proper credentials and a wallet. 
+In this step you will create a VCN with the quick start wizard. This will create all the related network resources including a public subnet, private subnet, internet gateway, NAT gateway, Service gateway, default security lists, and default route rules and table. 
 
-The following lab guide shows how to set up a complete OCI network, deploy compute resources, and securely connect to the ATP. After the set up you will run an application workload. The OCI ATP architecture for the lab is depicted below.
-
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Lab architecture diagram.png)
+We are taking the quick option, but there is also a custom option to create resources individually. 
 
 ## Disclaimer ##
 The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
 
 ## Requirements ##
 
-- Web Browser
-- SQL Developer 19.1 or higher
+- Laptop or desktop computer
+- Web browser
+- Account access to Oracle Cloud Infrastructure
+  - Provided to you if instructor-led training, otherwise use your account
+  - You will need an account that allows you to create a VCN, up to two cores of compute, and up to three cores of Autonomous Database.
 
-## Step 1: Login to Oracle Cloud ##
+## Step 1 - Select your Cloud Region ##
 
-​	1. From your browser login into Oracle Cloud
+- Select your Region on the upper right of the OCI console
+- Select the cloud services menu on the top left corner and select Networking
+- Select Virtual Cloud Networks
+- Select your Compartment
+- Click Networking Quickstart
 
-### About Regions and compartments
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Region and compartment selection.PNG)
 
-Important Note
+## Step 2 - Create the Network  ##
 
-Always ensure you are in your correct Region and Compartment. 
+- Select VCN and Internet Connectivity
 
-If this is an instructor-led lab we are sharing the same tenancy account with multiple students, please create a unique name for your OCI resources that you can identify with. Ie: Use your name or other identifier unique to you.
+- Click Start Workflow
 
-## Step 2: Provision ATP ##
+  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Network Quickstart.PNG)
 
-Provision the Autonomous Transaction Processing database (ATP) with the steps below.
+- Enter a unique name for your VCN
+- Select your assigned compartment
+- Enter a VCN CIDR block of 10.0.0.0/16.  Note: The CIDR Block is the range of IP addresses that can be used.
+- Enter the public subnet CIDR block of 10.0.0.0/24
+- Enter the private subnet CIDR block of 10.0.1.0/24. Note: A private subnet is not visible to the internet and is accessible from inside the VCN
 
-​	1. Select your assigned Region from the upper right of the OCI console.
+- Select use DNS hostnames
+- Click Next
 
-​	2. From the navigation menu (top left side), select Autonomous Transaction Processing.
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\VCN configuration info.PNG)
 
-​	3. Select your Compartment. You may have to drill in (click “+”) to see your compartment.
+A summary is displayed. 
 
-​         ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 1.PNG)                          
+You can view the default security and route rules that will be created.
 
-  
+- Click Show Rules
 
-​	4. Select Workload Type Transaction Processing.
+  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Security Rules.PNG)
 
-​	5. Click Create Autonomous Database. 
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Route Rules.PNG)
 
- ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 3.PNG)
+- Click Create. 
 
-1. Select your compartment
+The VCN is created instantaneously with all the default network resources. 
 
-2. Enter any unique name (maybe your name) for your display and database name. The display name is used in the Console UI to identify your database.
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\VCN summary info.PNG)
 
-3. Select Transaction Processing for the workload type
+- Click View Virtual Cloud Network to see the details and what has been created. 
 
-4. Select Shared Infrastructure for deployment type
+You will see a number of resources created including public, private subnets, default security list, default route table, and the gateways.
 
-5. Choose database version 19c
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\View VCN config.PNG)
 
-6. Configure the database with **2 cores and 1 TB storage**
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\VCN details.PNG)
 
-7. Uncheck Auto scaling. We will enable it later
+Below is a diagram of what has been created by the Networking Quickstart.
 
-8. Enter a password. The username is always ADMIN. (Note: remember your password)
-
-9. Do not check the box Configure Access Control Rules. However the best practice is to configure Access Control to your ATP
-
-10. Select BYOL License Type
-
-11. Click Create Autonomous Database
-
-    ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 4.PNG)
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 5.png" style="zoom: 50%;" />
-
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 6.png)
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 7.PNG" style="zoom:50%;" />
-
-
-
-Your console will show that ATP is provisioning. This will take about 2 or 3 minutes to complete.
-
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 8.png)
-
-You can check the status of the provisioning in the Work Request.
-
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 9.png)
-
-## Step 3: Download the Wallet
-
-Once your ATP service is running we can connect a client to ATP securely with the Oracle Wallet.
-
-1. Click on the details of your ATP
-2. Select DB Connection
-3. Select Instance Wallet
-4. Download the wallet to your laptop
-5. Enter a password for the wallet
-
-Note your connection strings. Your application can connect with these connection services:
-
-- High – for long queries, high parallelism, low SQL concurrency
-- Medium – for medium queries, parallelism, medium concurrency
-- Low – for short queries, no parallelism, high concurrency
-- TPurgent – for high priority transaction processing
-- TP – for standard transaction processing
-
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Wallet 1.PNG)
-
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Wallet 2.PNG)
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Wallet 3.png" style="zoom: 50%;" />
-
-
-
-## Step 4: Connect to ATP using SQL Developer
-
-In this lab section you will connect to the ATP with Oracle SQL Developer and browse the ATP configuration. SQL Developer is an Oracle DBA client tool.
-
-Please note that most of the database settings and parameters cannot be modified in a fully-managed Oracle Autonomous Database (ATP and ADW) and that is the whole point of the autonomous service, it runs by itself. 
-
-### Start SQL Developer
-
-1. Start SQL Developer from your client
-2. Click + to create a new connection
-
-​            <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\SQL Developer.PNG" style="zoom:50%;" />                   
-
-​	3. Enter a connection name
-
-​	4. Enter ADMIN as the user
-
-​	5. Enter the password you used to create your ATP
-
-​	6. Check Save Password
-
-​	7. Select Connection Type as Cloud Wallet and Browse for your wallet.
-
-​	8. Browse and select your service. Ie: <your ATP name>_tp. Note there are five services, select the tp service.
-
-​	9. Test the connection and Save your connection for later use. Then click 	Connect.
-
-**Note:** Ensure that you use **ADMIN** user to view any database configuration.
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\SQL Developer 2.PNG" style="zoom:50%;" />
-
-​	10. From your SQL Developer worksheet run the test query below against a sample database that is already in ATP
-
-```
-SELECT channel_desc,
- TO_CHAR(SUM(amount_sold),'9,999,999,999') SALES$,
- RANK() OVER (ORDER BY SUM(amount_sold)) AS default_rank,
- RANK() OVER (ORDER BY SUM(amount_sold) DESC NULLS LAST) AS custom_rank
- FROM sh.sales, sh.products, sh.customers, sh.times, sh.channels, sh.countries
- WHERE sales.prod_id=products.prod_id
-
-AND sales.cust_id=customers.cust_id
- AND customers.country_id=countries.country_id
- AND sales.time_id=times.time_id
- AND sales.channel_id=channels.channel_id
- AND times.calendar_month_desc IN ('2000-09','2000-10')
- AND country_iso_code='US'
- GROUP BY channel_desc;
-```
-
-
-
- 11. Click **F5** or the **Run Script** button. Verify the query executes and results are displayed.
-
-     ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\SQL Developer 3.PNG)
-
-You have successfully provisioned and connected SQL Developer to Autonomous Database (ATP) and validated the connection. 
-
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\ATP diagram.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Lab architecture created.PNG)
 
 ## Acknowledgements ##
 

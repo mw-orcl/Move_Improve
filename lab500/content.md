@@ -1,10 +1,10 @@
-# Install the Application and Migrate the Database #
+# Create Autonomous Database #
 
-This lab will demonstrate the move and improve process to OCI and ATP. We assume that the original application and database were running on premise.  We will now install the application on the App Server and migrate the on premise Oracle database to ATP. We will then run the application workload against the ATP database, scale the workload, and see why ATP’s capability is an improvement over an on premise database. 
+Oracle Autonomous Transaction Processing (ATP) is a fully managed Oracle database service with “self-driving” features on the Oracle Cloud Infrastructure (OCI). An application can securely connect to ATP with the proper credentials and a wallet. 
 
-The sample application we will use is Swingbench with an associated database to store the data for Swingbench, but imagine this is your own application. This is the flow of the move and improve process.
+The following lab guide shows how to set up a complete OCI network, deploy compute resources, and securely connect to the ATP. After the set up you will run an application workload. The OCI ATP architecture for the lab is depicted below.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Move Improve flow diagram.png" style="zoom:75%;" />
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Lab architecture diagram.png)
 
 ## Disclaimer ##
 The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
@@ -12,361 +12,165 @@ The following is intended to outline our general product direction. It is intend
 ## Requirements ##
 
 - Web Browser
-- SSH public and private keys
-- PuTTY or equivalent
 - SQL Developer 19.1 or higher
-- Soedump18C_1G.dmp file (provided by Instructor if instructor-led class)
-- OCI Auth Token password (provided by Instructor if instructor-led class)
 
-## Step 1: Install Swingbench on the App Server ##
+## Step 1: Login to Oracle Cloud ##
 
-Swingbench is a popular application that can be set up to drive a workload against the Oracle database. We will configure it to drive many OLTP transactions so it saturates the database CPU cores to near 100% utilization.
+​	1. From your browser login into Oracle Cloud
 
-Install and configure the Swingbench application on the App Server.
+### About Regions and compartments
 
-​	1. SSH to your App Server. Replace with your SSH key and private IP address.
+Important Note
 
-```
-$ ssh -i privatekey opc@10.0.1.2 
-```
+Always ensure you are in your correct Region and Compartment. 
 
-By default, Java is not installed on the compute VM so we will need to install it via yum. We’ll need to update yum first. 
+If this is an instructor-led lab we are sharing the same tenancy account with multiple students, please create a unique name for your OCI resources that you can identify with. Ie: Use your name or other identifier unique to you.
 
-​	2. From your App Server session execute the following.
+## Step 2: Provision ATP ##
 
-```
-$ sudo yum makecache fast
-```
+Provision the Autonomous Transaction Processing database (ATP) with the steps below.
 
-​	3. Then install Java and its dependencies
+​	1. Select your assigned Region from the upper right of the OCI console.
 
-```
-$ sudo yum install java-1.8.0-openjdk-headless.x86_64
-```
+​	2. From the navigation menu (top left side), select Autonomous Transaction Processing.
 
-•      Type **y**
+​	3. Select your Compartment. You may have to drill in (click “+”) to see your compartment.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Java install.png" style="zoom:75%;" />
+​         ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 1.PNG)                          
 
+  
 
+​	4. Select Workload Type Transaction Processing.
 
-​	4. Let’s check the version and make sure that java works correctly.
+​	5. Click Create Autonomous Database. 
 
-```
-$ java -version
-```
+ ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 3.PNG)
 
-​	5. We can now pull the Swingbench code from the website
+1. Select your compartment
 
-```
-$ curl http://www.dominicgiles.com/swingbench/swingbench261082.zip -o swingbench.zip
-```
+2. Enter any unique name (maybe your name) for your display and database name. The display name is used in the Console UI to identify your database.
 
-​	6. Unzip it and check the files
+3. Select Transaction Processing for the workload type
 
-```
-$ unzip swingbench.zip
+4. Select Shared Infrastructure for deployment type
 
-$ cd swingbench/bin
+5. Choose database version 19c
 
-$ ls
-```
+6. Configure the database with **2 cores and 1 TB storage**
 
-The application is now installed. You should see the Swingbench application files. 
+7. Uncheck Auto scaling. We will enable it later
 
-Now we will install the Oracle Instant Client software which has tools to help us move the on premise database to the Oracle Cloud.   
+8. Enter a password. The username is always ADMIN. (Note: remember your password)
 
-## Step 2: Install the Oracle Instant Client 
+9. Do not check the box Configure Access Control Rules. However the best practice is to configure Access Control to your ATP
 
-To prepare for moving the Swingbench database to ATP, we need the Data Pump import tool. It’s in the Oracle Instant Client software. We will install the Oracle Instant Client software packages from the yum server.
+10. Select BYOL License Type
 
-​	1. Connect to your App Server.
+11. Click Create Autonomous Database
 
-​	2. Get the latest repository version from the closest region yum server
+    ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 4.PNG)
 
-```
-$ cd /etc/yum.repos.d
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 5.png" style="zoom: 50%;" />
 
-$ export REGION=`curl http://169.254.169.254/opc/v1/instance/ -s | jq -r '.region'| cut -d '-' -f 2`
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 6.png)
 
-$ echo $REGION
-
-$ sudo -E wget http://yum-$REGION.oracle.com/yum-$REGION-ol7.repo
-```
-
-​	3. Enable the Instant Client repository
-
-```
-$ sudo yum-config-manager --enable ol7_oracle_instantclient
-```
-
-​	4. List the packages
-
-```
-$ sudo yum list oracle-instantclient*
-```
-
-​	5. Install the latest Instant Client Basic, SQL Plus, Tools RPM packages. 
-
-```
-$ sudo yum install -y oracle-instantclient18.5-basic oracle-instantclient18.5-sqlplus oracle-instantclient18.5-tools
-```
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 7.PNG" style="zoom:50%;" />
 
 
 
-## Step 3: Configure the Instant Client software
+Your console will show that ATP is provisioning. This will take about 2 or 3 minutes to complete.
 
-​	1. Locate the ATP wallet and unzip it to a wallet folder. Note the extracted files cwallet.sso, sqlnet.ora and tnsnames.ora. Replace the names with your own files.  ie: replace the sample Wallet_ATPLABTEST with your own wallet.
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 8.png)
 
-```
-$ cd /home/opc
+You can check the status of the provisioning in the Work Request.
 
- $ mkdir Wallet_ATPLABTEST
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 9.png)
 
- $ mv Wallet_ATPLABTEST.zip Wallet_ATPLABTEST
+## Step 3: Download the Wallet
 
- $ cd Wallet_ATPLABTEST
+Once your ATP service is running we can connect a client to ATP securely with the Oracle Wallet.
 
- $ unzip Wallet_ATPLABTEST.zip
+1. Click on the details of your ATP
+2. Select DB Connection
+3. Select Instance Wallet
+4. Download the wallet to your laptop
+5. Enter a password for the wallet
 
- $ ls
-```
+Note your connection strings. Your application can connect with these connection services:
 
-​	2. Copy sqlnet.ora and tnsnames.ora to /usr/lib/oracle/18.5/client64/lib/network/admin directory
+- High – for long queries, high parallelism, low SQL concurrency
+- Medium – for medium queries, parallelism, medium concurrency
+- Low – for short queries, no parallelism, high concurrency
+- TPurgent – for high priority transaction processing
+- TP – for standard transaction processing
 
-```
- $ ls /usr/lib/oracle/18.5/client64/lib/network/admin
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Wallet 1.PNG)
 
- $ sudo cp sqlnet.ora /usr/lib/oracle/18.5/client64/lib/network/admin/sqlnet.ora
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Wallet 2.PNG)
 
- $ sudo cp tnsnames.ora /usr/lib/oracle/18.5/client64/lib/network/admin/tnsnames.ora
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Wallet 3.png" style="zoom: 50%;" />
 
- $ cd /usr/lib/oracle/18.5/client64/lib/network/admin
-```
 
-​	2. Edit the sqlnet.ora
 
-```
-$ sudo vi sqlnet.ora
-```
+## Step 4: Connect to ATP using SQL Developer
 
-	3. Set the WALLET_LOCATION parameter to point to the wallet directory containing the cwallet.sso file as shown by the example below![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Vi sqlnet.png)
-	
-	4. Exit and save the file                               
- 	5. View your tnsnames.ora and note your five services
- 	6. Export the bin path
- 	7. Test the Instant Client with SQLPlus, the username is admin, but enter your password and service name
+In this lab section you will connect to the ATP with Oracle SQL Developer and browse the ATP configuration. SQL Developer is an Oracle DBA client tool.
+
+Please note that most of the database settings and parameters cannot be modified in a fully-managed Oracle Autonomous Database (ATP and ADW) and that is the whole point of the autonomous service, it runs by itself. 
+
+### Start SQL Developer
+
+1. Start SQL Developer from your client
+2. Click + to create a new connection
+
+​            <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\SQL Developer.PNG" style="zoom:50%;" />                   
+
+​	3. Enter a connection name
+
+​	4. Enter ADMIN as the user
+
+​	5. Enter the password you used to create your ATP
+
+​	6. Check Save Password
+
+​	7. Select Connection Type as Cloud Wallet and Browse for your wallet.
+
+​	8. Browse and select your service. Ie: <your ATP name>_tp. Note there are five services, select the tp service.
+
+​	9. Test the connection and Save your connection for later use. Then click 	Connect.
+
+**Note:** Ensure that you use **ADMIN** user to view any database configuration.
+
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\SQL Developer 2.PNG" style="zoom:50%;" />
+
+​	10. From your SQL Developer worksheet run the test query below against a sample database that is already in ATP
 
 ```
-$ more tnsnames.ora
+SELECT channel_desc,
+ TO_CHAR(SUM(amount_sold),'9,999,999,999') SALES$,
+ RANK() OVER (ORDER BY SUM(amount_sold)) AS default_rank,
+ RANK() OVER (ORDER BY SUM(amount_sold) DESC NULLS LAST) AS custom_rank
+ FROM sh.sales, sh.products, sh.customers, sh.times, sh.channels, sh.countries
+ WHERE sales.prod_id=products.prod_id
 
-$ export PATH=/usr/lib/oracle/18.5/client64/bin:$PATH
-
-$ export LD_LIBRARY_PATH=/usr/lib/oracle/18.5/client64/lib
-
-$ sqlplus admin/<password>@<service_tp>
+AND sales.cust_id=customers.cust_id
+ AND customers.country_id=countries.country_id
+ AND sales.time_id=times.time_id
+ AND sales.channel_id=channels.channel_id
+ AND times.calendar_month_desc IN ('2000-09','2000-10')
+ AND country_iso_code='US'
+ GROUP BY channel_desc;
 ```
 
-### Move the On Premise Database to Oracle Cloud ###
 
-There are a number of ways to move or migrate your existing on premise Oracle database to the Oracle Cloud. In this lab the instructor has already used Data Pump to export the on premise database to a .dmp file and uploaded the .dmp file to the Object Storage. It's now a matter of importing the .dmp file to Autonomous Database from the Object Storage. 
 
-Note: You can use the Data Pump procedure for your own database and migration projects.  
+ 11. Click **F5** or the **Run Script** button. Verify the query executes and results are displayed.
 
-## Step 4: Upload the Database Dump File
+     ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\SQL Developer 3.PNG)
 
-We have conveniently exported the Swingbench database into a Data Pump .dmp file. The file is called **soedump18C_1G.dmp**. This file can be found in the Oracle Object Store at: 
+You have successfully provisioned and connected SQL Developer to Autonomous Database (ATP) and validated the connection. 
 
-​	1. From your OCI console, select Object Storage. 
-
-​	2. From your compartment, create a bucket to hold your Database dump file. 
-
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Object storage.PNG)
-
-
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Object details.PNG" style="zoom: 50%;" />
-
-## Step 5: Set Credential for ATP to access the Object Store
-
-In order for ATP to access the Object Storage we need to create a credential and then set the credential in the ATP database. 
-
-​	1. Connect to your ATP from SQL Developer
-
-From the SQL Developer worksheet create a credential for ATP to access the object store. You will need to run the DBMS_CLOUD.CREATE_CREDENTIAL package below from your ATP session. Replace the names in RED with your own names.
-
-​	2. Give the credential a name
-
-​	3. Provide your OCI login username
-
-​	4. Provide the OCI Auth Token password to access the Object Storage. For instructor-led class this password has already been created for you.
-
-Note: For reference, an Auth Token can be created from your OCI user settings. The Auth Token creation will generate the password. 
-
- 
-
-```
-BEGIN
-
- DBMS_CLOUD.CREATE_CREDENTIAL(
-
-  credential_name => ‘STORAGE_CREDENTIAL’,
-
-  username => '<your_oci_username.com>',
-
-  password => ‘<auth token password>’
-
- );
-
-END;
-
-/
-```
-
-​	5. Run the script
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Create credential object store.PNG" style="zoom:50%;" />
-
-While we are in SQL Developer check to see if you have the SOE schema in the Other Users folder. You should not see it.  We will import this Swingbench database schema later. 
-
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\SQL Developer other schema.png" style="zoom:50%;" />
-
-
-
-## Step 6: Import the Dump File to the Autonomous Database
-
-Once you have the database dump file in the Object Storage you can import it into ATP. To run the Data Pump Import you will log in to the compute with the Instant Client software and the wallet to your ATP. 
-
-Execute the impdb statement below from your compute with Instant Client software.
-
-1. Enter your admin password, and connect to your ATP with **high** service. 
-2. Enter the credential name.
-3. Your dumpfile will point to the object store uri with the soedump18C_1G.dmp file. 
-4. Set parallel import to 2 since we can use 2 the OCPU cores in ATP.
-
-```
-$ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump18C_1G.dmp logfile=import.log parallel=2
-```
-
-If successful, you will see this output:
-
-Import: Release 18.0.0.0.0 - Production on Tue Dec 24 19:21:02 2019
-
-Version 18.5.0.0.0
-
- 
-
-Copyright (c) 1982, 2019, Oracle and/or its affiliates. All rights reserved.
-
- 
-
-Connected to: Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
-
- 
-
-Master table "ADMIN"."SYS_IMPORT_SCHEMA_01" successfully loaded/unloaded
-
-Starting "ADMIN"."SYS_IMPORT_SCHEMA_01": admin/********@atp18c_high directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump18C_1G.dmp logfile=import.log parallel=2 encryption_pwd_prompt=yes
-
-Processing object type SCHEMA_EXPORT/USER
-
-Processing object type SCHEMA_EXPORT/SYSTEM_GRANT
-
-Processing object type SCHEMA_EXPORT/ROLE_GRANT
-
-Processing object type SCHEMA_EXPORT/DEFAULT_ROLE
-
-Processing object type SCHEMA_EXPORT/TABLESPACE_QUOTA
-
-Processing object type SCHEMA_EXPORT/PASSWORD_HISTORY
-
-Processing object type SCHEMA_EXPORT/PRE_SCHEMA/PROCACT_SCHEMA
-
-Processing object type SCHEMA_EXPORT/SEQUENCE/SEQUENCE
-
-Processing object type SCHEMA_EXPORT/TABLE/TABLE
-
-Processing object type SCHEMA_EXPORT/TABLE/TABLE_DATA
-
-. . imported "SOE"."PRODUCT_INFORMATION"         187.1 KB  1000 rows
-
-. . imported "SOE"."LOGON"                57.91 MB 2686349 rows
-
-. . imported "SOE"."ADDRESSES"              116.5 MB 1585588 rows
-
-. . imported "SOE"."CARD_DETAILS"            67.87 MB 1585457 rows
-
-. . imported "SOE"."ORDERS"               149.4 MB 1657624 rows
-
-. . imported "SOE"."WAREHOUSES"             35.34 KB  1000 rows
-
-. . imported "SOE"."INVENTORIES"             15.18 MB 896376 rows
-
-. . imported "SOE"."PRODUCT_DESCRIPTIONS"        220.0 KB  1000 rows
-
-. . imported "SOE"."CUSTOMERS"              117.5 MB 1085457 rows
-
-. . imported "SOE"."ORDERENTRY_METADATA"         5.617 KB    4 rows
-
-. . imported "SOE"."ORDER_ITEMS"             258.0 MB 4991509 rows
-
-Processing object type SCHEMA_EXPORT/PACKAGE/PACKAGE_SPEC
-
-Processing object type SCHEMA_EXPORT/PACKAGE/COMPILE_PACKAGE/PACKAGE_SPEC/ALTER_PACKAGE_SPEC
-
-Processing object type SCHEMA_EXPORT/VIEW/VIEW
-
-Processing object type SCHEMA_EXPORT/PACKAGE/PACKAGE_BODY
-
-Processing object type SCHEMA_EXPORT/TABLE/INDEX/INDEX
-
-Processing object type SCHEMA_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
-
-Processing object type SCHEMA_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
-
-Processing object type SCHEMA_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
-
-Processing object type SCHEMA_EXPORT/STATISTICS/MARKER
-
-Processing object type SCHEMA_EXPORT/POST_SCHEMA/PROCACT_SCHEMA
-
-ORA-39082: Object type PACKAGE BODY:"SOE"."ORDERENTRY" created with compilation warnings
-
- 
-
-Job "ADMIN"."SYS_IMPORT_SCHEMA_01" completed with 1 error(s) at Tue Dec 24 19:25:42 2019 elapsed 0 00:04:36
-
-To view the import.log you must put it into the Object Store, then download it to your laptop and view with a text editor.
-
-```
-BEGIN
-
-DBMS_CLOUD.PUT_OBJECT(
-
-credential_name=>'STORAGE_CREDENTIAL',
-
-object_uri=>'https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/import.log', directory_name=>'DATA_PUMP_DIR',
-
-file_name=>'import.log');
-
-END;
-
-/
-```
-
- 
-
-In SQL Developer check to see if you have the SOE schema in the Other Users folder now. You should see that it has been imported.
-
-Upon import, there was one compilation issue. The following SQLs grant the missing privilege and recompile the ORDERENTRY package.
-
-```
-SQL> GRANT EXECUTE ON DBMS_LOCK TO SOE;
-
-SQL> ALTER PACKAGE SOE.ORDERENTRY COMPILE;
-```
-
-Now that we have both the application installed on the App Server and the database imported to ATP we are ready to run the workload.
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\ATP diagram.PNG)
 
 ## Acknowledgements ##
 
