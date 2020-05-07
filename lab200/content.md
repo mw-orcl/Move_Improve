@@ -18,13 +18,13 @@ The following is intended to outline our general product direction. It is intend
 
    - If you're an administrator creating an auth token for another user: In the Console, click **Identity**, and then click **Users**. Locate the user in the list, and then click the user's name to view the details.
 
-     ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\User profile icon.PNG)
+     ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\User profile icon.PNG)
 
-     <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\User settings.PNG" style="zoom:50%;" />
+     <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\User settings.PNG" style="zoom:50%;" />
 
 2. On the left side of the page, click **Auth Tokens**.
 
-   <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\Generate token.PNG" style="zoom:50%;" />
+   <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Generate token.PNG" style="zoom:50%;" />
 
 3. Click **Generate Token**.
 
@@ -33,7 +33,7 @@ The following is intended to outline our general product direction. It is intend
 5. Click **Generate Token**.
    The new token string is displayed.
 
-   ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\Copy token.PNG)
+   ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab200\images\Copy token.PNG)
 
 6. Copy the token string immediately, because you can't retrieve it again after closing the dialog box.
 

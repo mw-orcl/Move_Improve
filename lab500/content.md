@@ -2,9 +2,7 @@
 
 Oracle Autonomous Transaction Processing (ATP) is a fully managed Oracle database service with “self-driving” features on the Oracle Cloud Infrastructure (OCI). An application can securely connect to ATP with the proper credentials and a wallet. 
 
-The following lab guide shows how to set up a complete OCI network, deploy compute resources, and securely connect to the ATP. After the set up you will run an application workload. The OCI ATP architecture for the lab is depicted below.
-
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab100\images\Lab architecture diagram.png)
+The following lab guide shows how to provision and securely connect to ATP. 
 
 ## Disclaimer ##
 The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
@@ -20,11 +18,11 @@ The following is intended to outline our general product direction. It is intend
 
 ### About Regions and compartments
 
-Important Note
+*Important Note*
 
 Always ensure you are in your correct Region and Compartment. 
 
-If this is an instructor-led lab we are sharing the same tenancy account with multiple students, please create a unique name for your OCI resources that you can identify with. Ie: Use your name or other identifier unique to you.
+If this is an instructor-led lab we are sharing the same tenancy account with multiple students, please create a unique name for your OCI resources that you can identify with. Ie: Use your name or other identifier unique to you to name your cloud resources.
 
 ## Step 2: Provision ATP ##
 
@@ -32,11 +30,11 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 ​	1. Select your assigned Region from the upper right of the OCI console.
 
-​	2. From the navigation menu (top left side), select Autonomous Transaction Processing.
+​	2. From the hamburger menu (top left side), select Autonomous Transaction Processing.
 
 ​	3. Select your Compartment. You may have to drill in (click “+”) to see your compartment.
 
-​         ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 1.PNG)                          
+​         ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Provision ATP 1.PNG)                          
 
   
 
@@ -44,7 +42,7 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 ​	5. Click Create Autonomous Database. 
 
- ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 3.PNG)
+ ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Provision ATP 3.PNG)
 
 1. Select your compartment
 
@@ -68,23 +66,23 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 11. Click Create Autonomous Database
 
-    ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 4.PNG)
+    ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Provision ATP 4.PNG)
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 5.png" style="zoom: 50%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Provision ATP 5.png" style="zoom: 50%;" />
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 6.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Provision ATP 6.png)
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 7.PNG" style="zoom:50%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Provision ATP 7.PNG" style="zoom:50%;" />
 
 
 
 Your console will show that ATP is provisioning. This will take about 2 or 3 minutes to complete.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 8.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Provision ATP 8.png)
 
 You can check the status of the provisioning in the Work Request.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Provision ATP 9.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Provision ATP 9.png)
 
 ## Step 3: Download the Wallet
 
@@ -104,11 +102,11 @@ Note your connection strings. Your application can connect with these connection
 - TPurgent – for high priority transaction processing
 - TP – for standard transaction processing
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Wallet 1.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Wallet 1.PNG)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Wallet 2.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Wallet 2.PNG)
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Wallet 3.png" style="zoom: 50%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\Wallet 3.png" style="zoom: 50%;" />
 
 
 
@@ -123,7 +121,7 @@ Please note that most of the database settings and parameters cannot be modified
 1. Start SQL Developer from your client
 2. Click + to create a new connection
 
-​            <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\SQL Developer.PNG" style="zoom:50%;" />                   
+​            <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\SQL Developer.PNG" style="zoom:50%;" />                   
 
 ​	3. Enter a connection name
 
@@ -141,7 +139,7 @@ Please note that most of the database settings and parameters cannot be modified
 
 **Note:** Ensure that you use **ADMIN** user to view any database configuration.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\SQL Developer 2.PNG" style="zoom:50%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\SQL Developer 2.PNG" style="zoom:50%;" />
 
 ​	10. From your SQL Developer worksheet run the test query below against a sample database that is already in ATP
 
@@ -166,11 +164,11 @@ AND sales.cust_id=customers.cust_id
 
  11. Click **F5** or the **Run Script** button. Verify the query executes and results are displayed.
 
-     ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\SQL Developer 3.PNG)
+     ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\SQL Developer 3.PNG)
 
 You have successfully provisioned and connected SQL Developer to Autonomous Database (ATP) and validated the connection. 
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\ATP diagram.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab500\images\ATP diagram.PNG)
 
 ## Acknowledgements ##
 

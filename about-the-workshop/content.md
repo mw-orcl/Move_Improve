@@ -21,39 +21,47 @@ In this workshop you will create a Virtual Cloud Network (VCN) and related netwo
 
 This lab introduces the student lab environment and contains the steps to connect to the Oracle Cloud.
 
-- **Lab 1 :** Create the Virtual Cloud Network
+- **Lab 1** : Generate SSH Keys
+
+Create the SSH public and private keys for secure access to your cloud compute environment
+
+- **Lab 2** : Generate the Auth Token
+
+Create the Auth Token password to access your cloud object store.
+
+- **Lab 3 :** Create the Virtual Cloud Network
 
 This section describes creating the virtual cloud network or VCN using the quick start wizard.
 
-- **Lab 2 :** Create the Computes
+- **Lab 4 :** Create the Computes
 
 This section describes creating two computes for your lab environment.  One compute will be used as a bastion node.  The second compute will be used as your application server.
 
-- **Lab 3 :** Create Autonomous Database
+- **Lab 5 :** Create Autonomous Database
 
 This section describes creating the Oracle Autonomous Database.  We will provision the Autonomous Transaction Processing or ATP.
 
-- **Lab 4 :** Copy SSH Key and Wallet
+- **Lab 6 :** Copy SSH Key and Wallet
 
 This section describes copying the ssh key and wallet for secure access to the private subnet and to ATP.
 
-- **Lab 5 :** Install the Application and Migrate the Database
+- **Lab 7 :** Install the Application and Migrate the Database
 
 This section describes installing the Oracle client software and the application to your compute.  You will also migrate the database using Data Pump.
 
-- **Lab 6 :** Run the Application Workload
+- **Lab 8 :** Run the Application Workload
 
 This section describes running the application workload and scaling the ATP for higher performance using manual scaling and then auto scaling.
 
-- **Lab 7 :** Managing Storage and Images
+- **Lab 9 :** Managing Storage and Images
 
 This section describes how to manage the boot and block storage, and how to clone images.
 
-- **Lab 8 :** Manage with CLI
+- **Lab 10 :** Manage with CLI
 
 This section describes executing commands from the command line with CLI.
 
-- **Lab 9 :** Cleanup the Environment
+- **Lab 11 :** Cleanup the Environment
 
 This section describes how to properly clean up the environment including the ATP, computes, and the VCN.
 
