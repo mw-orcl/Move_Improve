@@ -26,7 +26,7 @@ We will create our first compute as a Bastion host on the public subnet. A Basti
 
 ​	3. Click Create Instance
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Menu compute.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\menu-compute.PNG)
 
 ​	4. Give your instance a unique name.
 
@@ -36,11 +36,11 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
 ​	6. After selecting the image, you must scroll down the screen and click Select
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Create compute image.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Create-compute-image.PNG)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Select Developer Image.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\select-developer-image.PNG)
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Select Image.PNG" style="zoom: 80%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\select-image.PNG" style="zoom: 80%;" />
 
 ​	7. Select Availability Domain 1 (AD1)
 
@@ -62,23 +62,23 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
 ​	16. Create your Instance
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Compute config 1.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\compute-config-1.png)
 
-![Compute config 2](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Compute config 2.png)
+![Compute config 2](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\compute-config-2.png)
 
-![Compute config 3](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Compute config 3.png)
+![Compute config 3](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\compute-config-3.png)
 
-![Compute config 4](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Compute config 4.png)
+![Compute config 4](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\compute-config-4.png)
 
-![Compute config 5](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Compute config 5.PNG)
+![Compute config 5](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\compute-config-5.PNG)
 
 Once you click Create Instance, your instance will be in provisioning state. This will take a couple of minutes to create.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Compute provisioning status.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\compute-provisioning-status.png)
 
 You can see the more status by clicking on Work Request.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Work request.PNG" style="zoom:67%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\work-request.PNG" style="zoom:67%;" />
 
 Your running compute instance will have both the Public and Private IP address created. Resources inside the VCN can access Private IP addresses.
 
@@ -98,29 +98,29 @@ For PuTTY:
 
 ​	1. Enter the public IP address of the compute
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\putty 1.PNG" style="zoom:75%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\putty-1.PNG" style="zoom:75%;" />
 
 ​	2. Browse for your SSH private key
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Putty 2.PNG" style="zoom: 67%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\putty-2.PNG" style="zoom: 67%;" />
 
 ​	3. Save your settings and click Open
 
 ​	4. Click Yes when prompted
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Putty 3.PNG" style="zoom:67%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\putty-3.PNG" style="zoom:67%;" />
 
 Oracle computes are provisioned with the default **opc** user with sudo privileges.
 
 ​	5. Login as **opc**
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\putty session.png" style="zoom:75%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\putty-session.png" style="zoom:75%;" />
 
 
 
 ## Step 3: Create your Application Server
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\App Server diagram.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\app-server-diagram.PNG)
 
 1. On the Private subnet create a compute for your application server. 
 2. Name your instance as your app server.
@@ -132,21 +132,21 @@ Oracle computes are provisioned with the default **opc** user with sudo privileg
 8. Use the same SSH key as your bastion compute.  However the best practice is to use a different key.
 9. Click Create.
 
-  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Create App Server 1.png)             
+  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\create-app-server-1.png)             
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Create App Server 2.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\create-app-server-2.png)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Create App Server 3.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\create-app-server-3.PNG)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Compute config 4.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\compute-config-4.png)
 
 You can see the work request and status of the compute being provisioned in the compute details and Work Requests page.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Create App Server 5.png"  />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\create-app-server-5.png"  />
 
 Once your compute App Server instance is running, view other details. Note the compute is provisioned on the private subnet, you only get a private IP address.  There is no public IP address.  From the private subnet we have a secure App Server that will connect to ATP.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\App Server details.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\app-server-details.png)
 
 Now we need to turn off VNIC source/destination check to allow packets to be forwarded.  Otherwise if the packet is not for the VNIC it will be dropped.
 
@@ -164,9 +164,9 @@ Now we need to turn off VNIC source/destination check to allow packets to be for
 
 ​	6. Click Update the VNIC
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\VNIC details.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\vnic-details.PNG)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Update VNIC.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\update-vnic.PNG)
 
 
 
@@ -174,7 +174,7 @@ Now we need to turn off VNIC source/destination check to allow packets to be for
 
 Let's see how your security list are set up to ensure they allow the right traffic.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Security List diagram.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\security-list-diagram.PNG)
 
 ​	1. Navigate to your VCN details
 
@@ -187,11 +187,11 @@ Let's see how your security list are set up to ensure they allow the right traff
 
 ​	ICMP is defaulted and is TCP/IP layer protocol for control and error messages.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\VCN details.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\vcn-details.png)
 
-​	![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Ingress Rules.png)
+​	![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\ingress-rules.png)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Egress Rules.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\egress-rules.png)
 
 1. Check security list for private subnet. 
 
@@ -200,9 +200,9 @@ Let's see how your security list are set up to ensure they allow the right traff
 
 
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Security List Ingress Private Subnet.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\seclist-ingress-private-subnet.png)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Security List Egress Private Subnet.png)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\security-list-egress-private-subnet.png)
 
 ## Acknowledgements ##
 
