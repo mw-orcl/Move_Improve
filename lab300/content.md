@@ -83,3 +83,7 @@ Below is a diagram of what has been created by the Networking Quickstart.
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\lab-architecture-created.PNG)
 
+## Acknowledgements ##
+
+- **Author** - Milton Wan, Database Product Management, April 2020
+

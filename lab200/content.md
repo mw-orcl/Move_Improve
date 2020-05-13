@@ -39,5 +39,9 @@ The following is intended to outline our general product direction. It is intend
 
 If you're an administrator creating an auth token for another user, you need to securely deliver it to the user by providing it verbally, printing it out, or sending it through a secure email service.
 
+## Acknowledgements ##
+
+- **Author** - Milton Wan, Database Product Management, April 2020
+
 
 

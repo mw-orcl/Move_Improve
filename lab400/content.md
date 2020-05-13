@@ -206,5 +206,5 @@ Let's see how your security list are set up to ensure they allow the right traff
 
 ## Acknowledgements ##
 
-- **Author** - Milton Wan, Database Product Management, PTS - April 2020
+- **Author** - Milton Wan, Database Product Management, April 2020
 

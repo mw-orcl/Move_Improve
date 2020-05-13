@@ -14,10 +14,10 @@ The following is intended to outline our general product direction. It is intend
 
 ## Step 1 - Log in to Oracle Cloud ##
 
-- From your browser go to Oracle Cloud. The URL is https://www.oracle.com/cloud/sign-in.html
-- Enter your cloud account name
-- Enter your user name and password
-- Click Sign in
+1. From your browser go to Oracle Cloud. The URL is https://www.oracle.com/cloud/sign-in.html
+2. Enter your cloud account name
+3. Enter your user name and password
+4. Click Sign in
 
 ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\cloud-sign-in.PNG)
 
@@ -25,11 +25,15 @@ The following is intended to outline our general product direction. It is intend
 
 
 
-- You should see the Quick Actions dashboard
+​	5. You should see the Quick Actions dashboard
 
-- Note the region selection and the menu of cloud services on the upper left corner
+​	6. Note the region selection and the menu of cloud services on the upper left corner
 
-  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\menu-and-region-selection.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\menu-and-region-selection.PNG)
 
 
+
+## Acknowledgements ##
+
+- **Author** - Milton Wan, Database Product Management, April 2020
 

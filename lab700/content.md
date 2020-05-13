@@ -4,7 +4,7 @@ This lab will demonstrate the move and improve process to OCI and ATP. We assume
 
 The sample application we will use is Swingbench with an associated database to store the data for Swingbench, but imagine this is your own application. This is the flow of the move and improve process.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\Move Improve flow diagram.png" style="zoom:75%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\move-improve-flow-diagram.png" style="zoom:75%;" />
 
 ## Disclaimer ##
 The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
@@ -46,7 +46,7 @@ $ sudo yum install java-1.8.0-openjdk-headless.x86_64
 
 •      Type **y**
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\Java install.png" style="zoom:75%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\java-install.png" style="zoom:75%;" />
 
 
 
@@ -150,7 +150,7 @@ $ cd /home/opc
 $ sudo vi sqlnet.ora
 ```
 
-3. Set the WALLET_LOCATION parameter to point to the wallet directory containing the cwallet.sso file as shown by the example below![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\Vi sqlnet.png)
+3. Set the WALLET_LOCATION parameter to point to the wallet directory containing the cwallet.sso file as shown by the example below![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\vi-sqlnet.png)
 
 4. Exit and save the file                               
 
@@ -182,11 +182,11 @@ We have conveniently exported the Swingbench database into a Data Pump .dmp file
 
 ​	2. From your compartment, create a bucket to hold your Database dump file. 
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\Object storage.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\object-storage.PNG)
 
 
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\Object details.PNG" style="zoom: 50%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\object-details.PNG" style="zoom: 50%;" />
 
 ## Step 5: Set Credential for ATP to access the Object Store
 
@@ -226,11 +226,11 @@ END;
 
 ​	5. Run the script
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\Create credential object store.PNG" style="zoom:50%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\create-credential-object-store.PNG" style="zoom:50%;" />
 
 While we are in SQL Developer check to see if you have the SOE schema in the Other Users folder. You should not see it.  We will import this Swingbench database schema later. 
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\SQL Developer other schema.png" style="zoom:50%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab700\images\sql-developer-other-schema.png" style="zoom:50%;" />
 
 
 
@@ -371,5 +371,5 @@ Now that we have both the application installed on the App Server and the databa
 
 ## Acknowledgements ##
 
-- **Author** - Milton Wan, Database Product Management, PTS - April 2020
+- **Author** - Milton Wan, Database Product Management, April 2020
 
