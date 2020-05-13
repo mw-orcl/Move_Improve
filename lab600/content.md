@@ -18,7 +18,7 @@ The following is intended to outline our general product direction. It is intend
 3. Use WinSCP or equivalent to copy the ATP wallet to the Bastion. You can just put it on the Bastion compute home directory. 
 4. Copy also the SSH private key for the App Server to the Bastion. Be sure to copy the key for Linux, not the .ppk, because your App Server is a Linux compute.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\compute-details.PNG" style="zoom: 67%;" />
+<img src="./images/compute-details.PNG" style="zoom: 67%;" />
 
 ​	5. From WinSCP or equivalent, enter the public IP address of the Bastion in the Host name
 
@@ -26,25 +26,25 @@ The following is intended to outline our general product direction. It is intend
 
 ​	7. Click Advanced to select the private SSH key
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\winscp.PNG" style="zoom: 67%;" />
+<img src="./images/winscp.PNG" style="zoom: 67%;" />
 
 ​	8. Select Authentication
 
  9. Browse for the private SSH key
 
-    <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\winscp-2.PNG" style="zoom: 67%;" />
+    <img src="./images/winscp-2.PNG" style="zoom: 67%;" />
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\winscp-3.PNG" style="zoom:67%;" />
+<img src="./images/winscp-3.PNG" style="zoom:67%;" />
 
 ​	10. Click Yes 
 
 ​	11. Copy both the ATP wallet and the private SSH key for the App Server to the Bastion. Be sure to copy the key for Linux, not the .ppk, because your app server is a Linux compute.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\winscp-4.PNG)
+![](./images/winscp-4.PNG)
 
 ## Step 2: Copy the ATP Wallet to the App Server ##
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\copy-wallet-diagram.PNG)
+![](./images/copy-wallet-diagram.PNG)
 
 
 
@@ -75,7 +75,7 @@ $ scp -C -i labkey -r Wallet_ATPLABTEST.zip opc@10.0.1.2:/home/opc
 
  5. Type **yes** if you see the message below:
 
-    ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\ssh-to-app-server.PNG)
+    ![](./images/ssh-to-app-server.PNG)
 
     
 
@@ -95,7 +95,7 @@ From the App Server session
 $ ping 8.8.8.8
 ```
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab600\images\ping.PNG)
+![](./images/ping.PNG)
 
 ## Acknowledgements ##
 

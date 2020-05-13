@@ -1,6 +1,6 @@
 # Run the Application Workload 
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\run-swingbench-diagram.PNG)
+![](./images/run-swingbench-diagram.PNG)
 
 The Swingbench workload on the App Server runs against ATP through the Service Gateway. Throughout the run, CPU is saturated at 100% utilization, so it’s a good test to scale the cores. First let’s open SQL Developer tool to check the core count. You should see 2 count for 1 core, and 4 count for 2 cores. We take into account Intel Hyper-threads when counting.
 
@@ -29,7 +29,7 @@ show parameter cpu
 
 ​	4. Click the run button
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\sql-developer-show-cpu-count.PNG" style="zoom:80%;" />
+<img src="./images/sql-developer-show-cpu-count.PNG" style="zoom:80%;" />
 
 Note we have 2 OCPUs (cores) provisioned but we have cpu_count of 4 because you have 4 Intel Hyper-threads.
 
@@ -77,7 +77,7 @@ Note your runtime TPM and TPS. We will compare them later.  Hitting CTRL-C will 
 
 Sample run with 2 cores show below.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\swingbench-run-1.PNG" style="zoom:67%;" />
+<img src="./images/swingbench-run-1.PNG" style="zoom:67%;" />
 
 
 
@@ -115,7 +115,7 @@ $ ./charbench -c ../configs/SOE_Server_Side_V2.xml \
 
 **Note:** Please do not enter a CPU core count beyond **3** as the cloud account is shared by all students and you will run into resource limitations.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\atp-details-page.PNG" style="zoom: 67%;" />
+<img src="./images/atp-details-page.PNG" style="zoom: 67%;" />
 
 The ATP service will take a few seconds to scale. Notice the status of SCALING IN PROGRESS.
 
@@ -125,7 +125,7 @@ The ATP service will take a few seconds to scale. Notice the status of SCALING I
 Show parameter cpu
 ```
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\sql-developer-show-cpu-count-6.PNG" style="zoom: 67%;" />
+<img src="./images/sql-developer-show-cpu-count-6.PNG" style="zoom: 67%;" />
 
 
 
@@ -135,7 +135,7 @@ You have scaled your cores up dynamically without stopping the service, so no do
 
 Sample run with 3 cores show below.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\sample-run-with-3-cores.PNG" style="zoom:67%;" />
+<img src="./images/sample-run-with-3-cores.PNG" style="zoom:67%;" />
 
 ## Step 2: Performance Monitoring
 
@@ -143,7 +143,7 @@ Sample run with 3 cores show below.
 
 From the Service Console Activity you can see both runs were at 100% CPU utilization. Which means we can still add cores to increase performance. Note the rapid dip in cpu utilization as it transitions to more cpu’s. It’s near instantaneous and the server is still running.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\performance-monitoring.PNG)
+![](./images/performance-monitoring.PNG)
 
 You can hit crtl-C to stop the workload run.
 
@@ -153,7 +153,7 @@ Let’s look at the auto scaling feature. Auto scaling automatically scales your
 
 ​	1. Scale your ATP back down to 1 core and click update. No auto scale yet.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\atp-scaling-ui.png" style="zoom: 50%;" />
+<img src="./images/atp-scaling-ui.png" style="zoom: 50%;" />
 
 ​	2. From SQL Developer worksheet, check your core count. With one core you should see 2 cpu threads.
 
@@ -195,11 +195,11 @@ Show parameter cpu
 
  4. After about 3 minutes, enable auto scale.
 
-    <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\auto-scale-ui.PNG" style="zoom: 67%;" />
+    <img src="./images/auto-scale-ui.PNG" style="zoom: 67%;" />
 
 After the scaling is completed you should see Auto Scaling enabled. Note your transactions continue to run as scaling begins.  There is no down time.
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\atp-details-auto-scale.PNG" style="zoom: 67%;" />
+<img src="./images/atp-details-auto-scale.PNG" style="zoom: 67%;" />
 
 ​	5. From SQL Developer worksheet, check your core count
 
@@ -209,7 +209,7 @@ Show parameter cpu
 
 Note that ATP has automatically scaled to 3 cores, the 3X maximum that it will scale to. Note the 3X increase in transactions per second and minutes. Check your performance monitor from the service console again.  We are still at 100% CPU utilized so this workload needs more CPUs!
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\sample-run-with-auto-scale.png" style="zoom:67%;" />
+<img src="./images/sample-run-with-auto-scale.png" style="zoom:67%;" />
 
 
 
@@ -233,7 +233,7 @@ We are going to set up two connections, one running the Swingbench workload and 
 
 ​	2. Set up another connection from SQL Developer to your ATP with a database service of Medium. This will be good for running our database queries.
 
-  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\sql-developer-medium-connection.PNG)                             
+  ![](./images/sql-developer-medium-connection.PNG)                             
 
 ​	3. From SQL Developer worksheet, check your core count is 4 (ie: 2 cores thus 4 Hyper-threads)
 
@@ -253,7 +253,7 @@ group by c_city, c_region
 order by count(*);
 ```
 
- <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab800\images\sql-developer-run-query.png" style="zoom: 50%;" />
+ <img src="./images/sql-developer-run-query.png" style="zoom: 50%;" />
 
 You should have gotten similar completion times: 0.524, 0.406, 0.332, 0.357, 0.376 seconds
 

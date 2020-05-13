@@ -19,9 +19,9 @@ The following is intended to outline our general product direction. It is intend
 3. Enter your user name and password
 4. Click Sign in
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\cloud-sign-in.PNG)
+![](./images/cloud-sign-in.PNG)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\username-signin.PNG)
+![](./images/username-signin.PNG)
 
 
 
@@ -29,7 +29,7 @@ The following is intended to outline our general product direction. It is intend
 
 ​	6. Note the region selection and the menu of cloud services on the upper left corner
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\menu-and-region-selection.PNG)
+![](./images/menu-and-region-selection.PNG)
 
 
 

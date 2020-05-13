@@ -4,7 +4,7 @@
 
 In this workshop you will create a Virtual Cloud Network (VCN) and related network resources. A VCN is similar to your own on premise enterprise network.  In the Oracle Cloud, the network is software defined and virtual. This makes for very fast creation, but still providing high performance, and complete security. The architecture of your lab design follows.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\about-the-workshop\images\lab-diagram-overview.png)
+![](./images/lab-diagram-overview.png)
 
 ## Workshop Requirements
 

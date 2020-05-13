@@ -21,7 +21,7 @@ The following is intended to outline our general product direction. It is intend
 
 2. Select the cloud services hamburger menu on the top left corner and select Networking
 
-   <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\hamburger-menu.PNG" style="zoom:50%;" />
+   <img src="./images/hamburger-menu.PNG" style="zoom:50%;" />
 
 3. Select Virtual Cloud Networks
 
@@ -29,7 +29,7 @@ The following is intended to outline our general product direction. It is intend
 
 5. Click Start VCN Wizard
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\start-vcn-wizard.PNG)
+![](./images/start-vcn-wizard.PNG)
 
 ## Step 2 - Create the Network  ##
 
@@ -37,7 +37,7 @@ The following is intended to outline our general product direction. It is intend
 
 2. Click Start Workflow
 
-  <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\wizard-vcn.PNG" style="zoom:67%;" />
+  <img src="./images/wizard-vcn.PNG" style="zoom:67%;" />
 
 3. Enter a unique name for your VCN
 
@@ -53,7 +53,7 @@ The following is intended to outline our general product direction. It is intend
 
 9. Click Next
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\vcn-configuration-info.PNG)
+![](./images/vcn-configuration-info.PNG)
 
 A summary is displayed. 
 
@@ -61,27 +61,27 @@ You can view the default security and route rules that will be created.
 
 ​	10. Click Show Rules
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\security-rules.PNG)
+![](./images/security-rules.PNG)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\route-rules.PNG)
+![](./images/route-rules.PNG)
 
 ​	11. Click Create. 
 
 The VCN is created instantaneously with all the default network resources. 
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\vcn-summary-info.PNG)
+![](./images/vcn-summary-info.PNG)
 
 ​	12. Click View Virtual Cloud Network to see the details and what has been created. 
 
 You will see a number of resources created including public, private subnets, default security list, default route table, and the gateways.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\view-vcn-config.PNG)
+![](./images/view-vcn-config.PNG)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\vcn-details.PNG)
+![](./images/vcn-details.PNG)
 
 Below is a diagram of what has been created by the Networking Quickstart.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\lab-architecture-created.PNG)
+![](./images/lab-architecture-created.PNG)
 
 ## Acknowledgements ##
 
