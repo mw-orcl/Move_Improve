@@ -19,9 +19,9 @@ The following is intended to outline our general product direction. It is intend
 - Enter your user name and password
 - Click Sign in
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\Cloud Sign In.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\cloud-sign-in.PNG)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\Username signin.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\username-signin.PNG)
 
 
 
@@ -29,11 +29,7 @@ The following is intended to outline our general product direction. It is intend
 
 - Note the region selection and the menu of cloud services on the upper left corner
 
-  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\Menu and Region Selection.PNG)
+  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab000\images\menu-and-region-selection.PNG)
 
 
-
-## Acknowledgements ##
-
-- **Author** - Milton Wan, Database Product Management, PTS - April 2020
 

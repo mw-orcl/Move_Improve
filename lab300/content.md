@@ -17,62 +17,69 @@ The following is intended to outline our general product direction. It is intend
 
 ## Step 1 - Select your Cloud Region ##
 
-- Select your Region on the upper right of the OCI console
-- Select the cloud services menu on the top left corner and select Networking
-- Select Virtual Cloud Networks
-- Select your Compartment
-- Click Networking Quickstart
+1. Select your Region on the upper right of the OCI console
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Region and compartment selection.PNG)
+2. Select the cloud services hamburger menu on the top left corner and select Networking
+
+   <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\hamburger-menu.PNG" style="zoom:50%;" />
+
+3. Select Virtual Cloud Networks
+
+4. Select your Compartment
+
+5. Click Start VCN Wizard
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\start-vcn-wizard.PNG)
 
 ## Step 2 - Create the Network  ##
 
-- Select VCN and Internet Connectivity
+1. Select VCN and Internet Connectivity
 
-- Click Start Workflow
+2. Click Start Workflow
 
-  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Network Quickstart.PNG)
+  <img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\wizard-vcn.PNG" style="zoom:67%;" />
 
-- Enter a unique name for your VCN
-- Select your assigned compartment
-- Enter a VCN CIDR block of 10.0.0.0/16.  Note: The CIDR Block is the range of IP addresses that can be used.
-- Enter the public subnet CIDR block of 10.0.0.0/24
-- Enter the private subnet CIDR block of 10.0.1.0/24. Note: A private subnet is not visible to the internet and is accessible from inside the VCN
+3. Enter a unique name for your VCN
 
-- Select use DNS hostnames
-- Click Next
+4. Select your assigned compartment
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\VCN configuration info.PNG)
+5. Enter a VCN CIDR block of 10.0.0.0/16.  Note: The CIDR Block is the range of IP addresses that can be used.
+
+6. Enter the public subnet CIDR block of 10.0.0.0/24
+
+7. Enter the private subnet CIDR block of 10.0.1.0/24. Note: A private subnet is not visible to the internet and is accessible from inside the VCN
+
+8. Select use DNS hostnames
+
+9. Click Next
+
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\vcn-configuration-info.PNG)
 
 A summary is displayed. 
 
 You can view the default security and route rules that will be created.
 
-- Click Show Rules
+​	10. Click Show Rules
 
-  ![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Security Rules.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\security-rules.PNG)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Route Rules.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\route-rules.PNG)
 
-- Click Create. 
+​	11. Click Create. 
 
 The VCN is created instantaneously with all the default network resources. 
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\VCN summary info.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\vcn-summary-info.PNG)
 
-- Click View Virtual Cloud Network to see the details and what has been created. 
+​	12. Click View Virtual Cloud Network to see the details and what has been created. 
 
 You will see a number of resources created including public, private subnets, default security list, default route table, and the gateways.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\View VCN config.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\view-vcn-config.PNG)
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\VCN details.PNG)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\vcn-details.PNG)
 
 Below is a diagram of what has been created by the Networking Quickstart.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\Lab architecture created.PNG)
-
-## Acknowledgements ##
-
-- **Author** - Milton Wan, Database Product Management, PTS - April 2020
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab300\images\lab-architecture-created.PNG)
 

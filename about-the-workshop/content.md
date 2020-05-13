@@ -53,29 +53,14 @@ This section describes installing the Oracle client software and the application
 
 This section describes running the application workload and scaling the ATP for higher performance using manual scaling and then auto scaling.
 
-- **Lab 9 :** Managing Storage and Images
-
-This section describes how to manage the boot and block storage, and how to clone images.
-
-- **Lab 10 :** Manage with CLI
-
-This section describes executing commands from the command line with CLI.
-
-- **Lab 11 :** Cleanup the Environment
-
-This section describes how to properly clean up the environment including the ATP, computes, and the VCN.
-
 ## Access the labs ##
 
 - Use **Lab Contents** menu on your right to access the labs.
     - If the menu is not displayed, click the menu button ![](./images/menu-button.png) on the top right  make it visible.
 
-- From the menu, click on the lab that you like to proceed with. For example, if you like to proceed to **Lab 0**, click **Lab 0: Setup the Lab Environment**.
+- From the menu, click on the lab that you like to proceed with. For example, if you like to proceed to **Lab 0**, click **Lab 0: Login to the Oracle Cloud**.
 
 ![](./images/menu.png "")
 
 - You may close the menu by clicking ![](./images/menu-close.png "")
 
-## Acknowledgements
-
-- **Author** - Milton Wan, Database Product Management, PTS APAC - April 2020

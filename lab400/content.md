@@ -16,7 +16,7 @@ The following is intended to outline our general product direction. It is intend
 
 ## Step 1: Create the Bastion Compute ##
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\Bastion diagram.PNG" style="zoom: 150%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\bastion-diagram.PNG" style="zoom: 150%;" />
 
 We will create our first compute as a Bastion host on the public subnet. A Bastion is a “jump” host that will allow us to jump to the private compute. Private computes on private subnets can not be accessed from the internet directly.
 
@@ -82,7 +82,7 @@ You can see the more status by clicking on Work Request.
 
 Your running compute instance will have both the Public and Private IP address created. Resources inside the VCN can access Private IP addresses.
 
-![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\InkedCompute detail_LI.jpg)
+![](C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab400\images\compute-ip-detail.jpg)
 
 
 
