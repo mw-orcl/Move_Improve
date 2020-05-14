@@ -1,8 +1,8 @@
 # Create the Virtual Cloud Network #
 
-In this step you will create a VCN with the quick start wizard. This will create all the related network resources including a public subnet, private subnet, internet gateway, NAT gateway, Service gateway, default security lists, and default route rules and table. 
+In this lab you will create a Virtual Cloud Network (VCN) and related network resources. A VCN is similar to your own on premise enterprise network.  In the Oracle Cloud, the network is software defined and virtual. This makes for very fast creation, but still providing high performance, and complete security. The architecture of your lab design follows.
 
-We are taking the quick option, but there is also a custom option to create resources individually. 
+![](./images/lab-architecture-diagram.png)
 
 ## Disclaimer ##
 The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
@@ -16,6 +16,10 @@ The following is intended to outline our general product direction. It is intend
   - You will need an account that allows you to create a VCN, up to two cores of compute, and up to three cores of Autonomous Database.
 
 ## Step 1 - Select your Cloud Region ##
+
+In this step you will create a VCN with the quick start wizard. This will create all the related network resources including a public subnet, private subnet, internet gateway, NAT gateway, Service gateway, default security lists, and default route rules and table. 
+
+We are taking the quick option, but there is also a custom option to create resources individually. 
 
 1. Select your Region on the upper right of the OCI console
 

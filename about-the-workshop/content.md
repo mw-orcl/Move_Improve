@@ -2,9 +2,7 @@
 
 ## Workshop Overview ##
 
-In this workshop you will create a Virtual Cloud Network (VCN) and related network resources. A VCN is similar to your own on premise enterprise network.  In the Oracle Cloud, the network is software defined and virtual. This makes for very fast creation, but still providing high performance, and complete security. The architecture of your lab design follows.
-
-![](./images/lab-diagram-overview.png)
+In this workshop you will move or migrate an existing application and database solution to the Oracle Cloud and Autonomous Database.  You will be using many of the features of the Oracle Cloud including virtual cloud networking, security lists, route rules, gateways, and private subnets.  After migrating the solution, you will enable ATP features like auto scaling to improve the performance of your application.  This workshop covers key practices for moving and improving your own applications to OCI and ATP. The class can be instructor-led or self-paced learning.
 
 ## Workshop Requirements
 
@@ -53,6 +51,10 @@ This section describes installing the Oracle client software and the application
 
 This section describes running the application workload and scaling the ATP for higher performance using manual scaling and then auto scaling.
 
+- **Lab 9:** Manage Storage Volumes and Images
+
+This section shows you how to manage storage volumes and images that make it easy to move or "lift" your applications to the Oracle Cloud.
+
 ## Access the labs ##
 
 - Use **Lab Contents** menu on your right to access the labs.
@@ -60,7 +62,7 @@ This section describes running the application workload and scaling the ATP for 
 
 - From the menu, click on the lab that you like to proceed with. For example, if you like to proceed to **Lab 0**, click **Lab 0: Login to the Oracle Cloud**.
 
-![](./images/menu.png "")
+<img src="./images/menu.png" style="zoom:67%;" />
 
 - You may close the menu by clicking ![](./images/menu-close.png "")
 
