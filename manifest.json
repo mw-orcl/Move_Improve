@@ -67,18 +67,6 @@
             "description":"Lab 9",
             "publisheddate": "04/26/2020",
             "filename":"./lab900/content.md"
-        },
-		{
-            "title": "Lab 10: Manage with CLI",
-            "description":"Lab 10",
-            "publisheddate": "04/26/2020",
-            "filename":"./lab1000/content.md"
-        },	
-		{
-            "title": "Lab 11: Cleanup the Environment",
-            "description":"Lab 11",
-            "publisheddate": "04/26/2020",
-            "filename":"./lab1100/content.md"
         }
     ]
 }
