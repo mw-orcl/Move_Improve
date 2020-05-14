@@ -1,38 +1,262 @@
-# Title #
+# Managing Storage Volumes and Images #
 
-Initial description 
+Volumes are important to the move and improve process to OCI. In this section we are going to look at some of the Boot and Block Volume features.  Handling volumes will give you a better understanding of how to move applications and data.
+
+A Block Volume can be detached from an instance and moved to a different instance without the loss of data. This data persistence enables you to migrate data between instances and ensures that your data is safely stored, even when it is not connected to an instance. Any data remains intact until you reformat or delete the volume.
+
+A Custom Image can be created from an existing Boot Volume. You can then use this custom image to launch additional instances. Ie: for test, development, or production environments.
 
 ## Disclaimer ##
 The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
 
 ## Requirements ##
 
-List of requirements
+- Web browser
+- Public and private keys
+- WinSCP or equivalent
+- PuTTY or equivalent
+- SQL Developer 19.1 or higher
 
-## Step 1 ##
+## Step 1: Create a Custom Image ##
 
-Description of step 1.
+1. Click on your App Server compute details. Note: you can’t create an image of the Bastion because it is already an Oracle image, ie: the Cloud Developer image.
+2. Select the Actions dropdown menu
+3. Select Create Custom Image
+4. Select your compartment
+5. Give your custom image a name
+6. Click Create Custom Image
 
-````
-$ <copy>Optional copy of values</copy>
+<img src="./images/create-image.PNG" style="zoom:67%;" />
 
-Some more text
-Some more
-````
+<img src="./images/create-image-2.png" style="zoom:50%;" />
 
-### Substep 1.1 ###
+When your custom image is created you should see the Work Requests as below. Work Requests are located on the left side Resources menu.
 
-Description of substep 1.1
+![](./images/work-request-1.png)
 
-### Substep 1.2 ###
+​	7. Select the Custom Images menu and you should see your custom image created. 
 
-Description of substep 1.2
+![](./images/work-request.PNG)
 
-## Step 2 ##
+You can now use this image to launch another instance by selecting the 3 dots action … menu. You can also export this image to the OCI Object Storage for use by others.
 
-etc
+## Step 2: Create a New Instance from Custom Image ##
+
+1. Click on the Custom Image action menu … on the right
+2. Select Create Instance
+3. Create the Instance in your compartment and VCN and this time let’s put it in the public subnet
+4. Make sure to select assign public IP address
+5. Enter your public key
+
+Your new instance will be created in a few minutes with the App Server workload already imaged.
+
+![](./images/create-instance-from-image.PNG)
+
+​	6. SSH into your new compute with the public IP address and the private key.
+
+​	7. Check your image and it’s contents. Is your ATP wallet there? Is your Swingbench workload software there?
+
+​	8. Ping 8.8.8.8 to check network access to internet, then run the workload again. 
+
+We just did a lift and shift to another compute instance with the same Swingbench workload software!
+
+```
+$ ls
+
+$ ping 8.8.8.8
+
+$ cd swingbench/bin
+```
+
+Replace the script below with your wallet and service name.
+
+```
+$./charbench -c ../configs/SOE_Server_Side_V2.xml \
+
+-cf ~/Wallet_ATPLABTEST.zip \
+
+-cs atplabtest_tp \
+
+-u soe \
+
+-p Welcome#2018 \
+
+-v users,tpm,tps \
+
+-intermin 0 \
+
+-intermax 0 \
+
+-min 0 \
+
+-max 0 \
+
+-uc 128 \
+
+-di SQ,WQ,WA \
+
+-rt 0:30.00
+```
+
+Your workload should run as before with your new compute instance.
+
+## Step 3: Clone ATP
+
+Let’s now clone the ATP service and run the workload against it. Cloning allows you to clone a complete copy of the database or just the metadata.  We will clone a complete copy.
+
+1. Navigate to your ATP service
+
+2. Select Create Clone from the Actions menu
+
+3. Create a Full Clone, which will clone data and metadata
+
+   ![](./images/clone-atp-1.png)
+
+![](./images/clone-atp-2.png)
+
+​	4. Select 2 cores, 1 TB
+
+​	5. Enable Auto Scaling
+
+​	6. Enter a database password
+
+​	7. Select BYOL
+
+​	8. Create Clone
+
+<img src="./images/clone-atp-3.png" style="zoom:75%;" />
+
+The Clone will be created. It will have a new Wallet. 
+
+9. Download the new Wallet
+10. Run the workload again from your client, but remember to change the Wallet and Connection Service name in your script.
+
+```
+$./charbench -c ../configs/SOE_Server_Side_V2.xml \
+
+-cf ~/Wallet_ATPLABTEST.zip \
+
+-cs atplabtest_tp \
+
+-u soe \
+
+-p Welcome#2018 \
+
+-v users,tpm,tps \
+
+-intermin 0 \
+
+-intermax 0 \
+
+-min 0 \
+
+-max 0 \
+
+-uc 128 \
+
+-di SQ,WQ,WA \
+
+-rt 0:30.00
+```
+
+Your workload will now run against the cloned ATP.  
+
+## Step 4: Managing Boot Volumes
+
+Let's now terminate the newly created compute instance from the custom image, but keep the Boot Volume
+
+	1. Select terminate from the compute action menu
+ 	2. Do not check the box, just click on Terminate Instance
+
+<img src="./images/terminate-instance.PNG" style="zoom:67%;" />
+
+ 3. Go to Compute Boot Volumes and your volume is still available to be attached to any new instance
+
+    <img src="./images/boot-volume.png" style="zoom:50%;" />
+
+    ## Step 5: Export the Custom Image to the Object Storage
+
+    Now let’s export your custom image to the Oracle Object Store so it can be used by others.
+
+     1. From the Custom Images action menu, select Export Custom Image
+
+        ![](./images/export-image-to-object-store.PNG)
+
+    2. Select your compartment
+
+    3. Select the bucket you want to export the image. If you don’t have a bucket, you can create one in the Object Storage.
+
+    4. Give it an object name.
+
+<img src="./images/export-image-to-object-store-2.PNG" style="zoom:67%;" />
+
+Once the image is available in the Object Store, you can download it, or even retrieve it to other cloud regions.
+
+## Step 6: Importing an Image
+
+To begin your lift and shift projects from on premise to the Oracle Cloud you can import images to the Object Store, and then attach them to compute instances in the cloud. Your images must first conform to the following virtual machine disk formats: VMDK, QCOW2 (KVM), or OCI. The image must have been uploaded from your on premise to the Object Store for the import. 
+
+There are tools you can use on premise to create the virtual machine disk formats. 
+
+Example for QCOW2.
+
+qemu-img create -f qcow2 ~/images/disk1.img 10G
+
+Also for converting between formats.
+
+qemu-img convert –f raw –O qcow2 image.img image.qcow2
+
+The following example process describes how to lift a disk image from on prem to the object store. Then import the image from the object store so it can be used to create an instance.
+
+1. Create an image of your on prem disk to one of the formats: VMDK, QCOW2 (KVM)
+2. Upload the image to your object store bucket
+3. Navigate to Compute Custom Images and Import the image
+4. Select a compartment to import
+5. Give your image a name
+6. Select the operating system
+7. Enter the Object Storage URL to the image. You can locate the URL by navigating to the object store bucket and selecting file details.
+8. Select the image type
+
+![](./images/import-image.PNG)
+
+<img src="./images/import-image-2.PNG" style="zoom:67%;" />
+
+## Step 7: Create New Block Volume
+
+Let’s add a non bootable block volume.  Block volumes are useful for expanding your block storage for more data or installing additional applications.
+
+1. Enter a name of the volume
+2. Select your compartment
+3. Select your Availability Domain
+4. Keep the default size or size down
+5. Set a Backup Policy like Bronze
+6. Encrypt using Oracle Managed Keys
+7. Create
+
+![](./images/create-block-volume.PNG)
+
+<img src="./images/create-block-volume-2.png" style="zoom: 50%;" />
+
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab900\images\create-block-volume-3.png" style="zoom:50%;" />
+
+You now have a block volume that you can attach to your instance. 
+
+## Step 8: Copying Block Volumes Across Regions
+
+Block volumes can be backed up manually outside of the auto backup policy. Once backed up it can even be copied across regions.
+
+1. Navigate to Block Volume Backups
+2. Click Create Block Volume Backup and manually create a backup of your block storage
+
+Once you have created a manual backup, you can select the 3 dot action menu to see the actions such as Copy to Another Region. 
+
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab900\images\copy-block-to-region.PNG" style="zoom:67%;" />
+
+<img src="./images/copy-block-to-region-2.PNG" style="zoom:50%;" />
+
+End of lab.
 
 ## Acknowledgements ##
 
-- **Author** - Robert Pastijn, Database Product Management, PTS EMEA - April 2020
+- **Author** - Milton Wan, Database Product Management, April 2020
 
