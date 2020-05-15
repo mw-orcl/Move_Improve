@@ -15,13 +15,13 @@ In this workshop you will move or migrate an existing application and database s
 
 ## Agenda
 
-- **Lab 0 :** Login to Oracle Cloud
+- **Lab 0 :** Register for Free Tier
 
-This lab introduces the student lab environment and contains the steps to connect to the Oracle Cloud.
+This lab contains the steps to sign up for the Oracle Cloud Free Tier account and connect to the Oracle Cloud.
 
 - **Lab 1** : Generate SSH Keys
 
-Create the SSH public and private keys for secure access to your cloud compute environment
+Create the SSH public and private keys for secure access to your cloud compute environment.
 
 - **Lab 2** : Generate the Auth Token
 
