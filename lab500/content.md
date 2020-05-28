@@ -32,11 +32,9 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 ​	2. From the hamburger menu (top left side), select Autonomous Transaction Processing.
 
-​	3. Select your Compartment. You may have to drill in (click “+”) to see your compartment.
-
 ​         ![](./images/provision-atp-1.PNG)                          
 
-  
+​	3.  Select your Compartment. You may have to drill in (click “+”) to see your compartment.
 
 ​	4. Select Workload Type Transaction Processing.
 
@@ -44,33 +42,49 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
  ![](./images/Provision-atp-3.PNG)
 
-1. Select your compartment
+​	6. Choose your compartment.
 
-2. Enter any unique name (maybe your name) for your display and database name. The display name is used in the Console UI to identify your database.
+​	7. Enter any unique name (maybe your name) for your display and database name. The display name is used in the Console UI to identify your database.
 
-3. Select Transaction Processing for the workload type
 
-4. Select Shared Infrastructure for deployment type
 
-5. Choose database version 19c
+![](./images/provision-atp-4.PNG)
 
-6. Configure the database with **2 cores and 1 TB storage**
 
-7. Uncheck Auto scaling. We will enable it later
 
-8. Enter a password. The username is always ADMIN. (Note: remember your password)
+​	8. Ensure Transaction Processing workload type is selected.
 
-9. Do not check the box Configure Access Control Rules. However the best practice is to configure Access Control to your ATP
+​	9. Select **Shared Infrastructure** for deployment type.
 
-10. Select BYOL License Type
+​	10. Choose database version 19c.
 
-11. Click Create Autonomous Database
 
-    ![](./images/provision-atp-4.PNG)
 
 <img src="./images/provision-atp-5.png" style="zoom: 50%;" />
 
+​	11. Configure the database with **2 cores and 1 TB storage**.
+
+​	12. Uncheck Auto scaling. We will enable it later.
+
+​	13. Enter a password. The username is always ADMIN. (Note: remember your password)
+
+
+
 ![](./images/provision-atp-6.png)
+
+​	
+
+​	14. Select Allow secure access from everywhere.  For your own application, you should select network access to be from Virtual cloud network.
+
+​	15. Do not check the box Configure Access Control Rules. However the best practice is to configure Access Control to your ATP.
+
+
+
+![](.\images\network-access.PNG)
+
+​	16. Select BYOL License Type.
+
+​	17. Click Create Autonomous Database.
 
 <img src="./images/provision-atp-7.PNG" style="zoom:50%;" />
 
@@ -88,21 +102,33 @@ You can check the status of the provisioning in the Work Request.
 
 Once your ATP service is running we can connect a client to ATP securely with the Oracle Wallet.
 
-1. Click on the details of your ATP
-2. Select DB Connection
-3. Select Instance Wallet
-4. Download the wallet to your laptop
-5. Enter a password for the wallet
+​	1. Click on the details of your ATP.
+
+​	2. Select DB Connection.
+
+
+
+![](./images/wallet-1.PNG)
+
+​	3. Select Instance Wallet for the Wallet Type.
+
+​	4. Download the wallet to your laptop.
+
+​	5. Enter a password for the wallet.
 
 Note your connection strings. Your application can connect with these connection services:
 
 - High – for long queries, high parallelism, low SQL concurrency
+
 - Medium – for medium queries, parallelism, medium concurrency
+
 - Low – for short queries, no parallelism, high concurrency
+
 - TPurgent – for high priority transaction processing
+
 - TP – for standard transaction processing
 
-![](./images/wallet-1.PNG)
+  
 
 ![](./images/wallet-2.PNG)
 
@@ -118,30 +144,30 @@ Please note that most of the database settings and parameters cannot be modified
 
 ### Start SQL Developer
 
-1. Start SQL Developer from your client
-2. Click + to create a new connection
+1. Start SQL Developer from your client.
+2. Click + to create a new connection.
 
 ​            <img src="./images/sql-Developer.PNG" style="zoom:50%;" />                   
 
-​	3. Enter a connection name
+​	3. Enter a connection name.
 
-​	4. Enter ADMIN as the user
+​	4. Enter ADMIN as the user.
 
-​	5. Enter the password you used to create your ATP
+​	5. Enter the password you used to create your ATP.
 
-​	6. Check Save Password
+​	6. Check Save Password.
 
 ​	7. Select Connection Type as Cloud Wallet and Browse for your wallet.
 
 ​	8. Browse and select your service. Ie: <your ATP name>_tp. Note there are five services, select the tp service.
 
-​	9. Test the connection and Save your connection for later use. Then click 	Connect.
+​	9. Test the connection and Save your connection for later use. Then click Connect.
 
 **Note:** Ensure that you use **ADMIN** user to view any database configuration.
 
 <img src="./images/sql-developer-2.PNG" style="zoom:50%;" />
 
-​	10. From your SQL Developer worksheet run the test query below against a sample database that is already in ATP
+​	10. From your SQL Developer worksheet run the test query below against a sample database that is already in ATP.
 
 ```
 SELECT channel_desc,

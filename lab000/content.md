@@ -10,7 +10,7 @@ The following is intended to outline our general product direction. It is intend
 - Laptop or desktop computer
 - Web browser
 - Account access to Oracle Cloud Infrastructure
-  - The account is provided to you if it is instructor-led training, otherwise use your account
+  - The account is provided to you if it is instructor-led training, otherwise use your account 
 
 ## Step 1 - Log in to Oracle Cloud ##
 
@@ -19,9 +19,9 @@ The following is intended to outline our general product direction. It is intend
 3. Enter your user name and password
 4. Click Sign in
 
-![](./images/cloud-sign-in.PNG)
+<img src="./images/cloud-sign-in.PNG" style="zoom:50%;" />
 
-![](./images/username-signin.PNG)
+<img src="./images/username-signin.PNG" style="zoom:50%;" />
 
 
 

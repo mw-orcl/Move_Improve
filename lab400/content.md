@@ -46,9 +46,15 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
 ​	8. Select Virtual Machine 
 
-​	9. Instance Shape should be 1 Core OCPU, 15 GB Memory. You can keep this default.
+<img src="./images/compute-config-1.png" style="zoom:50%;" />
 
-​	10. Select your Compartment and the VCN you created earlier
+9. Instance Shape should be 1 Core OCPU, 15 GB Memory. You can keep this default.
+
+10. Select your Compartment and the VCN you created earlier
+
+    
+
+<img src="./images/compute-config-2.png" alt="Compute config 2" style="zoom:50%;" />
 
 ​	11. Select your subnet Compartment.  It will be the same as your VCN Compartment in this lab. In some cases you can create subnet in other compartments. 
 
@@ -60,17 +66,13 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
 ​	15. Choose the SSH public key provided by the instructor or use your own 
 
+<img src="./images/compute-config-3.png" alt="Compute config 3" style="zoom:50%;" />
+
+<img src="./images/compute-config-4.png" alt="Compute config 4" style="zoom: 50%;" />
+
+<img src="./images/compute-config-5.PNG" alt="Compute config 5" style="zoom: 80%;" />
+
 ​	16. Create your Instance
-
-![](./images/compute-config-1.png)
-
-![Compute config 2](./images/compute-config-2.png)
-
-![Compute config 3](./images/compute-config-3.png)
-
-![Compute config 4](./images/compute-config-4.png)
-
-![Compute config 5](./images/compute-config-5.PNG)
 
 Once you click Create Instance, your instance will be in provisioning state. This will take a couple of minutes to create.
 
@@ -122,27 +124,39 @@ Oracle computes are provisioned with the default **opc** user with sudo privileg
 
 ![](./images/app-server-diagram.PNG)
 
-1. On the Private subnet create a compute for your application server. 
-2. Name your instance as your app server.
-3. If you have more than one availability domain, you can just select AD1.
-4. Use the latest default Oracle Linux image.
-5. Please use the standard virtual machine with 1 core as pictured.
-6. Ensure you select your compartment. Your subnet compartment can actually be configured on another compartment from your VCN. But in this case it will be the same as your VCN.
-7. Select the Private subnet where the App Server will be installed.
-8. Use the same SSH key as your bastion compute.  However the best practice is to use a different key.
-9. Click Create.
+1. On the Private subnet create a compute for your application server
+2. Name your instance as your app server
+4. Use the latest default Oracle Linux image
+4. If you have more than one availability domain, you can just select AD1
 
   ![](./images/create-app-server-1.png)             
 
+​	5. Please use the standard virtual machine with 1 core as pictured
+
+​	6. Ensure you select your compartment and VCN. Your subnet compartment can actually be configured on another compartment from your VCN. But in this case it will be the same as your VCN.
+
+
+
 ![](./images/create-app-server-2.png)
+
+
+
+	7. Select the Private subnet where the App Server will be installed.  Do not assign public IP address should be marked
+ 	8. Keep the Boot Volume defaults
+
+​	9. Use the same SSH key as your bastion compute.  However the best practice is to use a different key
+
+​	10. Click Create
 
 ![](./images/create-app-server-3.PNG)
 
-![](./images/compute-config-4.png)
+
 
 You can see the work request and status of the compute being provisioned in the compute details and Work Requests page.
 
 <img src="./images/create-app-server-5.png"  />
+
+
 
 Once your compute App Server instance is running, view other details. Note the compute is provisioned on the private subnet, you only get a private IP address.  There is no public IP address.  From the private subnet we have a secure App Server that will connect to ATP.
 
@@ -162,7 +176,7 @@ Now we need to turn off VNIC source/destination check to allow packets to be for
 
 ​	5. Check the box **Skip Source/Destination Check**
 
-​	6. Click Update the VNIC
+​	6. Click Save Changes or Update the VNIC on earlier UIs.
 
 ![](./images/vnic-details.PNG)
 

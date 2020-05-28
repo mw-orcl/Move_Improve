@@ -15,9 +15,9 @@ In this workshop you will move or migrate an existing application and database s
 
 ## Agenda
 
-- **Lab 0 :** Register for Free Tier
+- **Lab 0 :** Log in to the Oracle Cloud
 
-This lab contains the steps to sign up for the Oracle Cloud Free Tier account and connect to the Oracle Cloud.
+Connect to the Oracle Cloud with your account information.
 
 - **Lab 1** : Generate SSH Keys
 
