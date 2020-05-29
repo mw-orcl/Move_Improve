@@ -176,7 +176,7 @@ Note: You can use the Data Pump procedure for your own database and migration pr
 
 ## Step 4: Upload the Database Dump File
 
-We have conveniently exported the Swingbench database into a Data Pump .dmp file. The file is called **soedump18C_1G.dmp**. This file can be found in the Oracle Object Store at: 
+For this workshop we have conveniently exported the Swingbench database into a Data Pump .dmp file. The file is called **soedump18C_1G.dmp**. This file can be found in the Oracle Object Store at: 
 
 ​	1. From your OCI console, select Object Storage. 
 
@@ -194,7 +194,7 @@ In order for ATP to access the Object Storage we need to create a credential and
 
 ​	1. Connect to your ATP from SQL Developer
 
-From the SQL Developer worksheet create a credential for ATP to access the object store. You will need to run the DBMS_CLOUD.CREATE_CREDENTIAL package below from your ATP session. Replace the names in RED with your own names.
+From the SQL Developer worksheet create a credential for ATP to access the object store. You will need to run the DBMS\_CLOUD.CREATE\_CREDENTIAL package below from your ATP session. Replace the names in RED with your own names.
 
 ​	2. Give the credential a name
 
@@ -211,11 +211,11 @@ BEGIN
 
  DBMS_CLOUD.CREATE_CREDENTIAL(
 
-  credential_name => ‘STORAGE_CREDENTIAL’,
+  credential_name => 'STORAGE_CREDENTIAL',
 
   username => '<your_oci_username.com>',
 
-  password => ‘<auth token password>’
+  password => '<auth token password>'
 
  );
 
@@ -251,6 +251,7 @@ $ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=STORAG
 
 If successful, you will see this output:
 
+```
 Import: Release 18.0.0.0.0 - Production on Tue Dec 24 19:21:02 2019
 
 Version 18.5.0.0.0
@@ -336,6 +337,7 @@ ORA-39082: Object type PACKAGE BODY:"SOE"."ORDERENTRY" created with compilation 
  
 
 Job "ADMIN"."SYS_IMPORT_SCHEMA_01" completed with 1 error(s) at Tue Dec 24 19:25:42 2019 elapsed 0 00:04:36
+```
 
 To view the import.log you must put it into the Object Store, then download it to your laptop and view with a text editor.
 

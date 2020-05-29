@@ -37,11 +37,11 @@ Note we have 2 OCPUs (cores) provisioned but we have cpu_count of 4 because you 
 
 ​	6. Run the script below.  
 
-There are 128 concurrent users making inserts and updates. We will measure transactions per minute (TPM) and transactions per second (TPS). It will run for 1 minute, 30 seconds, ie: -rt 1.30. 
+There are 128 concurrent users making inserts and updates. We will measure users, transactions per minute (TPM) and transactions per second (TPS). It will run for 1 minute, 30 seconds, ie: -rt 1.30. 
 
-​	7. Replace with your own wallet and service names. Ensure the directory location of your wallet zip and service name is correct. 
+​	7. Replace with your own wallet and service names. Ensure the directory location of your wallet zip and service name is correct.  ie: replace Wallet_ATPLABTEST with your own wallet file name, and atplabtest_tp service with your own service name.
 
-If you received the dump file from an instructor-led class note that the soe schema password is **Welcome#2018**. Do not change this.
+Note that the schema is **soe**.  ie: -u soe.  The soe schema password is **Welcome#2018**. Do not change this.  ie: -p Welcome#2018
 
 ```
 $ cd ~/swingbench/bin
