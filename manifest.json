@@ -7,12 +7,10 @@
             "filename":"./about-the-workshop/content.md"
         },
         {         
-            "title": "Lab 0: Register for FreeTier",
+            "title": "Lab 0: Login to Oracle Cloud",
             "description": "Login to Oracle Cloud",
-            "partnumber": "Ennnnn_01",
-            "publisheddate": "03/10/2020",
-            "contentid": "12nnnn",
-            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/register-free-tier-account.md"
+            "publisheddate": "04/26/2020",
+            "filename": "./lab000/content.md"
         },
         {         
             "title": "Lab 1: Generate SSH Keys",
