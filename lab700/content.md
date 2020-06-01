@@ -170,27 +170,17 @@ $ sqlplus admin/<password>@<service_tp>
 
 ### Move the On Premise Database to Oracle Cloud ###
 
-There are a number of ways to move or migrate your existing on premise Oracle database to the Oracle Cloud. In this lab the instructor has already used Data Pump to export the on premise database to a .dmp file and uploaded the .dmp file to the Object Storage. It's now a matter of importing the .dmp file to Autonomous Database from the Object Storage. 
+There are a number of ways to move or migrate your existing on premise Oracle database to the Oracle Cloud. In this lab the instructor has already used Data Pump to export the on premise database to a .dmp file and uploaded the .dmp file to the Oracle Object Storage. It's now a matter of importing the .dmp file to Autonomous Database from the Object Storage.   The .dmp file is located here:
 
-Note: You can use the Data Pump procedure for your own database and migration projects.  
+https://objectstorage.ap-seoul-1.oraclecloud.com/p/OCvyuN_NmXrzYO1KzME2ZjijeKCwa2ELWUQIZ5k-qE4/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
 
-## Step 4: Upload the Database Dump File
-
-For this workshop we have conveniently exported the Swingbench database into a Data Pump .dmp file. The file is called **soedump18C_1G.dmp**. This file can be found in the Oracle Object Store at: 
-
-​	1. From your OCI console, select Object Storage. 
-
-​	2. From your compartment, create a bucket to hold your Database dump file. 
-
-![](./images/object-storage.PNG)
+Note: You can use the Data Pump procedure for your own database and migration projects.
 
 
 
-<img src="./images/object-details.PNG" style="zoom: 50%;" />
+## Step 4: Set Credential for ATP to access the Object Store
 
-## Step 5: Set Credential for ATP to access the Object Store
-
-In order for ATP to access the Object Storage we need to create a credential and then set the credential in the ATP database. 
+In order for ATP to access the Oracle Object Storage we need to create a credential and then set the credential in the ATP database. 
 
 ​	1. Connect to your ATP from SQL Developer
 
@@ -200,7 +190,7 @@ From the SQL Developer worksheet create a credential for ATP to access the objec
 
 ​	3. Provide your OCI login username
 
-​	4. Provide the OCI Auth Token password to access the Object Storage. For instructor-led class this password has already been created for you.
+​	4. Provide the OCI Auth Token password to access the Object Storage. You should have created this in the earlier lab.  For the instructor-led class this password will be provided to you.
 
 Note: For reference, an Auth Token can be created from your OCI user settings. The Auth Token creation will generate the password. 
 
@@ -211,9 +201,9 @@ BEGIN
 
  DBMS_CLOUD.CREATE_CREDENTIAL(
 
-  credential_name => 'STORAGE_CREDENTIAL',
+  credential_name => '<credential name>',
 
-  username => '<your_oci_username.com>',
+  username => '<your oci login username>',
 
   password => '<auth token password>'
 
@@ -240,13 +230,13 @@ Once you have the database dump file in the Object Storage you can import it int
 
 Execute the impdb statement below from your compute with Instant Client software.
 
-1. Enter your admin password, and connect to your ATP with **high** service. 
-2. Enter the credential name.
+1. Enter your admin password, and connect to your ATP with **high** service.  The high service will give us parallelism during the import.
+2. Enter the credential name you created in the previous step.
 3. Your dumpfile will point to the object store uri with the soedump18C_1G.dmp file. 
 4. Set parallel import to 2 since we can use 2 the OCPU cores in ATP.
 
 ```
-$ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump18C_1G.dmp logfile=import.log parallel=2
+$ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=<credential name> schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/p/OCvyuN_NmXrzYO1KzME2ZjijeKCwa2ELWUQIZ5k-qE4/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp logfile=import.log parallel=2
 ```
 
 If successful, you will see this output:
@@ -339,7 +329,7 @@ ORA-39082: Object type PACKAGE BODY:"SOE"."ORDERENTRY" created with compilation 
 Job "ADMIN"."SYS_IMPORT_SCHEMA_01" completed with 1 error(s) at Tue Dec 24 19:25:42 2019 elapsed 0 00:04:36
 ```
 
-To view the import.log you must put it into the Object Store, then download it to your laptop and view with a text editor.
+To view the import.log you must put it into an Oracle Object Store bucket and then download it to your laptop and view with a text editor.  An example of putting the file in the Object Store bucket is shown below.  
 
 ```
 BEGIN
