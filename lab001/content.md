@@ -21,9 +21,9 @@ The following is intended to outline our general product direction. It is intend
 
 
 
-3. Enter your User Name:  apac-student1
+​	3. Enter your User Name:  apac-student1
 
- 	4. Enter your Password:  CloudyDay#2020
+​	4. Enter your Password:  CloudyDay#2020
 
 <img src="./images/username-signin-2.PNG" style="zoom:50%;" />
 
