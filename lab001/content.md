@@ -21,7 +21,8 @@ The following is intended to outline our general product direction. It is intend
 
 
 
-	3. Enter your User Name:  apac-student1
+3. Enter your User Name:  apac-student1
+
  	4. Enter your Password:  CloudyDay#2020
 
 <img src="./images/username-signin-2.PNG" style="zoom:50%;" />
@@ -40,13 +41,13 @@ Note the region selection and the menu of cloud services on the upper left corne
 
  7. Select Networking
 
-    <img src="./images/networking.PNG" style="zoom:50%;" />
+    <img src="./images/networking.PNG" style="zoom:80%;" />
 
     
 
 	8.  Select your compartment: APAC-Workshop-1
 
-     <img src="./images/compartment.PNG" style="zoom:50%;" />
+     <img src="./images/compartment.PNG" style="zoom:80%;" />
 
      
 
