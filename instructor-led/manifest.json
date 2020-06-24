@@ -16,7 +16,7 @@
             "title": "Lab 0: Login to Oracle Cloud",
             "description": "Login to Oracle Cloud",
             "publisheddate": "04/26/2020",
-            "filename": "../lab000/content.md"
+            "filename": "../lab001/content.md"
         },
         {         
             "title": "Lab 1: Generate SSH Keys",

@@ -1,6 +1,6 @@
 # **Lab Accounts**
 
-To log in to Oracle Cloud, click on the URL and enter the tenant, user name, and password below.
+This is your account to log in to the Oracle Cloud.
 
 Oracle Cloud URL:  https://console.ap-seoul-1.oraclecloud.com
 
