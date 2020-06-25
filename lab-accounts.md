@@ -2,13 +2,13 @@
 
 This is your account to log in to the Oracle Cloud.
 
-Oracle Cloud URL:  https://console.ap-seoul-1.oraclecloud.com
+Oracle Cloud URL:  
 
-Cloud Tenant:  oraclepartnersas
+Cloud Tenant:  
 
-User Name:  APAC-Student1
+User Name:  
 
-Password:  CloudDay#2020
+Password:  
 
 
 
