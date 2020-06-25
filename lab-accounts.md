@@ -36,5 +36,5 @@ Compartment:  APAC-Workshop-1
 
 This password will be used by the database to access the Oracle Object Store in one of the labs.  Note it for now.
 
-Auth Token Password:  Tw{>_ETcQd}#qJhRg[>9
+Auth Token Password:  
 
