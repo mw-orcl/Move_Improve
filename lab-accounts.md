@@ -16,11 +16,11 @@ Password:
 
 You will be doing all your labs in one of the Oracle Cloud regions below.  You will be choosing the region closest to you.
 
+Australia Southeast (Melbourne)
+
 South Korea (Chuncheon)
 
 India South (Hyderabad)
-
-Australia Southeast (Melbourne)
 
 <img src="./images/region.PNG" style="zoom:50%;" />
 
