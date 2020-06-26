@@ -46,8 +46,14 @@ For an instructor-led workshop, you can use the SSH keys provided below.   Alter
 
 Public key:  labkey.pub
 
-Private key: labkey.ppk or labkey
+Private key: labkey.ppk (Windows) or labkey (Mac)
 
 Keys can be downloaded here:  
 
-The keys will be used to securely connect to your compute instance on the Oracle Cloud.  You will provision your compute instance with the public key, **labkey.pub**.  If you are on a Windows client, you will use **labkey.ppk** with PuTTY to connect to your instance.  For Mac clients, you will use the **labkey** file with no extension.
+
+
+The keys will be used to securely connect to your compute instance on the Oracle Cloud.  You will provision your compute instance with the public key, **labkey.pub**.  
+
+From a Windows client, you will use **labkey.ppk** with PuTTY to connect to your instance.  For Mac clients, you will use the **labkey** file with no extension to connect to your instance.  .  
+
+Note: SSH keys are required to access Oracle Cloud compute instances.  
