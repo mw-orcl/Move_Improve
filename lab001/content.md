@@ -21,7 +21,7 @@ The following is intended to outline our general product direction. It is intend
 
 
 
-​	3. Enter your User Name:  apac-student1
+​	3. Enter your User Name:  
 
 ​	4. Enter your Password:  
 
