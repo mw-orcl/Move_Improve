@@ -14,7 +14,7 @@ The following is intended to outline our general product direction. It is intend
 
 ## Step 1 - Log in to Oracle Cloud ##
 
-1. From your browser go to Oracle Cloud. The URL is https://www.oracle.com/cloud/sign-in.html
+1. From your browser go to Oracle Cloud. The URL is [https://www.oracle.com/cloud/sign-in.html](https://www.oracle.com/cloud/sign-in.html)
 2. Enter your cloud account name
 3. Enter your user name and password
 4. Click Sign in
