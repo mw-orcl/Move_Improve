@@ -1,4 +1,4 @@
-# **Lab Accounts**
+# **Lab Accounts** and Artifacts
 
 This is your account to log in to the Oracle Cloud.
 
@@ -14,9 +14,13 @@ Password:
 
 ## Region
 
-You will be doing your labs in one of the Oracle Cloud regions.  There are 3 regions you can choose from:  South Korea (Chuncheon), India South (Hyderabad),  Australia Southeast (Melbourne).
+You will be doing all your labs in one of the Oracle Cloud regions below.  You will be choosing the region closest to you.
 
-Select the region closest to you. 
+South Korea (Chuncheon)
+
+India South (Hyderabad)
+
+Australia Southeast (Melbourne)
 
 <img src="./images/region.PNG" style="zoom:50%;" />
 
@@ -30,6 +34,25 @@ Compartment:  APAC-Workshop-1
 
 <img src="./images/compartment.PNG" style="zoom:50%;" />
 
+## SSH Keys
+
+For an instructor-led workshop, you can use the SSH keys provided below.   Alternatively you can create your own keys with a tool like puTTYgen (Windows) or ssh-keygen (Linux or Mac).  The keys will be used to securely connect to your compute instance on the Oracle Cloud.  
+
+You will provision your compute instance with the public key, **labkey.pub**.  
+
+From a Windows client, you will use **labkey.ppk** with PuTTY to connect to your instance.  For Mac clients, you will use the **labkey** file with no extension to connect to your instance.  .  
+
+Public key:  labkey.pub
+
+Private key: labkey.ppk (Windows) or labkey (Mac)
+
+Keys can be downloaded here:  [labkey.zip](https://objectstorage.ap-melbourne-1.oraclecloud.com/p/d7FssGukRXuKSk9kqInN556f2W6zi_j2uaNREPRvc8I/n/oraclepartnersas/b/Lab-Material/o/Keys.zip
+)
+
+
+
+Note: SSH keys are required to access Oracle Cloud compute instances.  
+
 
 
 ## Object Store Password
@@ -40,20 +63,13 @@ Auth Token Password:
 
 
 
-## SSH Keys
+## Database Dump File
 
-For an instructor-led workshop, you can use the SSH keys provided below.   Alternatively you can create your own with a tool like puTTYgen (Windows) or ssh-keygen (Linux or Mac).
+This dump file is an export of an on-premise Oracle database.  You will use it in one of the labs to import "move" it to the cloud database.  Do not download the dump file to your laptop.  We will import it directly from the Object Store later.
 
-Public key:  labkey.pub
+Melbourne, Australia: https://objectstorage.ap-melbourne-1.oraclecloud.com/p/u8kmZ-LTcFb6xQy6FXxQkA9ARp67BZlyJSrkcc8n_f0/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
 
-Private key: labkey.ppk (Windows) or labkey (Mac)
+Chuncheon, S Korea: https://objectstorage.ap-chuncheon-1.oraclecloud.com/p/U57ww_PgUzvxGgIoB-ZMEjUQLyU4DzREgwB09Npbt9Q/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
 
-Keys can be downloaded here:  
+Hyderabad, India: https://objectstorage.ap-hyderabad-1.oraclecloud.com/p/CoiQToMQcZ4zV2ljuhIqge4eMKvMgeQIPQms9U5vzSg/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
 
-
-
-The keys will be used to securely connect to your compute instance on the Oracle Cloud.  You will provision your compute instance with the public key, **labkey.pub**.  
-
-From a Windows client, you will use **labkey.ppk** with PuTTY to connect to your instance.  For Mac clients, you will use the **labkey** file with no extension to connect to your instance.  .  
-
-Note: SSH keys are required to access Oracle Cloud compute instances.  
