@@ -25,7 +25,7 @@ Create the SSH public and private keys for secure access to your cloud compute e
 
 - **Lab 2** : Generate the Auth Token
 
-Create the Auth Token password to access your cloud object store.
+Create the Auth Token password to access your cloud object store.  This lab is not required for instructor-led training.
 
 - **Lab 3 :** Create the Virtual Cloud Network
 
