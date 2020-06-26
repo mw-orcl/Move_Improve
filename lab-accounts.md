@@ -38,3 +38,16 @@ This password will be used by the database to access the Oracle Object Store in 
 
 Auth Token Password:  
 
+
+
+## SSH Keys
+
+For an instructor-led workshop, you can use the SSH keys provided below.   Alternatively you can create your own with a tool like puTTYgen (Windows) or ssh-keygen (Linux or Mac).
+
+Public key:  labkey.pub
+
+Private key: labkey.ppk or labkey
+
+Keys can be downloaded here:  
+
+The keys will be used to securely connect to your compute instance on the Oracle Cloud.  You will provision your compute instance with the public key, **labkey.pub**.  If you are on a Windows client, you will use **labkey.ppk** with PuTTY to connect to your instance.  For Mac clients, you will use the **labkey** file with no extension.
