@@ -45,14 +45,16 @@ Note the region selection and the menu of cloud services on the upper left corne
 
     
 
-	8.  Select your compartment: APAC-Workshop-1
+	8. Select your compartment: APAC-Workshop-1
+
+       You may need to expand the selection to see your compartment.
 
      <img src="./images/compartment.PNG" style="zoom:80%;" />
 
      
 
-     Remember to select your **region** and **compartment** when doing your lab work.
-
+    **Important**: Select your correct **region** and **compartment** when doing all your lab work.
+    
      
 
 ## Acknowledgements ##
