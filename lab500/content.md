@@ -135,7 +135,7 @@ Please note that most of the database settings and parameters cannot be modified
 1. Start SQL Developer from your client.
 2. Click + to create a new connection.
 
-​            <img src="./images/sql-Developer.PNG" style="zoom: 67%;" />                   
+​            <img src="./images/sql-developer.PNG" style="zoom: 67%;" />                   
 
 ​	3. Enter a connection name.
 
