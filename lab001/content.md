@@ -53,7 +53,7 @@ Note the region selection and the menu of cloud services on the upper left corne
    
        <img src="./images/compartment-1.PNG" style="zoom:80%;" />
    
-       You may need to expand the selection to see your compartment.
+       You may need to expand the selection to see your compartment under Training.
        
        ​									 <img src="./images/compartment.PNG" style="zoom:80%;" />
     
