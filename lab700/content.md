@@ -174,7 +174,9 @@ $ sqlplus admin/<password>@<service_tp>
 
 ### Move the On Premise Database to Oracle Cloud ###
 
-There are a number of ways to move or migrate your existing on premise Oracle database to the Oracle Cloud. In this lab the instructor has already used Data Pump to export the on premise database to a .dmp file and uploaded the .dmp file to the Oracle Object Storage. It's now a matter of importing the .dmp file to Autonomous Database from the Object Storage.   The .dmp file is located here:
+There are a number of ways to move or migrate your existing on premise Oracle database to the Oracle Cloud. In this lab the instructor has already used Data Pump to export the on premise database to a .dmp file and uploaded the .dmp file to the Oracle Object Storage. It's now a matter of importing the .dmp file to Autonomous Database from the Object Storage.   
+
+The .dmp file has been copied to the Object Storage in various regions.  You will use this in a later step.
 
 Melbourne, Australia: https://objectstorage.ap-melbourne-1.oraclecloud.com/p/u8kmZ-LTcFb6xQy6FXxQkA9ARp67BZlyJSrkcc8n_f0/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
 
@@ -194,15 +196,13 @@ In order for ATP to access the Oracle Object Storage we need to create a credent
 
 ​	1. Connect to your ATP from SQL Developer
 
-From the SQL Developer worksheet create a credential for ATP to access the object store. You will need to run the DBMS\_CLOUD.CREATE\_CREDENTIAL package below from your ATP session. Replace the names in RED with your own names.
+From the SQL Developer worksheet create a credential for ATP to access the object store. You will need to run the DBMS\_CLOUD.CREATE\_CREDENTIAL package below from your ATP session. Replace the names with your own names.
 
 ​	2. Give the credential a name
 
 ​	3. Provide your OCI login username
 
 ​	4. Provide the OCI Auth Token password to access the Object Storage. You should have created this in the earlier lab.  For the instructor-led class this password will be provided to you.
-
-Note: For reference, an Auth Token can be created from your OCI user settings. The Auth Token creation will generate the password. 
 
  
 
@@ -236,7 +236,7 @@ While we are in SQL Developer check to see if you have the SOE schema in the Oth
 
 ## Step 6: Import the Dump File to the Autonomous Database
 
-Once you have the database dump file in the Object Storage you can import it into ATP. To run the Data Pump Import you will log in to the compute with the Instant Client software and the wallet to your ATP. 
+Once you have the database dump file in the Object Storage you can import it into ATP. To run the Data Pump Import you will log in to the App Server compute with the Instant Client software and the wallet to your ATP. 
 
 Execute the impdb statement below from your compute with Instant Client software.
 
@@ -246,10 +246,10 @@ Execute the impdb statement below from your compute with Instant Client software
 4. Set parallel import to 2 since we can use 2 the OCPU cores in ATP.
 
 ```
-$ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=<credential name> schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/p/OCvyuN_NmXrzYO1KzME2ZjijeKCwa2ELWUQIZ5k-qE4/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp logfile=import.log parallel=2
+$ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=<credential name> schemas=soe dumpfile=https://objectstorage.ap-hyderabad-1.oraclecloud.com/p/CoiQToMQcZ4zV2ljuhIqge4eMKvMgeQIPQms9U5vzSg/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp logfile=import.log parallel=2
 ```
 
-If successful, you will see this output:
+It should take about 15-25 minutes to import.  If successful, you will see this output:
 
 ```
 Import: Release 18.0.0.0.0 - Production on Tue Dec 24 19:21:02 2019
@@ -339,16 +339,30 @@ ORA-39082: Object type PACKAGE BODY:"SOE"."ORDERENTRY" created with compilation 
 Job "ADMIN"."SYS_IMPORT_SCHEMA_01" completed with 1 error(s) at Tue Dec 24 19:25:42 2019 elapsed 0 00:04:36
 ```
 
-To view the import.log you must put it into an Oracle Object Store bucket and then download it to your laptop and view with a text editor.  An example of putting the file in the Object Store bucket is shown below.  
+
+
+In SQL Developer check to see if you have the SOE schema in the Other Users folder now. You should see that it has been imported.
+
+Upon import, there was a compilation issue. To fix the issue, the following SQLs grant the missing privilege and recompile the ORDERENTRY package.
+
+```
+SQL> GRANT EXECUTE ON DBMS_LOCK TO SOE;
+
+SQL> ALTER PACKAGE SOE.ORDERENTRY COMPILE;
+```
+
+
+
+(Optional) To view the import.log you must put it into an Oracle Object Store bucket and then download it to your laptop and view with a text editor.  An example of putting the file in the Object Store bucket is shown below.  
 
 ```
 BEGIN
 
 DBMS_CLOUD.PUT_OBJECT(
 
-credential_name=>'STORAGE_CREDENTIAL',
+credential_name=>'STORAGE_CREDENTIAL_NAME',
 
-object_uri=>'https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/import.log', directory_name=>'DATA_PUMP_DIR',
+object_uri=>'https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/bucket_name/o/import.log', directory_name=>'DATA_PUMP_DIR',
 
 file_name=>'import.log');
 
@@ -359,17 +373,9 @@ END;
 
  
 
-In SQL Developer check to see if you have the SOE schema in the Other Users folder now. You should see that it has been imported.
-
-Upon import, there was one compilation issue. The following SQLs grant the missing privilege and recompile the ORDERENTRY package.
-
-```
-SQL> GRANT EXECUTE ON DBMS_LOCK TO SOE;
-
-SQL> ALTER PACKAGE SOE.ORDERENTRY COMPILE;
-```
-
 Now that we have both the application installed on the App Server and the database imported to ATP we are ready to run the workload.
+
+
 
 ## Acknowledgements ##
 
