@@ -16,7 +16,7 @@ The following is intended to outline our general product direction. It is intend
 
 ## Step 1: Create the Bastion Compute ##
 
-<img src="./images/bastion-diagram.PNG" style="zoom: 150%;" />
+<img src="./images/bastion-diagram.PNG" style="zoom: 80%;" />
 
 We will create our first compute as a Bastion host on the public subnet. A Bastion is a “jump” host that will allow us to jump to the private compute. Private computes on private subnets can not be accessed from the internet directly.
 
@@ -26,7 +26,7 @@ We will create our first compute as a Bastion host on the public subnet. A Basti
 
 ​	3. Click Create Instance
 
-![](./images/menu-compute.PNG)
+<img src="./images/menu-compute.PNG" style="zoom:80%;" />
 
 ​	4. Give your instance a unique name.
 
