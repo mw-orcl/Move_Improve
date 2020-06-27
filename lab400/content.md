@@ -34,7 +34,7 @@ We will create our first compute as a Bastion host on the public subnet. A Basti
 
 
 
-<img src="./images/Create-compute-image.PNG" style="zoom:67%;" />
+<img src="./images/create-compute-image.PNG" style="zoom:67%;" />
 
 ![](./images/select-developer-image.PNG)
 
