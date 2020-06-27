@@ -12,8 +12,7 @@ The following is intended to outline our general product direction. It is intend
 - Laptop or desktop computer
 - Web browser
 - Account access to Oracle Cloud Infrastructure
-  - Provided to you if instructor-led training, otherwise use your account
-  - You will need an account that allows you to create a VCN, up to two cores of compute, and up to three cores of Autonomous Database.
+- You will need an account that allows you to create a VCN, up to two cores of compute, and up to three cores of Autonomous Database.
 
 ## Step 1 - Select your Cloud Region ##
 
