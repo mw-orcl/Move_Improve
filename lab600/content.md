@@ -22,7 +22,7 @@ The following is intended to outline our general product direction. It is intend
 
 ​	5. From WinSCP or equivalent, enter the public IP address of the Bastion in the Host name
 
-​	6. Enter opc for the user name
+​	6. Enter **opc** for the user name
 
 ​	7. Click Advanced to select the private SSH key
 
