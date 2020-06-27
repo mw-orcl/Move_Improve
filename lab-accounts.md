@@ -1,6 +1,6 @@
 # **Lab Accounts** and Artifacts
 
-This is your account to log in to the Oracle Cloud.
+To log in to the Oracle Cloud, you will need the following.
 
 Oracle Cloud URL:  
 
