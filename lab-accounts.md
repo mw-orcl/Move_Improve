@@ -54,6 +54,12 @@ Note: SSH keys are required to access Oracle Cloud compute instances.
 
 
 
+## SQL Developer
+
+Download SQL Developer for use with the database.  Select the version for your OS.  [https://www.oracle.com/tools/downloads/sqldev-v192-downloads.html](https://www.oracle.com/tools/downloads/sqldev-v192-downloads.html)
+
+
+
 ## Object Store Password
 
 This password will be used by the database to access the Oracle Object Store in one of the labs.  Note it for now.
