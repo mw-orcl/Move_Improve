@@ -116,19 +116,7 @@ Once your ATP service is running we can connect a client to ATP securely with th
 
 ​	5. Enter a password for the wallet.
 
-Note your connection strings. Your application can connect with these connection services:
 
-- High – for long queries, high parallelism, low SQL concurrency
-
-- Medium – for medium queries, parallelism, medium concurrency
-
-- Low – for short queries, no parallelism, high concurrency
-
-- TPurgent – for high priority transaction processing
-
-- TP – for standard transaction processing
-
-  
 
 <img src="./images/wallet-2.PNG" style="zoom:67%;" />
 
@@ -138,7 +126,7 @@ Note your connection strings. Your application can connect with these connection
 
 ## Step 4: Connect to ATP using SQL Developer
 
-In this lab section you will connect to the ATP with Oracle SQL Developer and browse the ATP configuration. SQL Developer is an Oracle DBA client tool.
+In this lab section you will connect to the ATP with Oracle SQL Developer and browse the ATP configuration. SQL Developer is an Oracle DBA and developer client tool.
 
 Please note that most of the database settings and parameters cannot be modified in a fully-managed Oracle Autonomous Database (ATP and ADW) and that is the whole point of the autonomous service, it runs by itself. 
 
@@ -159,7 +147,21 @@ Please note that most of the database settings and parameters cannot be modified
 
 ​	7. Select Connection Type as Cloud Wallet and Browse for your wallet.
 
-​	8. Browse and select your service. Ie: <your ATP name>_tp. Note there are five services, select the tp service.
+​	8. Browse and select your service. Ie: <your ATP name>_tp. Note there are five services, select the **tp** service.
+
+About connection services:
+
+- High – for long queries, high parallelism, low SQL concurrency
+
+- Medium – for medium queries, parallelism, medium concurrency
+
+- Low – for short queries, no parallelism, high concurrency
+
+- TPurgent – for high priority transaction processing
+
+- TP – for standard transaction processing
+
+  
 
 ​	9. Test the connection and Save your connection for later use. Then click Connect.
 
@@ -188,9 +190,13 @@ AND sales.cust_id=customers.cust_id
 
 
 
- 11. Click **F5** or the **Run Script** button. Verify the query executes and results are displayed.
+ 11. Click **F5** or the **Run Script** button. Verify the query executes and results are displayed.  
 
+     Run it again.  Why was it faster?
+     
      <img src="./images/sql-developer-3.PNG" style="zoom:67%;" />
+
+
 
 You have successfully provisioned and connected SQL Developer to Autonomous Database (ATP) and validated the connection. 
 
