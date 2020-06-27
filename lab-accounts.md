@@ -56,7 +56,7 @@ Note: SSH keys are required to access Oracle Cloud compute instances.
 
 ## SQL Developer
 
-Download SQL Developer for use with the database.  Select the version for your OS.  [https://www.oracle.com/tools/downloads/sqldev-v192-downloads.html](https://www.oracle.com/tools/downloads/sqldev-v192-downloads.html)
+Oracle SQL Developer is a free integrated development environment for your database.  Download SQL Developer.  Select the version for your OS.  [https://www.oracle.com/tools/downloads/sqldev-v192-downloads.html](https://www.oracle.com/tools/downloads/sqldev-v192-downloads.html)
 
 
 
