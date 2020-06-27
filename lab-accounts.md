@@ -46,7 +46,7 @@ Public key:  labkey.pub
 
 Private key: labkey.ppk (Windows) or labkey (Mac)
 
-Keys can be downloaded here:  [Keys.zip](https://objectstorage.ap-melbourne-1.oraclecloud.com/p/d7FssGukRXuKSk9kqInN556f2W6zi_j2uaNREPRvc8I/n/oraclepartnersas/b/Lab-Material/o/Keys.zip)
+Keys can be downloaded here:  https://objectstorage.ap-melbourne-1.oraclecloud.com/p/d7FssGukRXuKSk9kqInN556f2W6zi_j2uaNREPRvc8I/n/oraclepartnersas/b/Lab-Material/o/Keys.zip
 
 
 
