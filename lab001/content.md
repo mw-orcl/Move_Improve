@@ -15,7 +15,7 @@ The following is intended to outline our general product direction. It is intend
 ## Step 1 - Log in to Oracle Cloud ##
 
 1. From your browser go to Oracle Cloud. The URL is [https://console.ap-seoul-1.oraclecloud.com](https://console.ap-seoul-1.oraclecloud.com)
-2. Enter your Cloud Tenant or account name:  oraclepartnersas
+2. Enter your Cloud Tenant or account name:  **oraclepartnersas**
 
 <img src="./images/cloud-sign-in-2.PNG" style="zoom:50%;" />
 
