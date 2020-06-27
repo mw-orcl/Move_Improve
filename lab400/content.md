@@ -141,7 +141,7 @@ Oracle computes are provisioned with the default **opc** user with sudo privileg
 4. Use the latest default Oracle Linux image
 4. If you have more than one availability domain, you can just select AD1
 
-  ![](./images/create-app-server-1.png)             
+  <img src="./images/create-app-server-1.png" style="zoom:80%;" />             
 
 ​	5. Please use the standard virtual machine with 1 core as pictured
 
@@ -153,7 +153,7 @@ Oracle computes are provisioned with the default **opc** user with sudo privileg
 
 
 
-7. Select the **private** subnet where the App Server will be installed.  Do not assign public IP address.
+7. Select the **private** subnet where the App Server will be installed.  Do not select public subnet.
 
  	8. Keep the Boot Volume defaults
 
@@ -183,13 +183,13 @@ Now we need to turn off VNIC source/destination check to allow packets to be for
 
 ​	2. Select Attached VNICs
 
-​	3. Click on the 3 dots on the right of the VNIC
+​	3. Click on the 3 dots menu on the right of the VNIC
 
 ​	4. Select Edit VNIC
 
 ​	5. Check the box **Skip Source/Destination Check**
 
-​	6. Click Save Changes or Update the VNIC on earlier UIs.
+​	6. Click Save Changes or Update VNIC on earlier UI.
 
 ![](./images/vnic-details.PNG)
 
@@ -203,11 +203,11 @@ Let's see how your security list are set up to ensure they allow the right traff
 
 <img src="./images/security-list-diagram.PNG" style="zoom:67%;" />
 
-​	1. Navigate to your VCN details
+​	1. Navigate to your Network VCN details
 
 ​	2. Select Security Lists from your Resources
 
-​	3. Check default security list used by the public subnet
+​	3. Check default security list used by the public subnet.  Check Ingress and Egress.
 
 		- Allow TCP ingress on port 22. (port 22 is for SSH)
 		- Allow all egress to all destinations, ie: 0.0.0.0/0
@@ -220,10 +220,10 @@ Let's see how your security list are set up to ensure they allow the right traff
 
 ![](./images/egress-rules.png)
 
-1. Check security list for private subnet. 
+​	4. Check security list for private subnet. 
 
-		- Ie: Ingress allows SSH from the VCN (this will also allow ingress for SCP copy of the ATP Wallet we will do shortly). 
-		- Ie: Egress allows all protocol traffic to all destination.
+- Ingress allows SSH from the VCN (this will also allow ingress for SCP copy of the ATP Wallet we will do shortly). 
+- Egress allows all protocol traffic to all destination.
 
 
 
