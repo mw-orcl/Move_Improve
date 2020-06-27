@@ -56,8 +56,9 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
 
 
-	8. Select Virtual Machine VM.Standard2.1
- 	9. Instance Shape should be 1 Core OCPU, 15 GB Memory. You can keep this default.
+​	8. Select Virtual Machine VM.Standard2.1
+
+​	9. Instance Shape should be 1 Core OCPU, 15 GB Memory. You can keep this default.
 
 
 
@@ -65,9 +66,9 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
 
 
-10. Select your VCN Compartment and VCN you created
+​	10.Select your VCN Compartment and VCN you created
 
-11. Select your subnet Compartment.  It will be the same as your VCN Compartment in this lab. In some cases you can create subnet in other compartments. 
+​	11.Select your subnet Compartment.  It will be the same as your VCN Compartment in this lab. In some cases you can create subnet in other compartments. 
 
 ​	12. Select the **Public** subnet to create your compute on
 
@@ -87,7 +88,7 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
 Once you click Create Instance, your instance will be in provisioning state. This will take a couple of minutes to create.
 
-<img src="./images/compute-provisioning-status.png" style="zoom:67%;" />
+<img src="./images/compute-provisioning-status.png" style="zoom: 50%;" />
 
 You can see the more status by clicking on Work Request.
 
