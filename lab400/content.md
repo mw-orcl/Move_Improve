@@ -16,7 +16,7 @@ The following is intended to outline our general product direction. It is intend
 
 ## Step 1: Create the Bastion Compute ##
 
-<img src="./images/bastion-diagram.PNG" style="zoom: 80%;" />
+<img src="./images/bastion-diagram.PNG" style="zoom: 67%;" />
 
 We will create our first compute as a Bastion host on the public subnet. A Bastion is a “jump” host that will allow us to jump to the private compute. Private computes on private subnets can not be accessed from the internet directly.
 
@@ -26,7 +26,7 @@ We will create our first compute as a Bastion host on the public subnet. A Basti
 
 ​	3. Click Create Instance
 
-<img src="./images/menu-compute.PNG" style="zoom:80%;" />
+<img src="./images/menu-compute.PNG" style="zoom: 67%;" />
 
 ​	4. Give your instance a unique name.
 
@@ -122,7 +122,7 @@ Oracle computes are provisioned with the default **opc** user with sudo privileg
 
 ## Step 3: Create your Application Server
 
-![](./images/app-server-diagram.PNG)
+<img src="./images/app-server-diagram.PNG" style="zoom:67%;" />
 
 1. On the Private subnet create a compute for your application server
 2. Name your instance as your app server
@@ -188,7 +188,7 @@ Now we need to turn off VNIC source/destination check to allow packets to be for
 
 Let's see how your security list are set up to ensure they allow the right traffic.
 
-![](./images/security-list-diagram.PNG)
+<img src="./images/security-list-diagram.PNG" style="zoom:67%;" />
 
 ​	1. Navigate to your VCN details
 
