@@ -22,7 +22,7 @@ South Korea (Chuncheon)
 
 India South (Hyderabad)
 
-<img src="./images/region.PNG" style="zoom:50%;" />
+<img src="./images/region.PNG" style="zoom: 67%;" />
 
 
 
@@ -32,7 +32,7 @@ All your lab work will be done in a compartment.  A compartment is a workspace w
 
 Compartment:  APAC-Workshop-1
 
-<img src="./images/compartment.PNG" style="zoom:50%;" />
+<img src="./images/compartment.PNG" style="zoom: 67%;" />
 
 ## SSH Keys
 
