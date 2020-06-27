@@ -38,6 +38,8 @@ Compartment:  APAC-Workshop-1
 
 For an instructor-led workshop, you can use the SSH keys provided below.   Alternatively you can create your own keys with a tool like puTTYgen (Windows) or ssh-keygen (Linux or Mac).  The keys will be used to securely connect to your compute instance on the Oracle Cloud.   
 
+Download and unzip your keys:  [https://objectstorage.ap-melbourne-1.oraclecloud.com/p/5McFauj1SERXzIj_43YRF0SH95gv5AiKERU85hwhrRE/n/oraclepartnersas/b/Lab-Material/o/keys.zip](https://objectstorage.ap-melbourne-1.oraclecloud.com/p/5McFauj1SERXzIj_43YRF0SH95gv5AiKERU85hwhrRE/n/oraclepartnersas/b/Lab-Material/o/keys.zip)
+
 You will provision your compute instance with the public key, **labkey.pub**.  
 
 From a Windows client, you will use **labkey.ppk** with PuTTY to connect to your instance.  For Mac clients, you will use the **labkey** file with no extension to connect to your instance. 
@@ -45,10 +47,6 @@ From a Windows client, you will use **labkey.ppk** with PuTTY to connect to your
 Public key:  labkey.pub
 
 Private key: labkey.ppk (Windows) or labkey (Mac)
-
-Keys can be downloaded here:  [https://objectstorage.ap-melbourne-1.oraclecloud.com/p/5McFauj1SERXzIj_43YRF0SH95gv5AiKERU85hwhrRE/n/oraclepartnersas/b/Lab-Material/o/keys.zip](https://objectstorage.ap-melbourne-1.oraclecloud.com/p/5McFauj1SERXzIj_43YRF0SH95gv5AiKERU85hwhrRE/n/oraclepartnersas/b/Lab-Material/o/keys.zip)
-
-
 
 Note: SSH keys are required to access Oracle Cloud compute instances.  
 

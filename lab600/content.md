@@ -51,7 +51,7 @@ The following is intended to outline our general product direction. It is intend
 We are now going to copy the ATP Wallet to the App Server. The App Server will be running a workload against the ATP database and will need the wallet to connect to it later. Only the Bastion can reach the private compute (your App Server). The Bastion can connect to the private IP address because they are in the same VCN.
 
 1. Get the **private** IP address of your App Server from the compute details
-2. SSh to the Bastion with PuTTy or your ssh client
+2. Ssh to the Bastion with PuTTy or your ssh client
 
 From Bastion session:
 
