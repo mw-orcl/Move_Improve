@@ -10,9 +10,24 @@ The following is intended to outline our general product direction. It is intend
 ## Requirements ##
 
 - Laptop or desktop computer
+
 - Web browser
+
 - Account access to Oracle Cloud Infrastructure
-- You will need an account that allows you to create a VCN, up to two cores of compute, and up to three cores of Autonomous Database.
+
+- You will need an account that allows you to create a VCN, up to two cores of compute, and up to three cores of Autonomous Database
+
+  
+
+### About Regions and compartments
+
+**Important Note**
+
+Always ensure you are in your correct Region and Compartment. 
+
+If this is an instructor-led lab we are sharing the same tenancy account with multiple students, please create a unique name for your OCI resources that you can identify with. Ie: Use your name or other identifier unique to you to name your cloud resources.
+
+
 
 ## Step 1 - Select your Cloud Region ##
 
