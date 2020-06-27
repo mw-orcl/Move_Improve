@@ -59,7 +59,7 @@ $ java -version
 ​	5. We can now pull the Swingbench code from the website
 
 ```
-$ curl http://www.dominicgiles.com/swingbench/swingbench261082.zip -o swingbench.zip
+$ curl 'https://www.dominicgiles.com/swingbench/swingbenchlatest.zip' -H 'User-Agent: Mozilla/5.0' -H 'Referer: https://www.dominicgiles.com/downloads.html' -o swingbench.zip
 ```
 
 ​	6. Unzip it and check the files
@@ -82,7 +82,9 @@ To prepare for moving the Swingbench database to ATP, we need the Data Pump impo
 
 ​	1. Connect to your App Server.
 
-​	2. Get the latest repository version from the closest region yum server
+ 2. Get the latest repository version from the closest region yum server
+
+    Make sure you get the end quote for the export.
 
 ```
 $ cd /etc/yum.repos.d
@@ -94,7 +96,7 @@ $ echo $REGION
 $ sudo -E wget http://yum-$REGION.oracle.com/yum-$REGION-ol7.repo
 ```
 
-​	3. Enable the Instant Client repository
+​	3. Enable the Instant Client repository 
 
 ```
 $ sudo yum-config-manager --enable ol7_oracle_instantclient
@@ -106,7 +108,7 @@ $ sudo yum-config-manager --enable ol7_oracle_instantclient
 $ sudo yum list oracle-instantclient*
 ```
 
-​	5. Install the latest Instant Client Basic, SQL Plus, Tools RPM packages. 
+​	5. Install the version 18.5 Instant Client Basic, SQL Plus, Tools RPM packages. 
 
 ```
 $ sudo yum install -y oracle-instantclient18.5-basic oracle-instantclient18.5-sqlplus oracle-instantclient18.5-tools
@@ -116,7 +118,9 @@ $ sudo yum install -y oracle-instantclient18.5-basic oracle-instantclient18.5-sq
 
 ## Step 3: Configure the Instant Client software
 
-​	1. Locate the ATP wallet and unzip it to a wallet folder. Note the extracted files cwallet.sso, sqlnet.ora and tnsnames.ora. Replace the names with your own files.  ie: replace the sample Wallet_ATPLABTEST with your own wallet.
+ 1. Locate the ATP wallet and unzip it to a wallet folder. Note the extracted files cwallet.sso, sqlnet.ora and tnsnames.ora. 
+
+    Replace the names below with your own files.  ie: replace the sample Wallet_ATPLABTEST with your own wallet.
 
 ```
 $ cd /home/opc
@@ -150,11 +154,11 @@ $ cd /home/opc
 $ sudo vi sqlnet.ora
 ```
 
-3. Set the WALLET_LOCATION parameter to point to the wallet directory containing the cwallet.sso file as shown by the example below![](./images/vi-sqlnet.png)
+3. Set the WALLET_LOCATION parameter to point to the wallet directory containing the cwallet.sso file as shown by the example below<img src="./images/vi-sqlnet.png" style="zoom: 67%;" />
 
 4. Exit and save the file                               
 
- 	5. View your tnsnames.ora and note your five services
+ 	5. View your tnsnames.ora and note your five services; high, medium, low, tp, tpurgent
  	6. Export the bin path
  	7. Test the Instant Client with SQLPlus, the username is admin, but enter your password and service name
 
@@ -172,7 +176,13 @@ $ sqlplus admin/<password>@<service_tp>
 
 There are a number of ways to move or migrate your existing on premise Oracle database to the Oracle Cloud. In this lab the instructor has already used Data Pump to export the on premise database to a .dmp file and uploaded the .dmp file to the Oracle Object Storage. It's now a matter of importing the .dmp file to Autonomous Database from the Object Storage.   The .dmp file is located here:
 
-https://objectstorage.ap-seoul-1.oraclecloud.com/p/OCvyuN_NmXrzYO1KzME2ZjijeKCwa2ELWUQIZ5k-qE4/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
+Melbourne, Australia: https://objectstorage.ap-melbourne-1.oraclecloud.com/p/u8kmZ-LTcFb6xQy6FXxQkA9ARp67BZlyJSrkcc8n_f0/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
+
+Chuncheon, S Korea: https://objectstorage.ap-chuncheon-1.oraclecloud.com/p/U57ww_PgUzvxGgIoB-ZMEjUQLyU4DzREgwB09Npbt9Q/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
+
+Hyderabad, India: https://objectstorage.ap-hyderabad-1.oraclecloud.com/p/CoiQToMQcZ4zV2ljuhIqge4eMKvMgeQIPQms9U5vzSg/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
+
+Seoul, S Korea: https://objectstorage.ap-seoul-1.oraclecloud.com/p/hjE5q2CXt9qo4WPyON3mGGIup27RRUZJBWptMgYwnW8/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
 
 Note: You can use the Data Pump procedure for your own database and migration projects.
 
