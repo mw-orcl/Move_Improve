@@ -39,20 +39,26 @@ Note the region selection and the menu of cloud services on the upper left corne
 
  6. Click on the Cloud Service hamburger menu on the upper left hand corner
 
- 7. Select Networking
-
-    <img src="./images/networking.PNG" style="zoom:80%;" />
+ 7. Select Networking/Virtual Cloud Networks
 
     
 
-	8. Select your compartment: APAC-Workshop-1
+    <img src="./images/networking.PNG" style="zoom:80%;" />
 
+	
+
+    8. Select your compartment: APAC-Workshop-1
+
+       
+   
+       <img src="./images/compartment-1.PNG" style="zoom:80%;" />
+   
        You may need to expand the selection to see your compartment.
-
-     <img src="./images/compartment.PNG" style="zoom:80%;" />
-
+       
+       ​									 <img src="./images/compartment.PNG" style="zoom:80%;" />
+    
      
-
+    
     **Important**: Select your correct **region** and **compartment** when doing all your lab work.
     
      
