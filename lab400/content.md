@@ -96,7 +96,7 @@ You can see the more status by clicking on Work Request.
 
 Your running compute instance will have both the Public and Private IP address created. Resources inside the VCN can access Private IP addresses.
 
-<img src="./images/compute-ip-detail.jpg" style="zoom:67%;" />
+<img src="./images/compute-detail.png" style="zoom:67%;" />
 
 
 
@@ -153,7 +153,8 @@ Oracle computes are provisioned with the default **opc** user with sudo privileg
 
 
 
-	7. Select the Private subnet where the App Server will be installed.  Do not assign public IP address should be marked
+7. Select the **private** subnet where the App Server will be installed.  Do not assign public IP address.
+
  	8. Keep the Boot Volume defaults
 
 ​	9. Use the same SSH key as your bastion compute.  However the best practice is to use a different key
