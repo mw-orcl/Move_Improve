@@ -10,6 +10,8 @@ The following is intended to outline our general product direction. It is intend
 - Web browser
 - PuTTy or equivalent
 - WinSCP or equivalent
+- Wallet
+- SSH keys
 
 ## Step 1: Copy the ATP Wallet ##
 
