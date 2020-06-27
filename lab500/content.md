@@ -32,7 +32,7 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 ​	2. From the hamburger menu (top left side), select Autonomous Transaction Processing.
 
-​         ![](./images/provision-atp-1.PNG)                          
+​         <img src="./images/provision-atp-1.PNG" style="zoom: 67%;" />                          
 
 ​	3.  Select your Compartment. You may have to drill in (click “+”) to see your compartment.
 
@@ -40,7 +40,7 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 ​	5. Click Create Autonomous Database. 
 
- ![](./images/Provision-atp-3.PNG)
+ <img src="./images/provision-atp-3.PNG" style="zoom:67%;" />
 
 ​	6. Choose your compartment.
 
@@ -48,7 +48,7 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 
 
-![](./images/provision-atp-4.PNG)
+<img src="./images/provision-atp-4.PNG" style="zoom:67%;" />
 
 
 
@@ -60,7 +60,7 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 
 
-<img src="./images/provision-atp-5.png" style="zoom: 50%;" />
+<img src="./images/provision-atp-5.png" style="zoom: 67%;" />
 
 ​	11. Configure the database with **2 cores and 1 TB storage**.
 
@@ -70,7 +70,7 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 
 
-![](./images/provision-atp-6.png)
+<img src="./images/provision-atp-6.png" style="zoom:67%;" />
 
 ​	
 
@@ -80,19 +80,19 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 
 
-![](.\images\network-access.PNG)
+<img src=".\images\network-access.PNG" style="zoom:67%;" />
 
 ​	16. Select BYOL License Type.
 
 ​	17. Click Create Autonomous Database.
 
-<img src="./images/provision-atp-7.PNG" style="zoom:50%;" />
+<img src="./images/provision-atp-7.PNG" style="zoom: 67%;" />
 
 
 
 Your console will show that ATP is provisioning. This will take about 2 or 3 minutes to complete.
 
-![](./images/provision-atp-8.png)
+<img src="./images/provision-atp-8.png" style="zoom:67%;" />
 
 You can check the status of the provisioning in the Work Request.
 
@@ -108,7 +108,7 @@ Once your ATP service is running we can connect a client to ATP securely with th
 
 
 
-![](./images/wallet-1.PNG)
+<img src="./images/wallet-1.PNG" style="zoom:67%;" />
 
 ​	3. Select Instance Wallet for the Wallet Type.
 
@@ -130,9 +130,9 @@ Note your connection strings. Your application can connect with these connection
 
   
 
-![](./images/wallet-2.PNG)
+<img src="./images/wallet-2.PNG" style="zoom:67%;" />
 
-<img src="./images/wallet-3.png" style="zoom: 50%;" />
+<img src="./images/wallet-3.png" style="zoom: 67%;" />
 
 
 
@@ -147,7 +147,7 @@ Please note that most of the database settings and parameters cannot be modified
 1. Start SQL Developer from your client.
 2. Click + to create a new connection.
 
-​            <img src="./images/sql-Developer.PNG" style="zoom:50%;" />                   
+​            <img src="./images/sql-Developer.PNG" style="zoom: 67%;" />                   
 
 ​	3. Enter a connection name.
 
@@ -165,7 +165,7 @@ Please note that most of the database settings and parameters cannot be modified
 
 **Note:** Ensure that you use **ADMIN** user to view any database configuration.
 
-<img src="./images/sql-developer-2.PNG" style="zoom:50%;" />
+<img src="./images/sql-developer-2.PNG" style="zoom: 67%;" />
 
 ​	10. From your SQL Developer worksheet run the test query below against a sample database that is already in ATP.
 
@@ -190,11 +190,11 @@ AND sales.cust_id=customers.cust_id
 
  11. Click **F5** or the **Run Script** button. Verify the query executes and results are displayed.
 
-     ![](./images/sql-developer-3.PNG)
+     <img src="./images/sql-developer-3.PNG" style="zoom:67%;" />
 
 You have successfully provisioned and connected SQL Developer to Autonomous Database (ATP) and validated the connection. 
 
-![](./images/atp-diagram.PNG)
+<img src="./images/atp-diagram.PNG" style="zoom: 80%;" />
 
 ## Acknowledgements ##
 
