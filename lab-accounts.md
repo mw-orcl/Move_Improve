@@ -22,7 +22,7 @@ South Korea (Chuncheon)
 
 India South (Hyderabad)
 
-<img src="./images/region.PNG" style="zoom: 67%;" />
+<img src="./images/region.PNG" style="zoom: 50%;" />
 
 
 
