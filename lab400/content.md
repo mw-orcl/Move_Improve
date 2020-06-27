@@ -16,7 +16,7 @@ The following is intended to outline our general product direction. It is intend
 
 ## Step 1: Create the Bastion Compute ##
 
-<img src="./images/bastion-diagram.PNG" style="zoom: 67%;" />
+<img src="./images/bastion-diagram.PNG" style="zoom: 75%;" />
 
 We will create our first compute as a Bastion host on the public subnet. A Bastion is a “jump” host that will allow us to jump to the private compute. Private computes on private subnets can not be accessed from the internet directly.
 
@@ -87,7 +87,7 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
 Once you click Create Instance, your instance will be in provisioning state. This will take a couple of minutes to create.
 
-![](./images/compute-provisioning-status.png)
+<img src="./images/compute-provisioning-status.png" style="zoom:67%;" />
 
 You can see the more status by clicking on Work Request.
 
@@ -95,7 +95,7 @@ You can see the more status by clicking on Work Request.
 
 Your running compute instance will have both the Public and Private IP address created. Resources inside the VCN can access Private IP addresses.
 
-![](./images/compute-ip-detail.jpg)
+<img src="./images/compute-ip-detail.jpg" style="zoom:67%;" />
 
 
 
