@@ -7,9 +7,7 @@ In this workshop you will move or migrate an existing application and database s
 ## Workshop Requirements
 
 - Account access to Oracle Cloud Infrastructure
-  - You will need your own account or if this is an instructor-led workshop an account will be provided to you.
-  - You will need an account that allows you to create a VCN, up to two cores of compute, and up to three cores of Autonomous Database.
-  
+- You will need an account that allows you to create a VCN, up to two cores of compute, and up to three cores of Autonomous Database.  If this is an instructor-led workshop an account will be provided to you.
 - Knowledge of network concepts
 - Knowledge of database concepts
 
