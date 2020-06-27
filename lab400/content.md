@@ -22,7 +22,7 @@ We will create our first compute as a Bastion host on the public subnet. A Basti
 
 ​	1. Log in to Oracle Cloud
 
-​	2. Click on the navigation menu on the top left, select Compute Instances
+​	2. Click on the navigation menu on the top left, select Compute Instances.  Make sure you are in your region and compartment.
 
 ​	3. Click Create Instance
 
