@@ -59,7 +59,7 @@ From Bastion session:
 $ ls –al
 ```
 
-​	3. Restrict the private permissions, ie: labkey is the private key
+​	3. Restrict the permissions of labkey or your own key
 
 ```
 $ chmod 0700 labkey
@@ -67,7 +67,7 @@ $ chmod 0700 labkey
 
 ​	4. Copy your ATP wallet from the Bastion to the App Server
 
-(Replace the below commands with your SSH private key, wallet name. and private IP address of your App Server)
+(Replace the below commands with your SSH private key, wallet name, and private IP address of your App Server)
 
 ```
 $ scp -C -i labkey -r Wallet_ATPLABTEST.zip opc@10.0.1.2:/home/opc
