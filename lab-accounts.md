@@ -40,14 +40,13 @@ For an instructor-led workshop, you can use the SSH keys provided below.   Alter
 
 You will provision your compute instance with the public key, **labkey.pub**.  
 
-From a Windows client, you will use **labkey.ppk** with PuTTY to connect to your instance.  For Mac clients, you will use the **labkey** file with no extension to connect to your instance.  .  
+From a Windows client, you will use **labkey.ppk** with PuTTY to connect to your instance.  For Mac clients, you will use the **labkey** file with no extension to connect to your instance. 
 
 Public key:  labkey.pub
 
 Private key: labkey.ppk (Windows) or labkey (Mac)
 
-Keys can be downloaded here:  [labkey.zip](https://objectstorage.ap-melbourne-1.oraclecloud.com/p/d7FssGukRXuKSk9kqInN556f2W6zi_j2uaNREPRvc8I/n/oraclepartnersas/b/Lab-Material/o/Keys.zip
-)
+Keys can be downloaded here:  [Keys.zip](https://objectstorage.ap-melbourne-1.oraclecloud.com/p/d7FssGukRXuKSk9kqInN556f2W6zi_j2uaNREPRvc8I/n/oraclepartnersas/b/Lab-Material/o/Keys.zip)
 
 
 
