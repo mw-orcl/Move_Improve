@@ -38,7 +38,7 @@ We are taking the quick option, but there is also a custom option to create reso
 
 1. Select VCN and Internet Connectivity
 
-2. Click Start Workflow
+2. Click Start VCN Wizard
 
   <img src="./images/wizard-vcn.PNG" style="zoom:67%;" />
 
@@ -50,7 +50,7 @@ We are taking the quick option, but there is also a custom option to create reso
 
 6. Enter the public subnet CIDR block of 10.0.0.0/24
 
-7. Enter the private subnet CIDR block of 10.0.1.0/24. Note: A private subnet is not visible to the internet and is accessible from inside the VCN
+7. Enter the private subnet CIDR block of 10.0.1.0/24. Note: A private subnet is not visible to the internet and is accessible from inside the VCN only.
 
 8. Select use DNS hostnames
 
@@ -62,11 +62,13 @@ A summary is displayed.
 
 You can view the default security and route rules that will be created.
 
-​	10. Click Show Rules
+​	10. Scroll to Security List and click Show Rules
 
-![](./images/security-rules.PNG)
+<img src="./images/security-rules.PNG" style="zoom:67%;" />
 
-![](./images/route-rules.PNG)
+<img src="./images/route-rules.PNG" style="zoom:67%;" />
+
+
 
 ​	11. Click Create. 
 
@@ -74,15 +76,21 @@ The VCN is created instantaneously with all the default network resources.
 
 ![](./images/vcn-summary-info.PNG)
 
-​	12. Click View Virtual Cloud Network to see the details and what has been created. 
+​	
 
-You will see a number of resources created including public, private subnets, default security list, default route table, and the gateways.
+12. Click View Virtual Cloud Network to see the details and what has been created. 
 
 ![](./images/view-vcn-config.PNG)
 
+
+
+You will see a number of resources created including public, private subnets, default security list, default route table, and the gateways.
+
 ![](./images/vcn-details.PNG)
 
-Below is a diagram of what has been created by the Networking Quickstart.
+
+
+Below is a diagram of what has been created by the Networking Quickstart.  All these resources were created in seconds.
 
 ![](./images/lab-architecture-created.PNG)
 
