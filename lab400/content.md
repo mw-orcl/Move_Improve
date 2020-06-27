@@ -28,35 +28,46 @@ We will create our first compute as a Bastion host on the public subnet. A Basti
 
 <img src="./images/menu-compute.PNG" style="zoom: 67%;" />
 
-​	4. Give your instance a unique name.
+​	4. Give your instance a unique name
 
-​	5. Change the Image and Select Oracle Cloud Developer Image from Oracle Images 
+​	5. Click Change Image and select **Oracle Cloud Developer Image** from Oracle Images 
 
-The Oracle Cloud Developer image has the Linux OS along with software client tools we will use. 
 
-​	6. After selecting the image, you must scroll down the screen and click Select
 
-![](./images/Create-compute-image.PNG)
+<img src="./images/Create-compute-image.PNG" style="zoom:67%;" />
 
 ![](./images/select-developer-image.PNG)
 
-<img src="./images/select-image.PNG" style="zoom: 80%;" />
 
-​	7. Select Availability Domain 1 (AD1)
 
-​	8. Select Virtual Machine 
+The Oracle Cloud Developer image has the Linux OS along with software client tools we will use. 
 
-<img src="./images/compute-config-1.png" style="zoom:50%;" />
-
-9. Instance Shape should be 1 Core OCPU, 15 GB Memory. You can keep this default.
-
-10. Select your Compartment and the VCN you created earlier
+ 6. After selecting the image, you must scroll down the screen and accept the terms and click Select Image
 
     
 
+    <img src="./images/select-image.PNG" style="zoom: 80%;" />
+
+    
+
+​	7. Select Availability Domain 1 (AD1)
+
+<img src="./images/compute-config-1.png" style="zoom:50%;" />
+
+
+
+	8. Select Virtual Machine VM.Standard2.1
+ 	9. Instance Shape should be 1 Core OCPU, 15 GB Memory. You can keep this default.
+
+
+
 <img src="./images/compute-config-2.png" alt="Compute config 2" style="zoom:50%;" />
 
-​	11. Select your subnet Compartment.  It will be the same as your VCN Compartment in this lab. In some cases you can create subnet in other compartments. 
+
+
+10. Select your VCN Compartment and VCN you created
+
+11. Select your subnet Compartment.  It will be the same as your VCN Compartment in this lab. In some cases you can create subnet in other compartments. 
 
 ​	12. Select the **Public** subnet to create your compute on
 
@@ -64,7 +75,7 @@ The Oracle Cloud Developer image has the Linux OS along with software client too
 
 ​	14. Keep the Boot Volume settings as is, with boxes unchecked
 
-​	15. Choose the SSH public key provided by the instructor or use your own 
+​	15. Add the SSH **public** key provided by the instructor or use your own 
 
 <img src="./images/compute-config-3.png" alt="Compute config 3" style="zoom:50%;" />
 
