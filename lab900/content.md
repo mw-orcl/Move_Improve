@@ -162,7 +162,8 @@ Your workload will now run against the cloned ATP.
 
 Let's now terminate the newly created compute instance from the custom image, but keep the Boot Volume
 
-	1. Select terminate from the compute action menu
+1. Select terminate from the compute action menu
+
  	2. Do not check the box, just click on Terminate Instance
 
 <img src="./images/terminate-instance.PNG" style="zoom:67%;" />
@@ -175,23 +176,25 @@ Let's now terminate the newly created compute instance from the custom image, bu
 
     Now let’s export your custom image to the Oracle Object Store so it can be used by others.
 
-     1. From the Custom Images action menu, select Export Custom Image
+     1. From the Custom Images action menu, select Export
 
-        ![](./images/export-image-to-object-store.PNG)
+        <img src="./images/export-image-to-object-store.PNG" style="zoom:67%;" />
 
-    2. Select your compartment
+        
 
     3. Select the bucket you want to export the image. If you don’t have a bucket, you can create one in the Object Storage.
 
-    4. Give it an object name.
+    4. Give it a name
 
 <img src="./images/export-image-to-object-store-2.PNG" style="zoom:67%;" />
 
 Once the image is available in the Object Store, you can download it, or even retrieve it to other cloud regions.
 
-## Step 6: Importing an Image
 
-To begin your lift and shift projects from on premise to the Oracle Cloud you can import images to the Object Store, and then attach them to compute instances in the cloud. Your images must first conform to the following virtual machine disk formats: VMDK, QCOW2 (KVM), or OCI. The image must have been uploaded from your on premise to the Object Store for the import. 
+
+## (Optional) Step 6: Importing your own Image
+
+To begin your move and improve projects from on premise to the Oracle Cloud you can import images to the Object Store, and then attach them to compute instances in the cloud. Your images must first conform to the following virtual machine disk formats: VMDK, QCOW2 (KVM), or OCI. The image must have been uploaded from your on premise to the Object Store for the import. 
 
 There are tools you can use on premise to create the virtual machine disk formats. 
 
@@ -203,7 +206,7 @@ Also for converting between formats.
 
 qemu-img convert –f raw –O qcow2 image.img image.qcow2
 
-The following example process describes how to lift a disk image from on prem to the object store. Then import the image from the object store so it can be used to create an instance.
+The following example process describes how to lift a disk image from on prem to the Object Store. Then import the image from the Object Store so it can be used to create an instance.
 
 1. Create an image of your on prem disk to one of the formats: VMDK, QCOW2 (KVM)
 2. Upload the image to your object store bucket
@@ -211,30 +214,47 @@ The following example process describes how to lift a disk image from on prem to
 4. Select a compartment to import
 5. Give your image a name
 6. Select the operating system
-7. Enter the Object Storage URL to the image. You can locate the URL by navigating to the object store bucket and selecting file details.
+7. Select the bucket and image object name
 8. Select the image type
+9. Select the launch mode
 
-![](./images/import-image.PNG)
+<img src="./images/import-image.PNG" style="zoom:67%;" />
 
 <img src="./images/import-image-2.PNG" style="zoom:67%;" />
+
+
 
 ## Step 7: Create New Block Volume
 
 Let’s add a non bootable block volume.  Block volumes are useful for expanding your block storage for more data or installing additional applications.
 
-1. Enter a name of the volume
-2. Select your compartment
-3. Select your Availability Domain
-4. Keep the default size or size down
-5. Set a Backup Policy like Bronze
-6. Encrypt using Oracle Managed Keys
-7. Create
+1. Navigate to Block Storage and Block Volumes
+
+2. Enter a name of the volume
+
+3. Select your compartment
+
+4. Select your Availability Domain
+
+5. Select the default volume size and performance.  In custom, you can create volumes for low cost to high performance.
+
+6. Set a Backup Policy like Bronze
+
+   Gold - The gold policy includes daily incremental backups. These backups are retained for seven days. This policy also includes weekly incremental backups that run on Sunday and are retained for four weeks. Also includes monthly incremental backups, run on the first day of the month, retained for twelve months, and a full backup, run yearly on January 1st. Full backups are retained for five years.
+
+   Silver - The silver policy includes weekly incremental backups that run on Sunday. These backups are retained for four weeks. This policy also includes monthly incremental backups, run on the first day of the month and are retained for twelve months. Also includes a full backup, run yearly on January 1st. Full backups are retained for five years.
+
+   Bronze - The bronze policy includes monthly incremental backups, run on the first day of the month. These backups are retained for twelve months. This policy also includes a full backup, run yearly on January 1st. Full backups are retained for five years.
+
+7. Encrypt using Oracle Managed Keys.  You can also provide your own encryption keys.
+
+8. Create
 
 ![](./images/create-block-volume.PNG)
 
-<img src="./images/create-block-volume-2.png" style="zoom: 50%;" />
+<img src="./images/create-block-volume-2.png" style="zoom: 67%;" />
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab900\images\create-block-volume-3.png" style="zoom:50%;" />
+<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab900\images\create-block-volume-3.png" style="zoom: 67%;" />
 
 You now have a block volume that you can attach to your instance. 
 
@@ -242,14 +262,20 @@ You now have a block volume that you can attach to your instance.
 
 Block volumes can be backed up manually outside of the auto backup policy. Once backed up it can even be copied across regions.
 
-1. Navigate to Block Volume Backups
-2. Click Create Block Volume Backup and manually create a backup of your block storage
+1. Navigate to Block Volumes
+2. Select the 3 dot menu and select Create Manual Backup
+3. Provide your manual backup a name
+4. Indicate full or incremental backup
 
-Once you have created a manual backup, you can select the 3 dot action menu to see the actions such as Copy to Another Region. 
+You can see the status in Block Volume Backups
 
-<img src="C:\Users\mwan.ORADEV\Documents\GitHub\Move_Improve\lab900\images\copy-block-to-region.PNG" style="zoom:67%;" />
+Once you have created a manual backup, you can  Copy to Another Region.  This is useful if your application is deployed in more than one region.
 
-<img src="./images/copy-block-to-region-2.PNG" style="zoom:50%;" />
+<img src="./images/copy-block-to-region.PNG" style="zoom: 67%;" />
+
+<img src="./images/copy-block-to-region-2.PNG" style="zoom: 67%;" />
+
+
 
 End of lab.
 
