@@ -19,7 +19,7 @@ The following is intended to outline our general product direction. It is intend
 
 ​	1. Open a SQL Developer connection to your ATP
 
-​	2. From SQL Developer worksheet, check your core count by typing in the worksheet
+​	2. From SQL Developer worksheet, check your cpu count by typing in the worksheet
 
 ```
 show parameter cpu
@@ -97,7 +97,7 @@ $ ./charbench -c ../configs/SOE_Server_Side_V2.xml \
 
 The ATP service will take a few seconds to scale. Notice the status of SCALING IN PROGRESS and the database is still up and processing user transactions during scaling.   There is no downtime.
 
-​	10. From SQL Developer worksheet, check your core count
+​	10. From SQL Developer worksheet, check your cpu count
 
 ```
 Show parameter cpu
@@ -136,7 +136,7 @@ Let’s look at the auto scaling feature. Auto scaling automatically scales your
 
 <img src="./images/atp-scaling-ui.png" style="zoom: 50%;" />
 
-​	2. From SQL Developer worksheet, check your core count. With one core you should see 2 cpu threads.  Notice the scaling is very fast even before the console UI updates its status.
+​	2. From SQL Developer worksheet, check your cpu count. With one core you should see 2 cpu threads.  Notice the scaling is very fast even before the console UI updates its status.
 
 ```
 Show parameter cpu
@@ -170,7 +170,7 @@ After the scaling is completed you should see Auto Scaling enabled. Note your tr
 
 <img src="./images/atp-details-auto-scale.PNG" style="zoom: 67%;" />
 
-​	5. From SQL Developer worksheet, check your core count
+​	5. From SQL Developer worksheet, check your cpu count
 
 ```
 Show parameter cpu
@@ -204,7 +204,7 @@ We are going to set up two connections, one running the Swingbench workload and 
 
   ![](./images/sql-developer-medium-connection.PNG)                             
 
-​	3. From SQL Developer worksheet, check your core count is 4 (ie: 2 cores thus 4 Hyper-threads)
+​	3. From SQL Developer worksheet, check your cpu count is 4 (ie: 2 cores thus 4 Hyper-threads)
 
 ```
 Show parameter cpu
@@ -214,11 +214,8 @@ Show parameter cpu
 
 ```
 select /*+NO_RESULT_CACHE*/ c_city, c_region, count(*)
-
 from ssb.customer c_high
-
 group by c_city, c_region
-
 order by count(*);
 ```
 
@@ -226,55 +223,40 @@ order by count(*);
 
 You should have gotten similar completion times: 0.524, 0.406, 0.332, 0.357, 0.376 seconds
 
-​	5. Now run both the Swingbench workload and the query together.
+​	5. Now run both the Swingbench workload and the query together.  Remember to use your wallet names and service names.
 
 ```
 ./charbench -c ../configs/SOE_Server_Side_V2.xml \
-
 -cf ~/Wallet_ATPLABTEST/Wallet_ATPLABTEST.zip \
-
 -cs atplabtest_tp \
-
 -u soe \
-
 -p Welcome#2018 \
-
 -v users,tpm,tps \
-
 -intermin 0 \
-
 -intermax 0 \
-
 -min 0 \
-
 -max 0 \
-
 -uc 128 \
-
 -di SQ,WQ,WA \
-
 -rt 0:30.00
 ```
 
-​	6. Wait until the workload goes full strength, about 3 minutes, then from SQL Developer run the query
+​	6. Wait until the workload goes into a steady state with full transactions, about 3 minutes, then from SQL Developer run the query
 
 ```
 select /*+NO_RESULT_CACHE*/ c_city, c_region, count(*)
-
 from ssb.customer c_high
-
 group by c_city, c_region
-
 order by count(*);
 ```
 
-Note your completion times. They should be longer like this: 1.259, 1.007, 0.625, 0.665, 0.578 seconds
+Note your completion times. They should be longer like this: 1.259, 1.007, 1.25, 1.115, 1.008 seconds
 
 ​	7. Try connecting with the TPURGENT service. See the results.
 
-What do you think of the results? Why is the MEDIUM results better?
+What do you think of the results? 
 
-By setting ATP database service, you can control the resources and the response times. Analyze your performance activity from the ATP console.
+By setting ATP database service, you can control the resources and the response times for different connections.  Analyze your performance activity from the ATP console.
 
 
 
