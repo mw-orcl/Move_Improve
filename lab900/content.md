@@ -34,7 +34,7 @@ When your custom image is created you should see the Work Requests as below. Wor
 
 ![](./images/work-request-1.png)
 
-​	7. Select the Custom Images menu and you should see your custom image created. 
+​	7. Select Compute then Custom Images menu and you should see your custom image created. 
 
 ![](./images/work-request.PNG)
 
@@ -42,13 +42,13 @@ You can now use this image to launch another instance by selecting the 3 dots ac
 
 ## Step 2: Create a New Instance from Custom Image ##
 
-1. Click on the Custom Image action menu … on the right
+1. Click on the Custom Image 3 dots action menu … on the right
 2. Select Create Instance
 3. Create the Instance in your compartment and VCN and this time let’s put it in the public subnet
 4. Make sure to select assign public IP address
 5. Enter your public key
 
-Your new instance will be created in a few minutes with the App Server workload already imaged.
+Your new instance will be created in a few minutes with the App Server and Swingbench application already imaged.
 
 ![](./images/create-instance-from-image.PNG)
 
@@ -72,29 +72,17 @@ Replace the script below with your wallet and service name.
 
 ```
 $./charbench -c ../configs/SOE_Server_Side_V2.xml \
-
--cf ~/Wallet_ATPLABTEST.zip \
-
+-cf ~/Wallet_ATPLABTEST/Wallet_ATPLABTEST.zip \
 -cs atplabtest_tp \
-
 -u soe \
-
 -p Welcome#2018 \
-
 -v users,tpm,tps \
-
 -intermin 0 \
-
 -intermax 0 \
-
 -min 0 \
-
 -max 0 \
-
 -uc 128 \
-
 -di SQ,WQ,WA \
-
 -rt 0:30.00
 ```
 
@@ -108,13 +96,13 @@ Let’s now clone the ATP service and run the workload against it. Cloning allow
 
 2. Select Create Clone from the Actions menu
 
-3. Create a Full Clone, which will clone data and metadata
+3. Create a Full Clone from database instance, which will clone data and metadata
 
-   ![](./images/clone-atp-1.png)
+   <img src="./images/clone-atp-1.png" style="zoom:67%;" />
 
-![](./images/clone-atp-2.png)
+<img src="./images/clone-atp-2.png" style="zoom:67%;" />
 
-​	4. Select 2 cores, 1 TB
+​	4. Select database version 19c, 2 cores, 1 TB
 
 ​	5. Enable Auto Scaling
 
@@ -122,44 +110,53 @@ Let’s now clone the ATP service and run the workload against it. Cloning allow
 
 ​	7. Select BYOL
 
-​	8. Create Clone
+​	8. Create Autonomous Database Clone
 
 <img src="./images/clone-atp-3.png" style="zoom:75%;" />
 
-The Clone will be created. It will have a new Wallet. 
+The Clone will be created in 15-20 minutes.  It will have a new Wallet.  Notice the source database is still running.
 
-9. Download the new Wallet
-10. Run the workload again from your client, but remember to change the Wallet and Connection Service name in your script.
+​	9. Download the new Wallet
+
+​	10. Run the workload again from your client, but remember to:
+
+- Copy the new wallet to your new instance 
+
+- Unzip the wallet
+
+- Add the new database services to tnsnames.ora 
+
+- Edit the sqlnet.ora to point to the new wallet 
+
+- and change the Wallet and Connection Service name in the script below
+
+  Troubleshooting: Test the connection with SQLPlus.
+
+  ```
+  $ export PATH=/usr/lib/oracle/18.5/client64/bin:$PATH
+  
+  $ export LD_LIBRARY_PATH=/usr/lib/oracle/18.5/client64/lib
+  
+  $ sqlplus admin/<password>@<service_tp>
+  ```
 
 ```
 $./charbench -c ../configs/SOE_Server_Side_V2.xml \
-
--cf ~/Wallet_ATPLABTEST.zip \
-
+-cf ~/Wallet_ATPLABTEST/Wallet_ATPLABTEST.zip \
 -cs atplabtest_tp \
-
 -u soe \
-
 -p Welcome#2018 \
-
 -v users,tpm,tps \
-
 -intermin 0 \
-
 -intermax 0 \
-
 -min 0 \
-
 -max 0 \
-
 -uc 128 \
-
 -di SQ,WQ,WA \
-
 -rt 0:30.00
 ```
 
-Your workload will now run against the cloned ATP.  
+Your workload will now run against the cloned ATP.   
 
 ## Step 4: Managing Boot Volumes
 
