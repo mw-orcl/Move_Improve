@@ -2,7 +2,7 @@
 
 ![](./images/run-swingbench-diagram.PNG)
 
-The Swingbench workload on the App Server runs against ATP through the Service Gateway. Throughout the run, CPU is saturated at 100% utilization, so it’s a good test to scale the cores. First let’s open SQL Developer tool to check the core count. You should see 2 count for 1 core, and 4 count for 2 cores. We take into account Intel Hyper-threads when counting.
+The Swingbench workload on the App Server runs against ATP through the Service Gateway. Throughout the run, CPU is saturated at 100% utilization, so it’s a good test to scale the cores. First let’s open SQL Developer tool to check the core count. 
 
 ## Disclaimer ##
 
@@ -25,7 +25,7 @@ The following is intended to outline our general product direction. It is intend
 show parameter cpu
 ```
 
-​	3. Select and highlight the script
+​	3. Reconnect to ATP if SQL Developer has lost the connection.	
 
 ​	4. Click the run button
 
@@ -43,37 +43,27 @@ There are 128 concurrent users making inserts and updates. We will measure users
 
 Note that the schema is **soe**.  ie: -u soe.  The soe schema password is **Welcome#2018**. Do not change this.  ie: -p Welcome#2018
 
+<u>Troubleshooting</u>: If you are having trouble running the script, put it all in one line without the \.
+
 ```
 $ cd ~/swingbench/bin
 
 $./charbench -c ../configs/SOE_Server_Side_V2.xml \
-
 -cf ~/Wallet_ATPLABTEST/Wallet_ATPLABTEST.zip \
-
 -cs atplabtest_tp \
-
 -u soe \
-
 -p Welcome#2018 \
-
 -v users,tpm,tps \
-
 -intermin 0 \
-
 -intermax 0 \
-
 -min 0 \
-
 -max 0 \
-
 -uc 128 \
-
 -di SQ,WQ,WA \
-
 -rt 0:1.30
 ```
 
-Note your runtime TPM and TPS. We will compare them later.  Hitting CTRL-C will stop the workload.
+Note your results for TPM and TPS.  You should get about 1000 transactions per second (tps).  We will compare them later.  Hitting CTRL-C will stop the workload.
 
 Sample run with 2 cores show below.
 
@@ -85,39 +75,27 @@ Sample run with 2 cores show below.
 
 ```
 $ ./charbench -c ../configs/SOE_Server_Side_V2.xml \
-
 -cf ~/Wallet_ATPLABTEST/Wallet_ATPLABTEST.zip \
-
 -cs atplabtest_tp \
-
 -u soe \
-
 -p Welcome#2018 \
-
 -v users,tpm,tps \
-
 -intermin 0 \
-
 -intermax 0 \
-
 -min 0 \
-
 -max 0 \
-
 -uc 128 \
-
 -di SQ,WQ,WA \
-
 -rt 0:30.00
 ```
 
 ​	9. After about 3 minutes scale ATP up to 3 cores. Do not enable Auto Scaling yet. We will scale manually first. 
 
-**Note:** Please do not enter a CPU core count beyond **3** as the cloud account is shared by all students and you will run into resource limitations.
+**Note:** Please do not enter a CPU core count beyond **3** as the cloud account is shared by other students and you will run into resource limitations.
 
 <img src="./images/atp-details-page.PNG" style="zoom: 67%;" />
 
-The ATP service will take a few seconds to scale. Notice the status of SCALING IN PROGRESS.
+The ATP service will take a few seconds to scale. Notice the status of SCALING IN PROGRESS and the database is still up and processing user transactions during scaling.   There is no downtime.
 
 ​	10. From SQL Developer worksheet, check your core count
 
@@ -131,15 +109,18 @@ Show parameter cpu
 
 Note your runtime TPM and TPS. You should see a lot more transactions!
 
-You have scaled your cores up dynamically without stopping the service, so no down time!
+You have scaled your cores up dynamically without stopping the service.
 
 Sample run with 3 cores show below.
 
 <img src="./images/sample-run-with-3-cores.PNG" style="zoom:67%;" />
 
+
+
 ## Step 2: Performance Monitoring
 
-​	1. Go to the ATP Service Console and examine your Performance Monitor data.
+	1. Go to the ATP Service Console and examine your Performance Monitor data.
+ 	2. Select Activity from the menu
 
 From the Service Console Activity you can see both runs were at 100% CPU utilization. Which means we can still add cores to increase performance. Note the rapid dip in cpu utilization as it transitions to more cpu’s. It’s near instantaneous and the server is still running.
 
@@ -155,7 +136,7 @@ Let’s look at the auto scaling feature. Auto scaling automatically scales your
 
 <img src="./images/atp-scaling-ui.png" style="zoom: 50%;" />
 
-​	2. From SQL Developer worksheet, check your core count. With one core you should see 2 cpu threads.
+​	2. From SQL Developer worksheet, check your core count. With one core you should see 2 cpu threads.  Notice the scaling is very fast even before the console UI updates its status.
 
 ```
 Show parameter cpu
@@ -165,35 +146,23 @@ Show parameter cpu
 
 ```
 ./charbench -c ../configs/SOE_Server_Side_V2.xml \
-
 -cf ~/Wallet_ATPLABTEST/Wallet_ATPLABTEST.zip \
-
 -cs atplabtest_tp \
-
 -u soe \
-
 -p Welcome#2018 \
-
 -v users,tpm,tps \
-
 -intermin 0 \
-
 -intermax 0 \
-
 -min 0 \
-
 -max 0 \
-
 -uc 128 \
-
 -di SQ,WQ,WA \
-
 -rt 0:30.00
 ```
 
  
 
- 4. After about 3 minutes, enable auto scale.
+ 4. After about 3 minutes, enable auto scale while the workload is still running.
 
     <img src="./images/auto-scale-ui.PNG" style="zoom: 67%;" />
 
@@ -207,7 +176,7 @@ After the scaling is completed you should see Auto Scaling enabled. Note your tr
 Show parameter cpu
 ```
 
-Note that ATP has automatically scaled to 3 cores, the 3X maximum that it will scale to. Note the 3X increase in transactions per second and minutes. Check your performance monitor from the service console again.  We are still at 100% CPU utilized so this workload needs more CPUs!
+Note that ATP has automatically scaled to 3 cores, the 3X maximum that it will scale to. Note the 3X increase in transactions per second and minutes. Check your performance monitor from the service console again.  We are still at 100% CPU utilization so this workload needs more CPUs :)  But you have just examined one of the autonomous features of ATP - auto scaling.
 
 <img src="./images/sample-run-with-auto-scale.png" style="zoom:67%;" />
 
@@ -231,7 +200,7 @@ We are going to set up two connections, one running the Swingbench workload and 
 
 ​	1. Scale the ATP back to 2 cores and disable the auto scale.
 
-​	2. Set up another connection from SQL Developer to your ATP with a database service of Medium. This will be good for running our database queries.
+​	2. Set up another connection from SQL Developer to your ATP with a database service of **Medium**. This will be good for running our database queries.
 
   ![](./images/sql-developer-medium-connection.PNG)                             
 
