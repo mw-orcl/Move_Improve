@@ -26,17 +26,17 @@ The following is intended to outline our general product direction. It is intend
 5. Give your custom image a name
 6. Click Create Custom Image
 
-<img src="./images/create-image.PNG" style="zoom:67%;" />
+<img src="./images/create-image.PNG" style="zoom: 50%;" />
 
 <img src="./images/create-image-2.png" style="zoom:50%;" />
 
 When your custom image is created you should see the Work Requests as below. Work Requests are located on the left side Resources menu.
 
-![](./images/work-request-1.png)
+<img src="./images/work-request-1.png" style="zoom:67%;" />
 
 ​	7. Select Compute then Custom Images menu and you should see your custom image created. 
 
-![](./images/work-request.PNG)
+<img src="./images/work-request.PNG" style="zoom:50%;" />
 
 You can now use this image to launch another instance by selecting the 3 dots action … menu. You can also export this image to the OCI Object Storage for use by others.
 
@@ -50,7 +50,7 @@ You can now use this image to launch another instance by selecting the 3 dots ac
 
 Your new instance will be created in a few minutes with the App Server and Swingbench application already imaged.
 
-![](./images/create-instance-from-image.PNG)
+<img src="./images/create-instance-from-image.PNG" style="zoom:67%;" />
 
 ​	6. SSH into your new compute with the public IP address and the private key.
 
@@ -112,7 +112,7 @@ Let’s now clone the ATP service and run the workload against it. Cloning allow
 
 ​	8. Create Autonomous Database Clone
 
-<img src="./images/clone-atp-3.png" style="zoom:75%;" />
+<img src="./images/clone-atp-3.png" style="zoom: 67%;" />
 
 The Clone will be created in 15-20 minutes.  It will have a new Wallet.  Notice the source database is still running.
 
@@ -250,7 +250,7 @@ Let’s add a non bootable block volume.  Block volumes are useful for expanding
 
 8. Create
 
-![](./images/create-block-volume.PNG)
+<img src="./images/create-block-volume.PNG" style="zoom:67%;" />
 
 <img src="./images/create-block-volume-2.png" style="zoom: 67%;" />
 
@@ -271,9 +271,9 @@ You can see the status in Block Volume Backups
 
 Once you have created a manual backup, you can  Copy to Another Region.  This is useful if your application is deployed in more than one region.
 
-<img src="./images/copy-block-to-region.PNG" style="zoom: 67%;" />
+<img src="./images/copy-block-to-region.PNG" style="zoom: 50%;" />
 
-<img src="./images/copy-block-to-region-2.PNG" style="zoom: 67%;" />
+<img src="./images/copy-block-to-region-2.PNG" style="zoom: 50%;" />
 
 
 
