@@ -2,13 +2,13 @@
 
 To log in to the Oracle Cloud, you will need the following.
 
-Oracle Cloud URL:  
+Oracle Cloud URL:  https://console.ap-seoul-1.oraclecloud.com
 
-Cloud Tenant:  
+Cloud Tenant:  oraclepartnersas
 
-User Name:  
+User Name:  APAC-Student1
 
-Password:  
+Password:  CloudyDay#2020
 
 
 
@@ -62,7 +62,7 @@ Oracle SQL Developer is a free integrated development environment for your datab
 
 This password will be used by the database to access the Oracle Object Store in one of the labs.  Note it for now.
 
-Auth Token Password:  
+Auth Token Password:  Tw{>_ETcQd}#qJhRg[>9
 
 
 
