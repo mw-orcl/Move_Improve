@@ -2,13 +2,13 @@
 
 To log in to the Oracle Cloud, you will need the following.
 
-Oracle Cloud URL:  https://console.ap-seoul-1.oraclecloud.com
+Oracle Cloud URL:  
 
-Cloud Tenant:  oraclepartnersas
+Cloud Tenant:  
 
-User Name:  APAC-Student1
+User Name:  
 
-Password:  CloudyDay#2020
+Password:  
 
 
 
@@ -38,7 +38,7 @@ Compartment:  APAC-Workshop-1
 
 For an instructor-led workshop, you can use the SSH keys provided below.   Alternatively you can create your own keys with a tool like puTTYgen (Windows) or ssh-keygen (Linux or Mac).  The keys will be used to securely connect to your compute instance on the Oracle Cloud.   
 
-Download and unzip your keys:  [https://objectstorage.ap-melbourne-1.oraclecloud.com/p/5McFauj1SERXzIj_43YRF0SH95gv5AiKERU85hwhrRE/n/oraclepartnersas/b/Lab-Material/o/keys.zip](https://objectstorage.ap-melbourne-1.oraclecloud.com/p/5McFauj1SERXzIj_43YRF0SH95gv5AiKERU85hwhrRE/n/oraclepartnersas/b/Lab-Material/o/keys.zip)
+Download and unzip your keys:  
 
 You will provision your compute instance with the public key, **labkey.pub**.  
 
@@ -62,7 +62,7 @@ Oracle SQL Developer is a free integrated development environment for your datab
 
 This password will be used by the database to access the Oracle Object Store in one of the labs.  Note it for now.
 
-Auth Token Password:  Tw{>_ETcQd}#qJhRg[>9
+Auth Token Password:  
 
 
 
@@ -70,9 +70,9 @@ Auth Token Password:  Tw{>_ETcQd}#qJhRg[>9
 
 This dump file is an export of an on-premise Oracle database.  You will use it in one of the labs to import "move" it to the cloud database.  Do not download the dump file to your laptop.  We will import it directly from the Object Store later.
 
-Melbourne, Australia: https://objectstorage.ap-melbourne-1.oraclecloud.com/p/u8kmZ-LTcFb6xQy6FXxQkA9ARp67BZlyJSrkcc8n_f0/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
+Melbourne, Australia: 
 
-Chuncheon, S Korea: https://objectstorage.ap-chuncheon-1.oraclecloud.com/p/U57ww_PgUzvxGgIoB-ZMEjUQLyU4DzREgwB09Npbt9Q/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
+Chuncheon, S Korea: 
 
-Hyderabad, India: https://objectstorage.ap-hyderabad-1.oraclecloud.com/p/CoiQToMQcZ4zV2ljuhIqge4eMKvMgeQIPQms9U5vzSg/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
+Hyderabad, India: 
 
