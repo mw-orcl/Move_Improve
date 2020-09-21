@@ -268,7 +268,7 @@ Connected to: Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Produc
 
 Master table "ADMIN"."SYS_IMPORT_SCHEMA_01" successfully loaded/unloaded
 
-Starting "ADMIN"."SYS_IMPORT_SCHEMA_01": admin/********@atp18c_high directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump18C_1G.dmp logfile=import.log parallel=2 encryption_pwd_prompt=yes
+Starting "ADMIN"."SYS_IMPORT_SCHEMA_01": admin/********@atp18c_high directory=data_pump_dir credential=STORAGE_CREDENTIAL schemas=soe dumpfile=https://objectstorage.ap-seoul-1.oraclecloud.com/n/oraclepartnersas/b/STAGEBUCKET/o/soedump18C_1G.dmp logfile=import.log parallel=2
 
 Processing object type SCHEMA_EXPORT/USER
 
