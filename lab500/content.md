@@ -74,7 +74,7 @@ Provision the Autonomous Transaction Processing database (ATP) with the steps be
 
 ​	
 
-​	14. (Older UI) Select Allow secure access from everywhere.  For your own application, you should select network access to be from Virtual cloud network.  Newer UI will just have the Configure access control rules.
+​	14. Select Allow secure access from everywhere for this workshop.  As a best practice when you deploy your own application, you should select network access to be from Virtual cloud network.  
 
 ​	15. Do not check the box Configure Access Control Rules. However the best practice is to configure Access Control to your ATP.
 
