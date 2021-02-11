@@ -4,10 +4,6 @@
 
 The Swingbench workload on the App Server runs against ATP through the Service Gateway. Throughout the run, CPU is saturated at 100% utilization, so it’s a good test to scale the cores. First let’s open SQL Developer tool to check the core count. 
 
-## Disclaimer ##
-
-The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
-
 ## Requirements ##
 
 - Web Browser
@@ -41,9 +37,13 @@ There are 128 concurrent users making inserts and updates. We will measure users
 
 ​	7. Replace with your own wallet and service names. Ensure the directory location of your wallet zip and service name is correct.  ie: replace Wallet_ATPLABTEST with your own wallet file name, and atplabtest_tp service with your own service name.
 
-Note that the schema is **soe**.  ie: -u soe.  The soe schema password is **Welcome#2018**. Do not change this.  ie: -p Welcome#2018
+Note that the schema is **soe**.  ie: -u soe.  The soe schema password is **Welcome#2018**. If you want to change the password or the user is locked, log in to sqlplus or SQL Developer and enter:
 
-<u>Troubleshooting</u>: If you are having trouble running the script, put it all in one line without the \.
+```
+ALTER USER soe IDENTIFIED BY <new password> ACCOUNT UNLOCK;
+```
+
+<u>Troubleshooting</u>: If you are having trouble running the script, put it all in one line without the \ .
 
 ```
 $ cd ~/swingbench/bin
@@ -120,7 +120,7 @@ Sample run with 3 cores show below.
 ## Step 2: Performance Monitoring
 
 	1. Go to the ATP Service Console and examine your Performance Monitor data.
- 	2. Select Activity from the menu
+	2. Select Activity from the menu
 
 From the Service Console Activity you can see both runs were at 100% CPU utilization. Which means we can still add cores to increase performance. Note the rapid dip in cpu utilization as it transitions to more cpu’s. It’s near instantaneous and the server is still running.
 

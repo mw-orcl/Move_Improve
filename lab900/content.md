@@ -6,8 +6,7 @@ A Block Volume can be detached from an instance and moved to a different instanc
 
 A Custom Image can be created from an existing Boot Volume. You can then use this custom image to launch additional instances. Ie: for test, development, or production environments.
 
-## Disclaimer ##
-The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
+
 
 ## Requirements ##
 
@@ -118,9 +117,9 @@ The Clone will be created in 15-20 minutes.  It will have a new Wallet.  Notice 
 
 ​	9. Download the new Wallet
 
-​	10. Run the workload again from your client, but remember to:
+​	10. Run the workload again from your new client, but remember to:
 
-- Copy the new wallet to your new instance 
+- Copy the new wallet to your new client.
 
 - Unzip the wallet
 
