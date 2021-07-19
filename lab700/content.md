@@ -175,15 +175,9 @@ $ sqlplus admin/<password>@<service_tp>
 
 There are a number of ways to move or migrate your existing on premise Oracle database to the Oracle Cloud. In this lab the instructor has already used Data Pump to export the on premise database to a .dmp file and uploaded the .dmp file to the Oracle Object Storage. It's now a matter of importing the .dmp file to Autonomous Database from the Object Storage.   
 
-The .dmp file has been copied to the Object Storage in various regions.  You will use this in a later step.
+The .dmp file has been copied to the Object Storage.  You will use this in a later step.
 
-Melbourne, Australia: https://objectstorage.ap-melbourne-1.oraclecloud.com/p/u8kmZ-LTcFb6xQy6FXxQkA9ARp67BZlyJSrkcc8n_f0/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
-
-Chuncheon, S Korea: https://objectstorage.ap-chuncheon-1.oraclecloud.com/p/U57ww_PgUzvxGgIoB-ZMEjUQLyU4DzREgwB09Npbt9Q/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
-
-Hyderabad, India: https://objectstorage.ap-hyderabad-1.oraclecloud.com/p/CoiQToMQcZ4zV2ljuhIqge4eMKvMgeQIPQms9U5vzSg/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
-
-Seoul, S Korea: https://objectstorage.ap-seoul-1.oraclecloud.com/p/hjE5q2CXt9qo4WPyON3mGGIup27RRUZJBWptMgYwnW8/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
+Melbourne, Australia: https://objectstorage.ap-melbourne-1.oraclecloud.com/p/B5BwCFeG3Z1Bx_vlpa1ks5GZx-KouCVf3q3fv_hAzqRKPoSBiivWsECMBbPHsw06/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp
 
 Note: You can use the Data Pump procedure for your own database and migration projects.
 
@@ -245,10 +239,10 @@ Execute the impdb statement below from your compute with Instant Client software
 4. Set parallel import to 2 since we can use 2 the OCPU cores in ATP.
 
 ```
-$ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=<credential name> schemas=soe dumpfile=https://objectstorage.ap-hyderabad-1.oraclecloud.com/p/CoiQToMQcZ4zV2ljuhIqge4eMKvMgeQIPQms9U5vzSg/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp logfile=import.log parallel=2
+$ impdp admin/<password>@<My_ATP_high> directory=data_pump_dir credential=<credential name> schemas=soe dumpfile=https://objectstorage.ap-melbourne-1.oraclecloud.com/p/B5BwCFeG3Z1Bx_vlpa1ks5GZx-KouCVf3q3fv_hAzqRKPoSBiivWsECMBbPHsw06/n/oraclepartnersas/b/Lab-Material/o/soedump18C_1G.dmp logfile=import.log parallel=2
 ```
 
-It should take about 15-25 minutes to import.  If successful, you will see this output:
+It should take about 15-25 minutes to import.  If successful, you will see a similar output like the following:
 
 ```
 Import: Release 18.0.0.0.0 - Production on Tue Dec 24 19:21:02 2019
